@@ -11,3 +11,10 @@
 *.lai
 *.la
 *.a
+
+[bB]in/
+[oO]bj/
+
+# Codeblocks
+*.depend
+*.layout
