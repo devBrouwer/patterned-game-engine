@@ -42,3 +42,7 @@ bool World::checkCollisions()
 	return result; // any collision
 }
 
+void World::accept(Visitor * visitor){
+    visitor->visit(this);
+}
+

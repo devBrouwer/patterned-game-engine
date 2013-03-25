@@ -119,5 +119,12 @@ void GameObject::add( GameObject * child )
 	children.push_back( child );
 }
 
+void GameObject::accept(Visitor * visitor){
+    visitor->visit(this);
+    for ( std::vector< GameObject * >::iterator i = children.begin(); i != children.end(); ++i ) {
+		visitor->visit((GameObject * )*i);
+	}
+}
+
 // private functions
 

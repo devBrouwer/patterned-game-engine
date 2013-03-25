@@ -4,6 +4,7 @@
 #include "GameObject.hpp"
 class Camera;
 class Light;
+
 class World : public GameObject
 {
 	private:
@@ -16,6 +17,7 @@ class World : public GameObject
 		bool checkCollisions();
 
 		virtual void draw( Renderer * renderer );
+		virtual void accept(Visitor * visitor);
 
 };
 

@@ -16,6 +16,7 @@
 #include "Behaviours/WASDBehaviour.hpp"
 #include "Behaviours/RotatingBehaviour.hpp"
 #include "Collider.hpp"
+#include "RenderVisitor.hpp"
 
 Game::Game()
 :	window(NULL), hud(NULL), renderer(NULL), world(NULL), camera(NULL), light(NULL)
@@ -58,6 +59,9 @@ void Game::build()
 			floor->setMesh( Mesh::load( "models/floor.obj" ) );
 			floor->setColorMap( Texture::load( "models/land.jpg" ) );
 			world->add( floor );
+
+        RenderVisitor * rv = new RenderVisitor();
+        world->accept(rv);
 }
 
 void Game::run()

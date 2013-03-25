@@ -4,6 +4,8 @@
 #include <vector>
 #include <string>
 #include "glm.hpp"
+#include "Visitor.hpp"
+#include "Visitable.hpp"
 
 class Transform;
 class Collider;
@@ -12,7 +14,7 @@ class Mesh;
 class Texture;
 class Behaviour;
 
-class GameObject
+class GameObject : public Visitable
 {
 	protected:
 		std::string name;
@@ -46,6 +48,7 @@ class GameObject
 		virtual bool collides( GameObject * otherGameObject );
 		virtual void onCollision(  GameObject * otherGameObject );
 		virtual void draw( Renderer * renderer, glm::mat4 parentTransform = glm::mat4(1) );
+		virtual void accept(Visitor * visitor);
 
 
 		void add( GameObject * child );
