@@ -16,3 +16,8 @@ void Light::draw( Renderer * aRenderer, glm::mat4 parentTransform )
 {
 	aRenderer->setLight( getLocation() );
 }
+
+void Light::accept(Visitor * visitor){
+    visitor->visit(this);
+    //acceptChildren(visitor);
+}

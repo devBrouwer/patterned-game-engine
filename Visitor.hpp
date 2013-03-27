@@ -1,12 +1,7 @@
 #ifndef VISITOR_H
 #define VISITOR_H
-//#include "GameObject.hpp"
-//#include "World.hpp"
-//#include "Camera.hpp"
-//#include "Light.hpp"
 #include <iostream>
 
-//class Visitable;
 class World;
 class Camera;
 class Light;
@@ -27,7 +22,6 @@ class Visitor
         virtual void visit(Mesh * mesh) =0;
         virtual void visit(Behaviour * behaviour) =0;
         virtual void visit(Collider * collider) =0;
-        //virtual void visit(Visitable * visitable) =0;
     protected:
     private:
 };

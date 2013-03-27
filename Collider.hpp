@@ -1,9 +1,10 @@
 #ifndef COLLIDER_H
 #define COLLIDER_H
+#include "Visitable.hpp"
 
 class GameObject;
 class SphereCollider;
-class Collider
+class Collider : public Visitable
 {
 	protected:
 		GameObject * parent;
@@ -14,6 +15,7 @@ class Collider
 		virtual ~Collider();
 
 		virtual bool collides( Collider * otherCollider );
+		virtual void accept(Visitor * visitor);
 
 };
 

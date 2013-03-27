@@ -20,3 +20,7 @@ void Behaviour::onCollision( GameObject * otherGameObject )
 {
 	std::cout << "Behavour handles collision. Should not be ! " << std::endl;
 }
+
+void Behaviour::accept(Visitor * visitor){
+    visitor->visit(this);
+}

@@ -1,8 +1,9 @@
 #ifndef BEHAVIOUR_H
 #define BEHAVIOUR_H
+#include "Visitable.hpp"
 
 class GameObject;
-class Behaviour
+class Behaviour : public Visitable
 {
 	protected:
 		GameObject * parent;
@@ -13,6 +14,7 @@ class Behaviour
 
 		virtual void update( float step );
 		virtual void onCollision( GameObject * otherGameObject );
+		virtual void accept(Visitor * visitor);
 
 };
 

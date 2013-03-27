@@ -121,8 +121,21 @@ void GameObject::add( GameObject * child )
 
 void GameObject::accept(Visitor * visitor){
     visitor->visit(this);
+    if(mesh){
+        mesh->accept(visitor);
+    }
+    if(behaviour){
+        behaviour->accept(visitor);
+    }
+    if(collider){
+        collider->accept(visitor);
+    }
+    acceptChildren(visitor);
+}
+
+void GameObject::acceptChildren(Visitor * visitor){
     for ( std::vector< GameObject * >::iterator i = children.begin(); i != children.end(); ++i ) {
-		visitor->visit((GameObject * )*i);
+        ((GameObject * )*i)->accept(visitor);
 	}
 }
 

@@ -48,8 +48,9 @@ class GameObject : public Visitable
 		virtual bool collides( GameObject * otherGameObject );
 		virtual void onCollision(  GameObject * otherGameObject );
 		virtual void draw( Renderer * renderer, glm::mat4 parentTransform = glm::mat4(1) );
-		virtual void accept(Visitor * visitor);
 
+		virtual void accept(Visitor * visitor);
+		virtual void acceptChildren(Visitor * visitor);
 
 		void add( GameObject * child );
 

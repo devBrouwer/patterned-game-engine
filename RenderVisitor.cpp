@@ -36,9 +36,9 @@ void RenderVisitor::visit(Mesh * mesh){
     std::cout << "MESH: " << counter << std::endl;
 }
 
-void RenderVisitor::visit(Behaviour * b){}
-void RenderVisitor::visit(Collider * c){}
-
-//void RenderVisitor::visit(Visitable * visitable){
-//    std::cout << "DON'T KNOW WHAT TO DO WITH VISITABLE" << std::endl;
-//}
+void RenderVisitor::visit(Behaviour * b){
+    std::cout << "BEHAVIOUR DOES NOT COUNT: " << counter << std::endl;
+}
+void RenderVisitor::visit(Collider * c){
+    std::cout << "COLLIDER DOES NOT COUNT: " << counter << std::endl;
+}

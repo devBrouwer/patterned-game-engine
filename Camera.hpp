@@ -16,6 +16,7 @@ class Camera : public GameObject
 		virtual ~Camera();
 
 		void draw( Renderer * renderer, glm::mat4 parentTransform = glm::mat4(1) );
+		virtual void accept(Visitor * visitor);
 
 };
 

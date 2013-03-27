@@ -26,3 +26,7 @@ bool Collider::collides( Collider * otherCollider )
 	return false;
 }
 
+void Collider::accept(Visitor * visitor){
+    visitor->visit(this);
+}
+

@@ -26,6 +26,10 @@ void Mesh::draw( Renderer * aRenderer )
 	aRenderer->draw( size(), indicesBuffer, verticesBuffer, normalsBuffer, uvsBuffer );
 }
 
+void Mesh::accept(Visitor * visitor){
+    visitor->visit(this);
+}
+
 
 // static functions
 

@@ -3,10 +3,11 @@
 #include <vector>
 #include <GL/glew.h>
 #include "glm.hpp"
+#include "Visitable.hpp"
 
 class Renderer;
 
-class Mesh
+class Mesh : public Visitable
 {
 	private: // data mambers
 		std::vector< unsigned int > indices; // index to the v/n/t/u/
@@ -28,7 +29,8 @@ class Mesh
 
 		unsigned int size();
 
-		void draw( Renderer * aRenderer );
+		void draw( Renderer * aRenderer);
+        virtual void accept(Visitor * visitor);
 
 	private:
 		void buffer();

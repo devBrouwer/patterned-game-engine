@@ -44,5 +44,6 @@ bool World::checkCollisions()
 
 void World::accept(Visitor * visitor){
     visitor->visit(this);
+    acceptChildren(visitor);
 }
 
