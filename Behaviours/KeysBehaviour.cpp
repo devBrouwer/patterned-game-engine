@@ -17,11 +17,11 @@ void KeysBehaviour::update( float step )
 	float speed = 0.0f; //default if no keys
 	float rotationSpeed = 0.0f;
 	if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Up )) {
-		speed = 10.0f;
+		speed = -10.0f;
 		//transformation =  glm::translate( transformation, glm::vec3(0.0f, 0.0f, -10.0f*step ) );
 	}
 	if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Down )) {
-		speed = -10.0f;
+		speed = 10.0f;
 		//transformation =  glm::translate( transformation, glm::vec3(0.0f, 0.0f, 10.0f*step ) );
 	}
 	if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Right )) {

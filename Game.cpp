@@ -38,7 +38,7 @@ void Game::build()
 {
 	renderer->use(  new ShaderProgram( "shaders/default.vs", "shaders/default.fs" ) );
 	camera = new Camera( "Camera", glm::vec3( 0, 1, 10 ) );
-		camera->setBehaviour( new WASDBehaviour( camera, window ) );
+		camera->setBehaviour( new KeysBehaviour( camera ) );
 	light = new Light( "Light", glm::vec3( 2.0f, 10.0f, 15.0f ) );
 	Mesh * suzanna = Mesh::load( "models/suzanna.obj");
 	world = new World( "World" );
