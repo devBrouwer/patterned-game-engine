@@ -40,7 +40,7 @@ class Renderer
 			void setTime( float aTime );
 			void setLight( glm::vec3 aLight );
 			void setColorMap ( Texture * aColorMap );
-			void draw( GameObject * aWorld ); // starting point for drawing
+			void initDraw(); // starting point for drawing
 			void draw( unsigned int size, GLuint indicesId, GLuint verticesId, GLuint normalsId, GLuint uvsId ); // drawing mesh, all other uniforms etc should be allready available
 
 	private:

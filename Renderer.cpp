@@ -54,7 +54,7 @@ void Renderer::setTime( float aTime )
 	time = aTime; // set time for use in vs and fs
 }
 
-void Renderer::draw( GameObject * aWorld )
+void Renderer::initDraw( )
 {
 	program->use(); // make sure default shader program is used
 	glEnable( GL_DEPTH_TEST );
@@ -62,7 +62,6 @@ void Renderer::draw( GameObject * aWorld )
 	glClearColor( 0.1f, 0.1f, 0.1f, 1.0f );
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT ); // clear screen 0
 	time = Time::now(); // provide the shader with time float in seconds, for later use !
-	aWorld->draw( this );
 }
 
 void Renderer::draw( unsigned int size, GLuint indicesBuffer, GLuint verticesBuffer, GLuint normalsBuffer, GLuint uvsBuffer ) // size is count of indices

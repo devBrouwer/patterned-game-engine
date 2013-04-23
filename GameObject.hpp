@@ -25,10 +25,13 @@ class GameObject : public Visitable
 		Mesh * mesh;
 		Texture * colorMap;
 
-
+        GameObject * parent;
 		std::vector< GameObject * > children;
 
 	public:
+	    GameObject * getParent();
+	    void setParent(GameObject * theParent);
+	    glm::mat4 getTransform();
 		GameObject( std::string aName = NULL, glm::vec3 aPosition = glm::vec3( 0.0f, 0.0f, 0.0f ) );
 		virtual ~GameObject();
 
@@ -38,11 +41,14 @@ class GameObject : public Visitable
 		const std::string getName();
 		glm::vec3 getLocation();
 		bool hasCollider();
+		bool hasMesh();
 
 		void setBehaviour( Behaviour * aBehaviour );
 		void setCollider( Collider * aCollider );
 		void setMesh( Mesh * aMesh );
 		void setColorMap( Texture * aColorMap );
+
+		Texture * getColorMap();
 
 		virtual void update( float step );
 		virtual bool collides( GameObject * otherGameObject );

@@ -9,12 +9,14 @@ class Renderer;
 class World;
 class Camera;
 class Light;
+class RenderVisitor;
 class Game
 {
 	private: // data members
 		sf::RenderWindow * window;
 		Hud * hud;
 		Renderer * renderer;
+		RenderVisitor * renderVisitor;
 		World * world;
 		Camera * camera;
 		Light * light;

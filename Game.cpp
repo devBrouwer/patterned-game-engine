@@ -26,6 +26,7 @@ Game::Game()
 	hud = new Hud( window );
 	//window->setVerticalSyncEnabled( true ); // sync with monitor ->60 hz approx
 	renderer = new Renderer( window );
+	renderVisitor = new RenderVisitor(renderer);
 }
 
 Game::~Game()
@@ -60,8 +61,8 @@ void Game::build()
 			floor->setColorMap( Texture::load( "models/land.jpg" ) );
 			world->add( floor );
 
-        RenderVisitor * rv = new RenderVisitor();
-        world->accept(rv);
+        //RenderVisitor * rv = new RenderVisitor(renderer);
+        //world->accept(rv);
 }
 
 void Game::run()
@@ -105,10 +106,11 @@ void Game::update( float step )
 void Game::draw()
 {
 	assert( window != NULL );
-	assert( renderer != NULL );
+	assert( renderVisitor != NULL );
 	assert( world != NULL );
 
-	renderer->draw( world );
+    world->accept(renderVisitor);
+
 	window->pushGLStates();
 	hud->draw();
 	window->popGLStates();

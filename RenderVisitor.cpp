@@ -1,9 +1,9 @@
 #include "RenderVisitor.hpp"
+#include "glm.hpp"
 
-RenderVisitor::RenderVisitor()
+RenderVisitor::RenderVisitor(Renderer * aRenderer) : renderer(aRenderer)
 {
     //ctor
-    counter = 0;
 }
 
 RenderVisitor::~RenderVisitor()
@@ -12,33 +12,30 @@ RenderVisitor::~RenderVisitor()
 }
 
 void RenderVisitor::visit(World * world){
-    ++counter;
-    std::cout << "WORLD: " << counter << std::endl;
+    renderer->initDraw();
 }
 
 void RenderVisitor::visit(Camera * camera){
-    ++counter;
-    std::cout << "CAMERA: " << counter << std::endl;
+	renderer->setProjection( camera->getProjection() ); // model = cam to worldspace so inverse for world->camspace
+	renderer->setView( glm::inverse( camera->getTransform() ) ); // model = cam to worldspace so inverse for world->camspace
 }
 
 void RenderVisitor::visit(Light * light){
-    ++counter;
-    std::cout << "LIGHT: " << counter << std::endl;
+    renderer->setLight( light->getLocation() );
 }
 
 void RenderVisitor::visit(GameObject * gameObject){
-    ++counter;
-    std::cout << "GAMEOBJECT: " << counter << std::endl;
+    if(gameObject->hasMesh()){
+        renderer->setModel( gameObject->getTransform() );
+        if( Texture * colormap = gameObject->getColorMap() ){
+            renderer->setColorMap(colormap);
+        }
+    }
 }
 
 void RenderVisitor::visit(Mesh * mesh){
-    ++counter;
-    std::cout << "MESH: " << counter << std::endl;
+    renderer->draw( mesh->size(), mesh->getIndicesBuffer(), mesh->getVerticesBuffer(), mesh->getNormalsBuffer(), mesh->getUvsBuffer() );
 }
 
-void RenderVisitor::visit(Behaviour * b){
-    std::cout << "BEHAVIOUR DOES NOT COUNT: " << counter << std::endl;
-}
-void RenderVisitor::visit(Collider * c){
-    std::cout << "COLLIDER DOES NOT COUNT: " << counter << std::endl;
-}
+void RenderVisitor::visit(Behaviour * b){}
+void RenderVisitor::visit(Collider * c){}

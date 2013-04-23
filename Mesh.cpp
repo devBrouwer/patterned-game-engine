@@ -30,6 +30,23 @@ void Mesh::accept(Visitor * visitor){
     visitor->visit(this);
 }
 
+GLuint Mesh::getIndicesBuffer(){
+    return indicesBuffer;
+}
+
+GLuint Mesh::getNormalsBuffer(){
+    return normalsBuffer;
+}
+
+GLuint Mesh::getUvsBuffer(){
+    return uvsBuffer;
+}
+
+GLuint Mesh::getVerticesBuffer(){
+    return verticesBuffer;
+}
+
+
 
 // static functions
 

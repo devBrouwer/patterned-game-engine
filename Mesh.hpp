@@ -32,6 +32,11 @@ class Mesh : public Visitable
 		void draw( Renderer * aRenderer);
         virtual void accept(Visitor * visitor);
 
+        GLuint getIndicesBuffer();
+        GLuint getVerticesBuffer();
+        GLuint getNormalsBuffer();
+        GLuint getUvsBuffer();
+
 	private:
 		void buffer();
 		void unBuffer();

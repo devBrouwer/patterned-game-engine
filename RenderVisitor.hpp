@@ -6,12 +6,15 @@
 #include "Camera.hpp"
 #include "Light.hpp"
 #include "GameObject.hpp"
+#include "Mesh.hpp"
+#include "Renderer.hpp"
+
 
 
 class RenderVisitor : public Visitor
 {
     public:
-        RenderVisitor();
+        RenderVisitor(Renderer * aRenderer);
         virtual ~RenderVisitor();
         virtual void visit(World * world);
         virtual void visit(Camera * camera);
@@ -23,7 +26,7 @@ class RenderVisitor : public Visitor
         //virtual void visit(Visitable * visitable);
     protected:
     private:
-        int counter;
+        Renderer * renderer;
 };
 
 #endif // RENDERVISITOR_H

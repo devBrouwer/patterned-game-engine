@@ -28,3 +28,7 @@ void Camera::accept(Visitor * visitor){
     visitor->visit(this);
     //acceptChildren(visitor);
 }
+
+glm::mat4 Camera::getProjection(){
+    return projection;
+}

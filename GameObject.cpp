@@ -9,7 +9,7 @@
 #include "Texture.hpp"
 
 GameObject::GameObject( std::string aName, glm::vec3 aPosition )
-:	name( aName ), transform( glm::translate( aPosition ) ), collider( NULL ), behaviour( NULL ), mesh( NULL ), colorMap( NULL )
+:	name( aName ), transform( glm::translate( aPosition ) ), collider( NULL ), behaviour( NULL ), mesh( NULL ), colorMap( NULL ), parent( NULL )
 {
 }
 
@@ -22,6 +22,7 @@ void GameObject::translate( glm::vec3 translation )
 {
 	transform = glm::translate( transform, translation );
 }
+
 void GameObject::rotate( float angle, glm::vec3 axis )
 {
 	transform = glm::rotate( transform, angle, axis);
@@ -40,6 +41,10 @@ glm::vec3 GameObject::getLocation()
 bool GameObject::hasCollider()
 {
 	return collider != NULL;
+}
+
+bool GameObject::hasMesh(){
+    return mesh != NULL;
 }
 
 void GameObject::setBehaviour( Behaviour * aBehaviour )
@@ -79,6 +84,15 @@ void GameObject::update( float step )
 
 }
 
+glm::mat4 GameObject::getTransform(){
+    if(parent != NULL ){
+        return parent->getTransform() * transform;
+    }
+    else{
+        return transform;
+    }
+}
+
 
 bool GameObject::collides( GameObject * otherGameObject )
 {
@@ -113,10 +127,19 @@ void GameObject::draw( Renderer * aRenderer, glm::mat4 parentTransform )
 	}
 }
 
+Texture * GameObject::getColorMap(){
+    return this->colorMap;
+}
+
 void GameObject::add( GameObject * child )
 {
 	assert( child != NULL );
 	children.push_back( child );
+	child->setParent(this);
+}
+
+void GameObject::setParent(GameObject * theParent){
+    parent = theParent;
 }
 
 void GameObject::accept(Visitor * visitor){
@@ -137,6 +160,10 @@ void GameObject::acceptChildren(Visitor * visitor){
     for ( std::vector< GameObject * >::iterator i = children.begin(); i != children.end(); ++i ) {
         ((GameObject * )*i)->accept(visitor);
 	}
+}
+
+GameObject * GameObject::getParent(){
+    return this->parent;
 }
 
 // private functions
