@@ -7,8 +7,9 @@
 class Ruimte : public GameObject
 {
     public:
-        Ruimte();
+        Ruimte(std::string aName);
         virtual ~Ruimte();
+        bool checkCollisions();
     protected:
     private:
 };

@@ -7,3 +7,4 @@ Plek van kist kan random zijn op vooraf bepaalde plaatsen.
 Geopende kist verdwijnt.
 Deur heeft 2 posities eentje als je erdoor gaat en 1 als je teruggaat.
 First person
+Tijd kunnen we gebruiken voor score

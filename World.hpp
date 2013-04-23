@@ -2,15 +2,24 @@
 #define WORLD_H
 
 #include "GameObject.hpp"
+#include "Ruimte.hpp"
+#include <string>
+
 class Camera;
 class Light;
 
-class World : public GameObject
+class World
 {
 	private:
+        std::string name;
+        Ruimte * actieveRuimte;
+        std::vector< Ruimte * >* ruimtes;
 
 	public:
 		World( std::string aName = NULL );
+		void add(Ruimte * ruimte);
+		void setActive(Ruimte * ruimte);
+
 		virtual ~World();
 
 		void update( float step );
