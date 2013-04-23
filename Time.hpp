@@ -5,7 +5,12 @@
 
 class Time
 {
+    protected:
+        Time(const Time&);
+        Time& operator = (const Time&);
+
 	private: // data members
+	    static Time* pinstance;
 		static sf::Clock clock;
 		static float currentTime;
 		static float deltaTime;
@@ -14,6 +19,8 @@ class Time
 		Time(){}
 
 	public: // functons
+	    ~Time();
+        static Time *getTime();
 		static void update();
 		static float now();
 		static float step();

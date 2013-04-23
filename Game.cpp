@@ -40,12 +40,12 @@ void Game::build()
 	camera = new Camera( "Camera", glm::vec3( 0, 1, 10 ) );
 		camera->setBehaviour( new KeysBehaviour( camera ) );
 	light = new Light( "Light", glm::vec3( 2.0f, 10.0f, 15.0f ) );
-	Mesh * suzanna = Mesh::load( "models/suzanna.obj");
+	Mesh * suzanna = Mesh::load( "models/chest2.obj");
 	world = new World( "World" );
 		world->add( camera );
 		world->add( light );
 		GameObject * player = new GameObject("Player", glm::vec3( 0.0, 0.0, 0.0 ));
-			player->setBehaviour( new RotatingBehaviour( player ) );
+//			player->setBehaviour( new RotatingBehaviour( player ) );
 			player->setMesh( suzanna );
 			player->setColorMap( Texture::load("models/bricks.jpg") );
 			player->setCollider( new Collider( player ) );
