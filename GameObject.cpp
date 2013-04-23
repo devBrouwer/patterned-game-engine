@@ -109,24 +109,6 @@ void GameObject::onCollision(  GameObject * otherGameObject )
 	}
 }
 
-void GameObject::draw( Renderer * aRenderer, glm::mat4 parentTransform )
-{
-	assert( aRenderer != NULL );
-
-	//std::cout << name << "  ";
-	if ( mesh ) { // if there is something to draw
-		aRenderer->setModel( parentTransform * transform ); // combine parents transfor with own
-		if ( colorMap ) { //is has a colormap
-			aRenderer->setColorMap( colorMap );
-		}
-		mesh->draw( aRenderer );
-	}
-	// draw children
-	for ( std::vector< GameObject * >::iterator i = children.begin(); i != children.end(); ++i ) {
-		((GameObject * )*i)->draw( aRenderer, parentTransform * transform );
-	}
-}
-
 Texture * GameObject::getColorMap(){
     return this->colorMap;
 }

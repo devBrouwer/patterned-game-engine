@@ -7,7 +7,7 @@
 World::World( std::string aName )
 :	GameObject( aName )
 {
-	//ctor
+	//ctorc
 }
 
 World::~World()
@@ -19,12 +19,6 @@ void World::update( float step )
 {
 	//camera->update( step );
 	GameObject::update( step );
-}
-
-void World::draw( Renderer * renderer )
-{
-	assert( renderer != NULL );
-	GameObject::draw( renderer ); // draw children Game Objects
 }
 
 bool World::checkCollisions()

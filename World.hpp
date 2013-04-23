@@ -16,7 +16,6 @@ class World : public GameObject
 		void update( float step );
 		bool checkCollisions();
 
-		virtual void draw( Renderer * renderer );
 		virtual void accept(Visitor * visitor);
 
 };

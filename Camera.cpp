@@ -17,13 +17,6 @@ Camera::~Camera()
 	//dtor
 }
 
-void Camera::draw( Renderer * renderer, glm::mat4 parentTransform )
-{
-	//std::cout << "Camera sets View " << std::endl << transform << std::endl;
-	renderer->setProjection( projection ); // model = cam to worldspace so inverse for world->camspace
-	renderer->setView( glm::inverse( transform ) ); // model = cam to worldspace so inverse for world->camspace
-}
-
 void Camera::accept(Visitor * visitor){
     visitor->visit(this);
     //acceptChildren(visitor);

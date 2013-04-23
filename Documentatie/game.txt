@@ -1,0 +1,9 @@
+Doolhof opgebouwd uit kubussen waar de speler niet overheen kan kijken.
+Kist
+ - sleutel
+ - hint
+Kist met sleutel van ruimte hoeft niet in dezelfde ruimte te zitten, kan verschijnen in een vorige ruimte als een kist wordt geopend of een deur.
+Plek van kist kan random zijn op vooraf bepaalde plaatsen.
+Geopende kist blijft staan.
+Deur heeft 2 posities eentje als je erdoor gaat en 1 als je teruggaat.
+First person

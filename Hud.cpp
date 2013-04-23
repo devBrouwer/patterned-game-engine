@@ -10,12 +10,12 @@ Hud::Hud( sf::RenderWindow * aWindow )
 {
 	assert ( window != NULL );
 
-    if ( marvinTex.loadFromFile("models/marvin.png") ) {
-		marvin.setTexture( marvinTex);
-		marvin.setPosition(150,150);
-    } else {
-		std::cout << "Coulf not load sprite" << std::endl;
-	}
+//    if ( marvinTex.loadFromFile("models/marvin.png") ) {
+//		marvin.setTexture( marvinTex);
+//		marvin.setPosition(150,150);
+//    } else {
+//		std::cout << "Coulf not load sprite" << std::endl;
+//	}
 }
 
 Hud::~Hud()
@@ -40,6 +40,6 @@ void Hud::draw()
 	// Draw it
 	//std::cout << "Drawing text" << std::endl;
 	assert ( window != NULL );
-	window->draw( marvin );
+//	window->draw( marvin );
 	window->draw(text);
 }

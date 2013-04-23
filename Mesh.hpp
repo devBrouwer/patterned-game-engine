@@ -29,7 +29,6 @@ class Mesh : public Visitable
 
 		unsigned int size();
 
-		void draw( Renderer * aRenderer);
         virtual void accept(Visitor * visitor);
 
         GLuint getIndicesBuffer();

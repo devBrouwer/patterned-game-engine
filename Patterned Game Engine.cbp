@@ -70,6 +70,8 @@
 		<Unit filename="RenderVisitor.hpp" />
 		<Unit filename="Renderer.cpp" />
 		<Unit filename="Renderer.hpp" />
+		<Unit filename="Ruimte.cpp" />
+		<Unit filename="Ruimte.hpp" />
 		<Unit filename="ShaderProgram.cpp" />
 		<Unit filename="ShaderProgram.hpp" />
 		<Unit filename="Texture.cpp" />

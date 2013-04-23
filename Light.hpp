@@ -9,7 +9,6 @@ class Light : public GameObject
 		Light( std::string aName = NULL, glm::vec3 aPosition = glm::vec3( 2.0f, 10.0f, 5.0f ) );
 		virtual ~Light();
 
-        void draw( Renderer * renderer, glm::mat4 parentTransform = glm::mat4(1) );
         virtual void accept(Visitor * visitor);
 };
 

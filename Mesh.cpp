@@ -21,11 +21,6 @@ unsigned int Mesh::size() {
 	return indices.size();
 }
 
-void Mesh::draw( Renderer * aRenderer )
-{
-	aRenderer->draw( size(), indicesBuffer, verticesBuffer, normalsBuffer, uvsBuffer );
-}
-
 void Mesh::accept(Visitor * visitor){
     visitor->visit(this);
 }
