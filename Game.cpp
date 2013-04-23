@@ -47,25 +47,17 @@ void Game::build()
 	world->setActive(r1);
 		r1->add( camera );
 		r1->add( light );
+		//de kist waar de sleutel in zit
 		GameObject * player = new GameObject("Player", glm::vec3( 0.0, 0.0, 0.0 ));
-//			player->setBehaviour( new RotatingBehaviour( player ) );
 			player->setMesh( suzanna );
 			player->setColorMap( Texture::load("models/bricks.jpg") );
 			player->setCollider( new Collider( player ) );
 			r1->add( player  );
-		GameObject * enemy = new GameObject("Enemy", glm::vec3( 2,0,-5 ) );
-			enemy->setBehaviour( new KeysBehaviour( enemy ) );
-			enemy->setMesh( suzanna );
-			enemy->setColorMap( Texture::load("models/monkey.jpg") );
-			enemy->setCollider( new Collider( enemy ) );
-			r1->add( enemy );
+        //de vloer van de kamer
 		GameObject * floor = new GameObject("Floor", glm::vec3( 0,0,0 ) );
 			floor->setMesh( Mesh::load( "models/floor.obj" ) );
-			floor->setColorMap( Texture::load( "models/land.jpg" ) );
+			floor->setColorMap( Texture::load( "models/floor.jpg" ) );
 			r1->add( floor );
-
-        //RenderVisitor * rv = new RenderVisitor(renderer);
-        //world->accept(rv);
 }
 
 void Game::run()

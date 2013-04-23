@@ -78,6 +78,8 @@
 		<Unit filename="Texture.hpp" />
 		<Unit filename="Time.cpp" />
 		<Unit filename="Time.hpp" />
+		<Unit filename="Updater.cpp" />
+		<Unit filename="Updater.hpp" />
 		<Unit filename="Visitable.cpp" />
 		<Unit filename="Visitable.hpp" />
 		<Unit filename="Visitor.cpp" />
