@@ -40,7 +40,7 @@ void Game::build()
 	camera = new Camera( "Camera", glm::vec3( 0, 1, 10 ) );
 		camera->setBehaviour( new KeysBehaviour( camera ) );
 	light = new Light( "Light", glm::vec3( 2.0f, 10.0f, 15.0f ) );
-	Mesh * suzanna = Mesh::load( "models/chest2.obj");
+	Mesh * suzanna = Mesh::load( "models/chest3.obj");
 	world = new World( "World" );
 	Ruimte * r1 = new Ruimte("Ruimte 1");
 	world->add(r1);

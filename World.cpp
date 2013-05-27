@@ -26,7 +26,7 @@ void World::update( float step )
 
 bool World::checkCollisions()
 {
-    actieveRuimte->checkCollisions();
+    return actieveRuimte->checkCollisions();
 }
 
 void World::add(Ruimte * ruimte){
