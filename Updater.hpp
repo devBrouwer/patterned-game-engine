@@ -2,6 +2,7 @@
 #define UPDATER_HPP
 
 #include "Visitor.hpp"
+#include "Behaviour.hpp"
 
 
 class Updater : public Visitor
@@ -14,7 +15,7 @@ class Updater : public Visitor
         virtual void visit(Light * light);
         virtual void visit(GameObject * gameobject);
         virtual void visit(Mesh * mesh);
-        virtual void visit(Behaviour * behaviour);
+        virtual void visit(Behaviour * behaviour, float );
         virtual void visit(Collider * collider);
     protected:
     private:

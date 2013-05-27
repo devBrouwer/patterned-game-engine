@@ -68,6 +68,7 @@ void Game::run()
 		FPS::update();
 		control();
 		if ( running ) { // control may have changed running;
+//            step = Time::step();
 			update( Time::step() );
 			draw();
 		}
