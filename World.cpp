@@ -8,7 +8,7 @@ World::World( std::string aName )
 {
 	//ctorc
 	name = aName;
-	ruimtes = new std::vector<Ruimte *>();
+	rooms = new std::vector<Room *>();
 }
 
 World::~World()
@@ -19,27 +19,27 @@ World::~World()
 void World::update( float step )
 {
     //Alleen actieve ruimte updaten?
-    actieveRuimte->update(step);
+    activeRoom->update(step);
 //	//camera->update( step );
 //	GameObject::update( step );
 }
 
 bool World::checkCollisions()
 {
-    return actieveRuimte->checkCollisions();
+    return activeRoom->checkCollisions();
 }
 
-void World::add(Ruimte * ruimte){
-    ruimtes->push_back(ruimte);
+void World::add(Room * room){
+    rooms->push_back(room);
 }
 
-void World::setActive(Ruimte * ruimte){
+void World::setActive(Room * room){
     //TODO check ruimte in tuimtes?
-    actieveRuimte = ruimte;
+    activeRoom = room;
 }
 
 void World::accept(Visitor * visitor){
     visitor->visit(this);
-    actieveRuimte->accept(visitor);
+    activeRoom->accept(visitor);
 }
 

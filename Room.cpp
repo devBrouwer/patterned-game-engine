@@ -1,16 +1,16 @@
-#include "Ruimte.hpp"
+#include "Room.hpp"
 
 //kubus meegeven?
-Ruimte::Ruimte(std::string aName) : GameObject ( aName )
+Room::Room(std::string aName) : GameObject ( aName )
 {
     //ctor
 }
 
-Ruimte::~Ruimte()
+Room::~Room()
 {
     //dtor
 }
-bool Ruimte::checkCollisions(){
+bool Room::checkCollisions(){
 	bool result = false;
 	for (std::vector< GameObject * >::iterator collider = children.begin(); collider != children.end(); ++collider ) {
 		if ( ((GameObject * )*collider)->hasCollider() ) {

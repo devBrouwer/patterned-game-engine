@@ -18,8 +18,6 @@ class Game
 		Renderer * renderer;
 		RenderVisitor * renderVisitor;
 		World * world;
-		Camera * camera;
-		Light * light;
 
 		bool running;
 
@@ -30,6 +28,7 @@ class Game
 		void build();
 		void run();
 		void stop();
+		void pause();
 
 	private:
 		void control();

@@ -2,7 +2,7 @@
 #define WORLD_H
 
 #include "GameObject.hpp"
-#include "Ruimte.hpp"
+#include "Room.hpp"
 #include <string>
 
 class Camera;
@@ -12,13 +12,13 @@ class World
 {
 	private:
         std::string name;
-        Ruimte * actieveRuimte;
-        std::vector< Ruimte * >* ruimtes;
+        Room * activeRoom;
+        std::vector< Room * >* rooms;
 
 	public:
 		World( std::string aName = NULL );
-		void add(Ruimte * ruimte);
-		void setActive(Ruimte * ruimte);
+		void add(Room * room);
+		void setActive(Room * room);
 
 		virtual ~World();
 

@@ -1,0 +1,24 @@
+# regels beginnend met # zijn commentaar
+#coordinaten zijn altijd x,y en optioneel ,z. als z niet wordt opgegeven dan is het 0
+
+#geef aan waar de speler begint:
+#start positie
+start 0,1,10
+
+#maak een ruimte aan:
+#room start	eind lichtpositie muurtexture vloertexture 	
+room 0,0 100,100 2,10,15 models/bricks.jpg models/floor.jpg
+
+#maak een deur en geef ook het id van de sleutel op:
+#door positie sleutel
+door 30,100 key_1
+
+#maak een chest en geef het id van de sleutel op:
+#chest positie sleutel
+chest 20,100 key_1
+
+#maak een kubus:
+#cube positie grootte texture
+cube 8,8,0 2 models/cube.jpg
+cube 10,10,0 2 models/bricks.jpg
+cube 78,78,0 10 models/glass.jpg

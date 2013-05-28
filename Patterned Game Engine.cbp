@@ -58,6 +58,10 @@
 		<Unit filename="FPS.hpp" />
 		<Unit filename="Game.cpp" />
 		<Unit filename="Game.hpp" />
+		<Unit filename="GameBuilder.cpp" />
+		<Unit filename="GameBuilder.hpp" />
+		<Unit filename="GameFactory.cpp" />
+		<Unit filename="GameFactory.hpp" />
 		<Unit filename="GameObject.cpp" />
 		<Unit filename="GameObject.hpp" />
 		<Unit filename="Hud.cpp" />
@@ -70,8 +74,8 @@
 		<Unit filename="RenderVisitor.hpp" />
 		<Unit filename="Renderer.cpp" />
 		<Unit filename="Renderer.hpp" />
-		<Unit filename="Ruimte.cpp" />
-		<Unit filename="Ruimte.hpp" />
+		<Unit filename="Room.cpp" />
+		<Unit filename="Room.hpp" />
 		<Unit filename="ShaderProgram.cpp" />
 		<Unit filename="ShaderProgram.hpp" />
 		<Unit filename="Texture.cpp" />

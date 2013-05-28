@@ -17,9 +17,10 @@
 #include "Behaviours/RotatingBehaviour.hpp"
 #include "Collider.hpp"
 #include "RenderVisitor.hpp"
+#include "GameBuilder.hpp"
 
 Game::Game()
-:	window(NULL), hud(NULL), renderer(NULL), world(NULL), camera(NULL), light(NULL)
+:	window(NULL), hud(NULL), renderer(NULL), world(NULL)
 {
 	window = new sf::RenderWindow( sf::VideoMode( 800, 600 ), "Saxion Game" ); // get a window
 	std::cout << "Init Glew" << glewInit() << std::endl;
@@ -36,20 +37,22 @@ Game::~Game()
 
 void Game::build()
 {
+    GameBuilder * test = new GameBuilder();
+    test->readFile("level.txt");
 	renderer->use(  new ShaderProgram( "shaders/default.vs", "shaders/default.fs" ) );
-	camera = new Camera( "Camera", glm::vec3( 0, 1, 10 ) );
+	Camera* camera = new Camera( "Camera", glm::vec3( 0, 1, 10 ) );
 		camera->setBehaviour( new KeysBehaviour( camera ) );
-	light = new Light( "Light", glm::vec3( 2.0f, 10.0f, 15.0f ) );
-	Mesh * suzanna = Mesh::load( "models/chest3.obj");
+	Light* light = new Light( "Light", glm::vec3( 2.0f, 10.0f, 15.0f ) );
+
 	world = new World( "World" );
-	Ruimte * r1 = new Ruimte("Ruimte 1");
+	Room * r1 = new Room("Ruimte 1");
 	world->add(r1);
 	world->setActive(r1);
 		r1->add( camera );
 		r1->add( light );
 		//de kist waar de sleutel in zit
 		GameObject * player = new GameObject("Player", glm::vec3( 0.0, 0.0, 0.0 ));
-			player->setMesh( suzanna );
+			player->setMesh( Mesh::load( "models/chest3.obj") );
 			player->setColorMap( Texture::load("models/bricks.jpg") );
 			player->setCollider( new Collider( player ) );
 			r1->add( player  );
@@ -75,8 +78,14 @@ void Game::run()
 	}
 }
 
+void Game::pause(){
+    running = false;
+}
+
 void Game::stop()
 {
+    window->close();
+    running = false;
 }
 
 // private functions
