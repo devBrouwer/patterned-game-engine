@@ -109,10 +109,9 @@ std::vector<std::string> GameBuilder::getWords(std::string line, char delimiter/
     std::vector<std::string> words;
     int i = 0;
     int begin = 0;
-    while(i < line.size()){
-        if(line[i] == delimiter || i==line.size()-1){
-            std::string word = line.substr(begin, i-1);
-            words.push_back(word);
+    while(i <= line.size()){
+        if(line[i] == delimiter || i==line.size() ){
+            words.push_back(line.substr(begin, i-begin));
             begin = i+1;
         }
         ++i;
@@ -121,18 +120,59 @@ std::vector<std::string> GameBuilder::getWords(std::string line, char delimiter/
 }
 
 bool GameBuilder::buildCube(std::string line, World* world){
+    //cube positie grootte texture
+     std::vector<std::string> words = getWords(line.substr(5));
+    if(words.size() != 3){
+        std::cout << "ERROR CUBE: " << line << std::endl;
+        return false;
+    }
     return true;
 }
 
 bool GameBuilder::buildDoor(std::string line, World* world){
+    //door positie sleutel
+    std::vector<std::string> words = getWords(line.substr(5));
+    if(words.size() != 2){
+        std::cout << "ERROR DOOR: " << line << std::endl;
+        return false;
+    }
     return true;
 }
 
 bool GameBuilder::buildRoom(std::string line, World* world){
+    //room start eind lichtpositie muurtexture vloertexture
+    std::vector<std::string> words = getWords(line.substr(5));
+    if(words.size() != 5){
+        std::cout << "ERROR ROOM: " << line << std::endl;
+        return false;
+    }
     return true;
 }
 
 bool GameBuilder::buildStart(std::string line, World* world){
+    //start x,y(,z)
+    std::vector<std::string> words = getWords(line.substr(6));
+    if(words.size() != 1){
+        std::cout << "ERROR START: " << line << std::endl;
+        return false;
+    }
+
+    std::vector<std::string> coords = getWords(words[0], ',');
+    if(coords.size() < 2 || coords.size() > 3){
+        std::cout << "ERROR START coords: " << line << std::endl;
+        return false;
+    }
+    std::string coordX = coords[0];
+    std::string coordY = coords[1];
+    std::string coordZ = "0";
+    if(coords.size() == 3){
+        coordZ = coords[2];
+    }
+    std::cout << "start:" << std::endl;
+    std::cout << "\tX: " << coordX <<  std::endl;
+    std::cout << "\tY: " << coordY <<  std::endl;
+    std::cout << "\tZ: " << coordZ <<  std::endl;
+
     return true;
 }
 
