@@ -5,6 +5,7 @@
 #include <vector>
 #include "World.hpp"
 
+
 class GameBuilder
 {
     public:
@@ -20,6 +21,7 @@ class GameBuilder
     private:
         std::vector<std::string>* actions;
         std::vector<std::string>  getWords(std::string line, char delimiter = ' ');
+        glm::vec3 getVec3(std::string coordsString);
 
 };
 
