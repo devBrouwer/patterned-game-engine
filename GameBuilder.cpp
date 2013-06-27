@@ -135,7 +135,7 @@ bool GameBuilder::buildCube(std::string line, World* world){
     }
     glm::vec3 position = getVec3(words[0]);
     std::string sizeString = words[1];
-    int size = ::atoi(sizeString.c_str());
+    float size = ::atof(sizeString.c_str());
 
     std::string texture = words[2];
 

@@ -23,7 +23,7 @@ class GameFactory
         Player * createPlayer(glm::vec3 position);
         Room * createRoom(glm::vec3 startPosition, glm::vec3 endPosition, glm::vec3 lichtPositie, glm::vec3 lichtPositie2, std::string muurTexture, std::string vloerTexture );
         Door * createDoor(glm::vec3 position, std::string texture, std::string key);
-        GameObject * createCube(glm::vec3 position, int size, std::string texture);
+        GameObject * createCube(glm::vec3 position, float size, std::string texture);
         Chest * createChest(glm::vec3 position, std::string key);
 
     protected:

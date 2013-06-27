@@ -10,10 +10,9 @@ GameFactory::~GameFactory()
     //dtor
 }
 
-GameObject* GameFactory::createCube(glm::vec3 position, int size, std::string texture){
+GameObject* GameFactory::createCube(glm::vec3 position, float size, std::string texture){
     GameObject * cube = new GameObject("Cube", position);
-        cube->setMesh( Mesh::load( "models/cube.obj") );
-        ///TODO scale mesh by size
+        cube->setMesh( Mesh::load( "models/cube.obj", glm::vec3(size, size, size)) );
         cube->setColorMap( Texture::load(texture.c_str()) );
         cube->setCollider( new Collider( cube, size/2 ) );
         ///TODO make cube collider, now it's a sphere collider
