@@ -24,7 +24,7 @@ Game::Game()
 {
 	window = new sf::RenderWindow( sf::VideoMode( 800, 600 ), "Saxion Game" ); // get a window
 	std::cout << "Init Glew" << glewInit() << std::endl;
-	hud = new Hud( window );
+
 	//window->setVerticalSyncEnabled( true ); // sync with monitor ->60 hz approx
 	renderer = new Renderer( window );
 	renderVisitor = new RenderVisitor(renderer);
@@ -37,33 +37,34 @@ Game::~Game()
 
 void Game::build()
 {
-    GameBuilder * test = new GameBuilder();
-    test->readFile("level.txt");
+    ///GameBuilder * test = new GameBuilder();
+   /// test->readFile("level.txt");
 	renderer->use(  new ShaderProgram( "shaders/default.vs", "shaders/default.fs" ) );
 	Camera* camera = new Camera( "Camera", glm::vec3( 0, 1, 10 ) );
 		camera->setBehaviour( new KeysBehaviour( camera ) );
+    hud = new Hud( window, camera );
 	world = new World( "World" );
-	Room * r1 = new Room(glm::vec3(0.0,0.0,0.0), glm::vec3(10.0,10.0,10.0),  glm::vec3( 2.0f, 10.0f, 15.0f ), glm::vec3( 15.0f, 10.0f, 15.0f ), "models/bricks.jpg", "models/floor.jpg");
+	Room * r1 = new Room(glm::vec3(0.0,0.0,0.0), glm::vec3(50.0,0.0,50.0),  glm::vec3( 10.0f, 10.0f, 15.0f ), glm::vec3( 10.0f, 10.0f, 15.0f ), "models/bricks.jpg", "models/floor.jpg");
 	world->addRoom(r1);
 	world->setActive(r1);
 		r1->add( camera );
 		//de kist waar de sleutel in zit
-		GameObject * player = new GameObject("Player", glm::vec3( 0.0, 0.0, 0.0 ));
+		GameObject * player = new GameObject("Player", glm::vec3( 30.0, 0.0, 20.0 ));
 			player->setMesh( Mesh::load( "models/chest3.obj") );
 			player->setColorMap( Texture::load("models/bricks.jpg") );
 			player->setCollider( new Collider( player ) );
 			r1->add( player  );
         //de vloer van de kamer
-		GameObject * floor = new GameObject("Floor", glm::vec3( 0,0,0 ) );
-			floor->setMesh( Mesh::load( "models/floor.obj" ) );
-			floor->setColorMap( Texture::load( "models/floor.jpg" ) );
-			r1->add( floor );
-		GameObject * cube = new GameObject("Cube", glm::vec3( 0.0, 0.0, 2.0 ));
+		//GameObject * floor = new GameObject("Floor", glm::vec3( 0,0,0 ) );
+			//floor->setMesh( Mesh::load( "models/floor.obj", glm::vec3(20.0,20.0,20.0) ) );
+			//floor->setColorMap( Texture::load( "models/floor.jpg" ) );
+			//r1->add( floor );
+		GameObject * cube = new GameObject("Cube", glm::vec3( 10.0, 0.0, 2.0 ));
 			cube->setMesh( Mesh::load( "models/cube.obj") );
 			cube->setColorMap( Texture::load("models/bricks.jpg") );
 			cube->setCollider( new Collider( cube ) );
 			r1->add( cube  );
-		GameObject * cube2 = new GameObject("Cube2", glm::vec3( 0.0, 0.0, 4.0 ));
+		GameObject * cube2 = new GameObject("Cube2", glm::vec3( 10.0, 0.0, 4.0 ));
 			cube2->setMesh( Mesh::load( "models/cube.obj", glm::vec3(2.0, 2.0, 2.0)) );
 			cube2->setColorMap( Texture::load("models/bricks.jpg") );
 			cube2->setCollider( new Collider( cube2 ) );

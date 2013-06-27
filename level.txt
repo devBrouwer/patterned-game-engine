@@ -7,7 +7,7 @@ start 0,1,10
 
 #maak een ruimte aan:
 #room start	eind lichtpositie muurtexture vloertexture 	
-room 0,0 100,100 2,10,15 models/bricks.jpg models/floor.jpg
+room 0,0 100,100 2,10,15 10,10,15 models/bricks.jpg models/floor.jpg
 
 #maak een deur en geef ook het id van de sleutel op:
 #door positie sleutel

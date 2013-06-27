@@ -57,7 +57,7 @@ class GameObject : public Visitable
 		virtual void accept(Visitor * visitor);
 		virtual void acceptChildren(Visitor * visitor);
 
-		void add( GameObject * child );
+		virtual void add( GameObject * child );
 
 	protected:
 

@@ -3,6 +3,9 @@
 
 #include "GameObject.hpp"
 #include "Light.hpp"
+#include "Mesh.hpp"
+#include "RectangularPrismCollider.hpp"
+#include "Texture.hpp"
 
 class Room : public GameObject
 {
@@ -11,9 +14,9 @@ class Room : public GameObject
         virtual ~Room();
         bool checkCollisions();
         glm::vec3 getEndPosition();
+        virtual void add(GameObject * aChild);
     protected:
     private:
-        Light * light;
         glm::vec3 endPosition;
 
 };

@@ -9,35 +9,50 @@ Room::Room(glm::vec3 startPosition, glm::vec3 endPosition, glm::vec3 lichtPositi
 
     //coordinaten voor 4 muren uitrekenen
     float sx = startPosition.x;
-    float sy = startPosition.y;
+    float sz = startPosition.z;
 
     float ex = endPosition.x;
-    float ey = endPosition.y;
+    float ez = endPosition.z;
 
-    GameObject * wallLeft = new GameObject("Wall", glm::vec3(sx, sy, 0.0));
+    float mx = (ex + sx) /2;
+    float mz = (ez + sz) /2;
+
+    float lengthX = ex - sx;
+    float lengthZ = ez - sz;
+
+    Mesh * vertical = Mesh::load("models/wall.obj", glm::vec3(1.0,1.0, lengthZ));
+    Mesh * horizontal = Mesh::load("models/wall.obj", glm::vec3(lengthX,1.0, 1.0));
+    Texture * texture = Texture::load(muurTexture.c_str());
+
+    GameObject * wallLeft = new GameObject("Wall", glm::vec3(sx, 0.0, sz));
     ///loadMesh with wall from sx,sy -> sx,ey
-    ///add(wallLeft);
-    ///wallLeft->setColormap(muurTexture);
+    wallLeft->setMesh(vertical);
+    /// wallLeft->setCollider(new RectangularPrismCollider(wallLeft, glm::vec3(1.0,10.0, lengthZ)));
+    add(wallLeft);
+    wallLeft->setColorMap(texture);
 
-    GameObject * wallUp = new GameObject("Wall", glm::vec3(sx, ey, 0.0));
-    ///loadMesh with wall from sx,ey -> ex,ey
-    ///add(wallUp);
-    ///wallUp->setColormap(muurTexture);
+    GameObject * wallUp = new GameObject("Wall", glm::vec3(sx, 0.0, ez));
+    wallUp->setMesh(horizontal);
+    /// wallLeft->setCollider(new RectangularPrismCollider(wallLeft, glm::vec3(1.0,10.0, lengthZ)));
+    add(wallUp);
+    wallUp->setColorMap(texture);
 
-    GameObject * wallRight = new GameObject("Wall", glm::vec3(ex, ey, 0.0));
-    ///loadMesh with wall from ex,ey -> ex,sy
-    ///add(wallRight);
-    ///wallRight->setColormap(muurTexture);
+    GameObject * wallRight = new GameObject("Wall", glm::vec3(ex, 0.0, sz));
+    wallRight->setMesh(vertical);
+    /// wallLeft->setCollider(new RectangularPrismCollider(wallLeft, glm::vec3(1.0,10.0, lengthZ)));
+    add(wallRight);
+    wallRight->setColorMap(texture);
 
-    GameObject * wallDown = new GameObject("Wall", glm::vec3(ex, sy, 0.0));
-    ///loadMesh with wall from ex,sy -> sx,sy
-    ///add(wallDown);
-    ///wallDown->setColormap(muurTexture);
+    GameObject * wallDown = new GameObject("Wall", glm::vec3(sx, 0.0, sz));
+    wallDown->setMesh(horizontal);
+    /// wallLeft->setCollider(new RectangularPrismCollider(wallLeft, glm::vec3(1.0,10.0, lengthZ)));
+    add(wallDown);
+    wallDown->setColorMap(texture);
 
-    GameObject * floor = new GameObject("Floor", glm::vec3(sx, sy, 0));
-    ///loadMesh with floor from sx,sy -> ex,ey
-    ///add(floor);
-    ///floor->setColormap(floorTexture);
+    GameObject * floor = new GameObject("Floor", glm::vec3(sx, 0.0, sz));
+    floor->setMesh(Mesh::load("models/floor.obj", glm::vec3(lengthX, 1.0, lengthZ)));
+    add(floor);
+    floor->setColorMap(Texture::load(vloerTexture.c_str()));
 
     //maak licht met juiste positie
     Light* light = new Light( "Light", lichtPositie );
@@ -48,6 +63,12 @@ Room::Room(glm::vec3 startPosition, glm::vec3 endPosition, glm::vec3 lichtPositi
 
 glm::vec3 Room::getEndPosition(){
     return endPosition;
+}
+
+void Room::add( GameObject * child )
+{
+	assert( child != NULL );
+	children.push_back( child );
 }
 
 Room::~Room()
