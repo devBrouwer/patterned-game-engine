@@ -99,6 +99,7 @@
 		<Unit filename="World.cpp" />
 		<Unit filename="World.hpp" />
 		<Unit filename="glm.hpp" />
+		<Unit filename="level.txt" />
 		<Unit filename="main.cpp" />
 		<Unit filename="shaders/bumpmapping.fs" />
 		<Unit filename="shaders/bumpmapping.vs" />

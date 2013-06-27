@@ -4,6 +4,7 @@ uniform	mat4 	projection;	// set for all vertices
 uniform	mat4 	view;			// set for all vertices
 uniform	mat4 	model;		// set for all vertices
 uniform	vec3 	light;		// set for all vertices
+uniform vec3    light2;
 uniform	float 	time;		// set for all vertices
 
 in vec3 vertex; 					// attribute-input per vertex from vertices
@@ -25,8 +26,15 @@ void main( void ){
 	vec4 worldPosition = model * vec4( vertex, 1.0f ); // position of vertex in world
 	vec4 worldNormal = model * vec4( normal, 0.0f ); // direction of normal in world, note the 0.0f
 	vec4 lightDir = normalize( vec4( light, 1.0f ) - worldPosition ); // direction of light, normalized
+	vec4 light2Dir = normalize( vec4 ( light2, 1.0f) - worldPosition ); //direction of light2, normalized
+
 	intensity = dot( worldNormal, lightDir ); // get overlap normal and lightdir
 	intensity = clamp( intensity, 0.0f, 1.0f ); // set boundaries
+
+	float intensity2 = dot( worldNormal, light2Dir); //get overlap normal and light2dir
+	intensity2 = clamp( intensity2, 0.0f, 1.0f ); //set boundaries
+
+	intensity += intensity2;
 
 	texCoord = uv; // gives interpolated uv in fs
 }

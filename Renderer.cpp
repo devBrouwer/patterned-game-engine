@@ -8,7 +8,7 @@
 #include "GameObject.hpp"
 
 Renderer::Renderer( sf::Window * aWindow )
-:	window( aWindow ), program( NULL )
+:	window( aWindow ), program( NULL ), lightSwitch(false)
 {
 }
 
@@ -41,7 +41,12 @@ void Renderer::setModel( glm::mat4 aModel )
 
 void Renderer::setLight( glm::vec3 aLight )
 {
-	light = aLight; // cache light prosition for positional light
+    if(!lightSwitch)
+        light = aLight;
+    else
+        light2 = aLight;
+    lightSwitch = !lightSwitch;
+    // cache light prosition for positional light
 }
 
 void Renderer::setColorMap( Texture * aColorMap ) // for single texture at a time, otherwise use activeTexture
@@ -72,6 +77,9 @@ void Renderer::draw( unsigned int size, GLuint indicesBuffer, GLuint verticesBuf
 	glUniformMatrix4fv ( viewLoc, 1, GL_FALSE, glm::value_ptr( view ) );
 	glUniformMatrix4fv ( modelLoc, 1, GL_FALSE, glm::value_ptr( model ) );
 	glUniform3fv ( lightLoc, 1, glm::value_ptr( light ) );
+    glUniform3fv ( light2Loc, 1, glm::value_ptr( light2 ) );
+
+
 	glBindTexture( GL_TEXTURE_2D, colorMap );
 	glUniform1i ( colorMapLoc, 0 );
 
@@ -112,6 +120,7 @@ void Renderer::findLocations()
 	viewLoc			= program->getUniformLocation( "view" );
 	modelLoc 		= program->getUniformLocation( "model" );
 	lightLoc 		= program->getUniformLocation( "light" );
+	light2Loc 		= program->getUniformLocation( "light2" );
 	timeLoc			= program->getUniformLocation( "time" );
 	colorMapLoc		= program->getUniformLocation( "colorMap" );
 

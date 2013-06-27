@@ -17,7 +17,7 @@ class Renderer
 		// the shader wrapper
 		ShaderProgram * program;
 		// shader input locations
-		GLuint projectionLoc, viewLoc, modelLoc, lightLoc, timeLoc; 	// uniform locations
+		GLuint projectionLoc, viewLoc, modelLoc, lightLoc, timeLoc, light2Loc; 	// uniform locations
 		GLuint verticesLoc, normalsLoc, uvsLoc;		// attribute locations
 		GLuint colorMapLoc;
 
@@ -25,6 +25,8 @@ class Renderer
 		float time;
 		glm::mat4 projection, view, model;
 		glm::vec3 light;
+        glm::vec3 light2;
+        bool lightSwitch;
 		GLuint colorMap;
 
 	public:

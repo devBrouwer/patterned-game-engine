@@ -2,8 +2,8 @@
 #coordinaten zijn altijd x,y,z waarbij optioneel is y. als y niet wordt opgegeven dan is het 0
 
 #maak een ruimte aan:
-#room start	eind lichtpositie muurtexture vloertexture 	
-room 0,0 50,50 2,10,15 10,10,15 models/bricks.jpg models/floor.jpg
+#room start	eind lichtpositie muurtexture vloertexture
+room 0,0 50,50 40,40,15 10,10,15 models/bricks.jpg models/floor.jpg
 
 #geef aan waar de speler begint:
 #start positie
