@@ -5,6 +5,7 @@
 #include "../Player.hpp"
 #include "../Chest.hpp"
 #include "../Door.hpp"
+#include <SFML/Audio.hpp>
 
 
 class KeysBehaviour : public Behaviour
@@ -18,6 +19,8 @@ class KeysBehaviour : public Behaviour
     private:
         bool enterDown;
         bool doorHit;
+        sf::SoundBuffer * bufferChest;
+        sf::Sound * soundChest;
 };
 
 #endif // KEYSBEHAVIOUR_H

@@ -6,6 +6,12 @@
 KeysBehaviour::KeysBehaviour( Player * aParent )
 :	Behaviour( (GameObject*)aParent ), doorHit(false)
 {
+    bufferChest = new sf::SoundBuffer();
+    if (!bufferChest->loadFromFile("engine.wav"))
+        std::cout << "ERROR engine.wav" << std::endl;
+    soundChest = new sf::Sound();
+    soundChest->setBuffer(*bufferChest);
+    soundChest->setLoop(false);
 }
 
 KeysBehaviour::~KeysBehaviour()
@@ -64,6 +70,7 @@ void KeysBehaviour::onCollision(GameObject * aGameObject){
             std::string key = chest->getKey();
             ((Player*)parent)->pushMessage("Deze kist geeft je een sleutel! (" + key + ")" );
             ((Player*)parent)->addKey(key);
+            soundChest->play();
         }
         //std::cout << "Player hits chest" << std::endl;
 
