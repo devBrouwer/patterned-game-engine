@@ -76,6 +76,8 @@
 		<Unit filename="Mesh.hpp" />
 		<Unit filename="Player.cpp" />
 		<Unit filename="Player.hpp" />
+		<Unit filename="RectangularPrismCollider.cpp" />
+		<Unit filename="RectangularPrismCollider.hpp" />
 		<Unit filename="RenderVisitor.cpp" />
 		<Unit filename="RenderVisitor.hpp" />
 		<Unit filename="Renderer.cpp" />

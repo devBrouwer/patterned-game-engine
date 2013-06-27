@@ -15,7 +15,6 @@
 #include "Behaviours/KeysBehaviour.hpp"
 #include "Behaviours/WASDBehaviour.hpp"
 #include "Behaviours/RotatingBehaviour.hpp"
-#include "Behaviours/FollowBehaviour.hpp"
 #include "Collider.hpp"
 #include "RenderVisitor.hpp"
 #include "GameBuilder.hpp"
@@ -42,6 +41,14 @@ void Game::build()
     GameBuilder * builder = new GameBuilder();
     world = builder->readFile("level.txt");
     Player * player = world->getPlayer();
+
+    player->pushMessage("Dit is uitleg! Druk enter om deze te sluiten.");
+    player->pushMessage("Goedzo! Bewegen doe je met de pijltjestoetsen.");
+    player->pushMessage("Je zit opgesloten in deze ruimte.");
+    player->pushMessage("probeer een sleutel te vinden.");
+    player->pushMessage("De sleutel zit in de kist.");
+    player->pushMessage("Met deze sleutel open je de deur.");
+
     hud = new Hud( window, player );
 	renderer->use(  new ShaderProgram( "shaders/default.vs", "shaders/default.fs" ) );
 }

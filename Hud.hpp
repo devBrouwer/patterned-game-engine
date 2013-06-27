@@ -13,9 +13,9 @@ class Hud
 //		sf::Font font;
 //		sf::Texture marvinTex;
 //		sf::Sprite marvin;
-        Player * cam;
+        Player * player;
 	public:
-		Hud( sf::RenderWindow * aWindow, Player * aCam );
+		Hud( sf::RenderWindow * aWindow, Player * aPlayer );
 		virtual ~Hud();
 
 		void draw( );

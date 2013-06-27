@@ -5,11 +5,11 @@
 #include "FPS.hpp"
 #include "Hud.hpp"
 
-Hud::Hud( sf::RenderWindow * aWindow, Player * aCam )
+Hud::Hud( sf::RenderWindow * aWindow, Player * aPlayer )
 :	window( aWindow )
 {
 	assert ( window != NULL );
-	cam = aCam;
+	player = aPlayer;
 
 //    if ( marvinTex.loadFromFile("models/marvin.png") ) {
 //		marvin.setTexture( marvinTex);
@@ -37,13 +37,22 @@ void Hud::draw()
 	textFPS.setPosition( 10,10);
 
 	char location[] = "Test";
-	sprintf( location, "%3f,%3f,%3f", cam->getLocation().x,  cam->getLocation().y, cam->getLocation().z );
+	sprintf( location, "%3f,%3f,%3f", player->getLocation().x,  player->getLocation().y, player->getLocation().z );
 	sf::Text text( location );
 	//text.setFont(font);
 	text.setCharacterSize(30);
 	text.setStyle(sf::Text::Bold);
 	text.setColor(sf::Color::White);
 	text.setPosition( 100,100);
+
+	//char uitleg[] = "";
+
+	sf::Text textUitleg( player->getNextMessage().c_str() );
+	//text.setFont(font);
+	textUitleg.setCharacterSize(30);
+	textUitleg.setStyle(sf::Text::Bold);
+	textUitleg.setColor(sf::Color::White);
+	textUitleg.setPosition( 100,500);
 
 
 	// Draw it
@@ -52,4 +61,5 @@ void Hud::draw()
 //	window->draw( marvin );
 	window->draw(textFPS);
 	window->draw(text);
+	window->draw(textUitleg);
 }
