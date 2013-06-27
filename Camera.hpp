@@ -13,6 +13,7 @@ class Camera : public GameObject
 
 	public:
 	    glm::mat4 getProjection();
+	    void setPosition(glm::vec3);
 		Camera( std::string aName = NULL, glm::vec3 aPosition = glm::vec3( 0.0f, 3.0f, 5.0f ) );
 		virtual ~Camera();
 

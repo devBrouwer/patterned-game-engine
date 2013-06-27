@@ -97,10 +97,15 @@ glm::vec3 GameBuilder::getVec3(std::string coordsString){
     }
     //atof converts a c_string to float
     float x = ::atof((coords[0]).c_str());
-    float y = ::atof((coords[1]).c_str());
-    float z = 0.0;
+    float y;
+    float z;
     if(coords.size()==3){
+        y = ::atof((coords[1]).c_str());
         z = ::atof((coords[2]).c_str());
+    }
+    else {
+        y = 0.0;
+        z = atof((coords[1]).c_str());
     }
     return glm::vec3(x,y,z);
 }
@@ -122,7 +127,7 @@ bool GameBuilder::buildChest(std::string line, World* world){
     std::cout << "\tkey: " << key << std::endl << std::endl;
 
     Chest * chest = factory->createChest(position, key);
-    ///world->add(chest);
+    world->add(chest);
     return true;
 }
 
@@ -145,7 +150,7 @@ bool GameBuilder::buildCube(std::string line, World* world){
     std::cout << "\ttexture: " << texture << std::endl << std::endl;
 
     GameObject * cube = factory->createCube(position, size, texture);
-    ///world->add(cube);
+    world->add(cube);
 
     return true;
 }
@@ -167,7 +172,7 @@ bool GameBuilder::buildDoor(std::string line, World* world){
     std::cout << "\ttexture: " << texture <<  std::endl;
     std::cout << "\tkey: " << key << std::endl << std::endl;
     Door * door = factory->createDoor(position, texture, key);
-    ///world->add(door);
+    world->add(door);
 
     return true;
 }
@@ -195,7 +200,7 @@ bool GameBuilder::buildRoom(std::string line, World* world){
     std::cout << "\t floor: " << floorTexture << std::endl << std::endl;
 
     Room * room = factory->createRoom(start, end, light, light2, wallTexture, floorTexture);
-    ///world->addRoom(room);
+    world->addRoom(room);
 
     return true;
 }
@@ -214,7 +219,7 @@ bool GameBuilder::buildStart(std::string line, World* world){
     std::cout << "\tposition: " << position << std::endl <<  std::endl;
 
     Player * p = factory->createPlayer(position);
-    ///world->add(player);
+    world->add(p);
 
     return true;
 }

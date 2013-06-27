@@ -4,6 +4,7 @@
 #include "GameObject.hpp"
 #include "Room.hpp"
 #include "Door.hpp"
+#include "Player.hpp"
 #include <string>
 
 class Camera;
@@ -16,13 +17,16 @@ class World
         std::string name;
         Room * activeRoom;
         std::vector< Room * >* rooms;
+        Player * player;
 
 	public:
 		World( std::string aName = NULL );
 		void add(GameObject * object);
 		void add(Door * door);
+		void add(Player * player);
 		void addRoom(Room * room);
 		void setActive(Room * room);
+		Player * getPlayer();
 
 		virtual ~World();
 

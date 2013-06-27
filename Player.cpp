@@ -1,6 +1,6 @@
 #include "Player.hpp"
 
-Player::Player(glm::vec3 position) : GameObject("Player", position)
+Player::Player(glm::vec3 position) : Camera("Player", position)
 {
     //ctor
 }

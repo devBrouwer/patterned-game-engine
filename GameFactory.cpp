@@ -31,6 +31,7 @@ Chest * GameFactory::createChest(glm::vec3 position, std::string key){
 
 Player * GameFactory::createPlayer(glm::vec3 position){
     Player * player = new Player(position);
+    player->setBehaviour(new KeysBehaviour( player ));
     return player;
 }
 

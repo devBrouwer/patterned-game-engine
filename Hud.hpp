@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 
 ///veranderen naar player
-#include "Camera.hpp"
+#include "Player.hpp"
 
 class Hud
 {
@@ -13,9 +13,9 @@ class Hud
 //		sf::Font font;
 //		sf::Texture marvinTex;
 //		sf::Sprite marvin;
-        Camera * cam;
+        Player * cam;
 	public:
-		Hud( sf::RenderWindow * aWindow, Camera * aCam );
+		Hud( sf::RenderWindow * aWindow, Player * aCam );
 		virtual ~Hud();
 
 		void draw( );

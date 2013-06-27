@@ -5,7 +5,7 @@
 #include "FPS.hpp"
 #include "Hud.hpp"
 
-Hud::Hud( sf::RenderWindow * aWindow, Camera * aCam )
+Hud::Hud( sf::RenderWindow * aWindow, Player * aCam )
 :	window( aWindow )
 {
 	assert ( window != NULL );

@@ -1,10 +1,10 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "GameObject.hpp"
+#include "Camera.hpp"
 
 
-class Player : public GameObject
+class Player : public Camera
 {
     public:
         /** constructor */
