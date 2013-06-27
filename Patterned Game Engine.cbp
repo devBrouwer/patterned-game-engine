@@ -74,6 +74,8 @@
 		<Unit filename="Light.hpp" />
 		<Unit filename="Mesh.cpp" />
 		<Unit filename="Mesh.hpp" />
+		<Unit filename="Player.cpp" />
+		<Unit filename="Player.hpp" />
 		<Unit filename="RenderVisitor.cpp" />
 		<Unit filename="RenderVisitor.hpp" />
 		<Unit filename="Renderer.cpp" />
