@@ -2,6 +2,8 @@
 #define DOOR_HPP
 
 #include "GameObject.hpp"
+#include "Mesh.hpp"
+#include "Texture.hpp"
 
 
 class Door : public GameObject

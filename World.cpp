@@ -71,8 +71,10 @@ void World::add(Door * door){
         if(objectLocation.x >= start.x && objectLocation.x <= end.x && objectLocation.z >= start.z && objectLocation.z <= end.z){
             i->add(door);
             ++addedTo;
-            if(addedTo == 2)
+            if(addedTo == 2){
                 break;
+                std::cout << "Deur aan 2 Ruimtes toegevoegd :)" << std::endl;
+            }
         }
     }
 

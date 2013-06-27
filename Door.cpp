@@ -4,6 +4,8 @@ Door::Door(glm::vec3 position, std::string texture, std::string key) : GameObjec
 {
     //ctor
     //maak mesh aan met texture
+    setMesh( Mesh::load( "models/door.obj" ) );
+    setColorMap( Texture::load( texture.c_str() ) );
 }
 
 Door::~Door()
@@ -14,5 +16,3 @@ Door::~Door()
 std::string Door::getKey(){
     return key;
 }
-
-
