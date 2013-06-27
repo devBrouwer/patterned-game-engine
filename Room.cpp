@@ -1,7 +1,7 @@
 #include "Room.hpp"
 
 //kubus meegeven?
-Room::Room(glm::vec3 startPosition, glm::vec3 endPosition, glm::vec3 lichtPositie, std::string muurTexture, std::string vloerTexture) : GameObject ( "Room" , startPosition), endPosition(endPosition)
+Room::Room(glm::vec3 startPosition, glm::vec3 endPosition, glm::vec3 lichtPositie, glm::vec3 lichtPositie2, std::string muurTexture, std::string vloerTexture) : GameObject ( "Room" , startPosition), endPosition(endPosition)
 {
     //ctor
 
@@ -42,6 +42,8 @@ Room::Room(glm::vec3 startPosition, glm::vec3 endPosition, glm::vec3 lichtPositi
     //maak licht met juiste positie
     Light* light = new Light( "Light", lichtPositie );
     add(light);
+    Light* light2 = new Light( "Light2", lichtPositie2 );
+    add(light2);
 }
 
 glm::vec3 Room::getEndPosition(){

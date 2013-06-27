@@ -43,7 +43,7 @@ void Game::build()
 	Camera* camera = new Camera( "Camera", glm::vec3( 0, 1, 10 ) );
 		camera->setBehaviour( new KeysBehaviour( camera ) );
 	world = new World( "World" );
-	Room * r1 = new Room(glm::vec3(0.0,0.0,0.0), glm::vec3(10.0,10.0,10.0),  glm::vec3( 2.0f, 10.0f, 15.0f ), "models/bricks.jpg", "models/floor.jpg");
+	Room * r1 = new Room(glm::vec3(0.0,0.0,0.0), glm::vec3(10.0,10.0,10.0),  glm::vec3( 2.0f, 10.0f, 15.0f ), glm::vec3( 15.0f, 10.0f, 15.0f ), "models/bricks.jpg", "models/floor.jpg");
 	world->addRoom(r1);
 	world->setActive(r1);
 		r1->add( camera );
