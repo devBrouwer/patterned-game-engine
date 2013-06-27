@@ -21,17 +21,20 @@ GameObject* GameFactory::createCube(glm::vec3 position, float size, std::string 
 
 Door * GameFactory::createDoor(glm::vec3 position, std::string texture, std::string key){
     Door * door = new Door(position, texture, key);
+    door->setCollider(new Collider(door));
     return door;
 }
 
 Chest * GameFactory::createChest(glm::vec3 position, std::string key){
     Chest * chest = new Chest(position, key);
+    chest->setCollider(new Collider(chest));
     return chest;
 }
 
 Player * GameFactory::createPlayer(glm::vec3 position){
     Player * player = new Player(position);
     player->setBehaviour(new KeysBehaviour( player ));
+    player->setCollider(new Collider(player));
     return player;
 }
 
