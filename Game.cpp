@@ -58,6 +58,17 @@ void Game::build()
 			floor->setMesh( Mesh::load( "models/floor.obj" ) );
 			floor->setColorMap( Texture::load( "models/floor.jpg" ) );
 			r1->add( floor );
+		GameObject * cube = new GameObject("Cube", glm::vec3( 0.0, 0.0, 2.0 ));
+			cube->setMesh( Mesh::load( "models/cube.obj") );
+			cube->setColorMap( Texture::load("models/bricks.jpg") );
+			cube->setCollider( new Collider( cube ) );
+			r1->add( cube  );
+		GameObject * cube2 = new GameObject("Cube2", glm::vec3( 0.0, 0.0, 4.0 ));
+			cube2->setMesh( Mesh::load( "models/cube2.obj") );
+			cube2->setColorMap( Texture::load("models/bricks.jpg") );
+			cube2->setCollider( new Collider( cube2 ) );
+			r1->add( cube2  );
+
 }
 
 void Game::run()
