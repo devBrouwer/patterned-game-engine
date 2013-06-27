@@ -3,7 +3,7 @@
 
 #maak een ruimte aan:
 #room start	eind lichtpositie muurtexture vloertexture
-room 0,0 50,50 40,40,15 10,10,15 models/bricks.jpg models/floor.jpg
+room 0,0 50,50 50,10,0 0,10,50 models/bricks.jpg models/floor.jpg
 
 #geef aan waar de speler begint:
 #start positie
