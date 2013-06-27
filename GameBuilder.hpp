@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 #include "World.hpp"
-
+#include "GameFactory.hpp"
 
 class GameBuilder
 {
@@ -19,6 +19,7 @@ class GameBuilder
         bool buildCube(std::string line, World* world);
     protected:
     private:
+        GameFactory * factory;
         std::vector<std::string>* actions;
         std::vector<std::string>  getWords(std::string line, char delimiter = ' ');
         glm::vec3 getVec3(std::string coordsString);

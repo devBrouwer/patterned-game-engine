@@ -42,14 +42,11 @@ void Game::build()
 	renderer->use(  new ShaderProgram( "shaders/default.vs", "shaders/default.fs" ) );
 	Camera* camera = new Camera( "Camera", glm::vec3( 0, 1, 10 ) );
 		camera->setBehaviour( new KeysBehaviour( camera ) );
-	Light* light = new Light( "Light", glm::vec3( 2.0f, 10.0f, 15.0f ) );
-
 	world = new World( "World" );
-	Room * r1 = new Room("Ruimte 1");
-	world->add(r1);
+	Room * r1 = new Room(glm::vec3(0.0,0.0,0.0), glm::vec3(10.0,10.0,10.0),  glm::vec3( 2.0f, 10.0f, 15.0f ), "models/bricks.jpg", "models/floor.jpg");
+	world->addRoom(r1);
 	world->setActive(r1);
 		r1->add( camera );
-		r1->add( light );
 		//de kist waar de sleutel in zit
 		GameObject * player = new GameObject("Player", glm::vec3( 0.0, 0.0, 0.0 ));
 			player->setMesh( Mesh::load( "models/chest3.obj") );

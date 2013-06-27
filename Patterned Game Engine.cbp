@@ -52,8 +52,12 @@
 		<Unit filename="Behaviours/WASDBehaviour.hpp" />
 		<Unit filename="Camera.cpp" />
 		<Unit filename="Camera.hpp" />
+		<Unit filename="Chest.cpp" />
+		<Unit filename="Chest.hpp" />
 		<Unit filename="Collider.cpp" />
 		<Unit filename="Collider.hpp" />
+		<Unit filename="Door.cpp" />
+		<Unit filename="Door.hpp" />
 		<Unit filename="FPS.cpp" />
 		<Unit filename="FPS.hpp" />
 		<Unit filename="Game.cpp" />

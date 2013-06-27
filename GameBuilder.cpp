@@ -3,8 +3,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "glm.hpp"
-
 
 GameBuilder::GameBuilder()
 {
@@ -15,6 +13,8 @@ GameBuilder::GameBuilder()
     actions->push_back("door");
     actions->push_back("chest");
     actions->push_back("cube");
+
+    factory = new GameFactory();
 }
 
 World* GameBuilder::readFile(std::string filename){
@@ -121,41 +121,53 @@ bool GameBuilder::buildChest(std::string line, World* world){
     std::cout << "\tposition: " << position <<  std::endl;
     std::cout << "\tkey: " << key << std::endl << std::endl;
 
+    Chest * chest = factory->createChest(position, key);
+    ///world->add(chest);
     return true;
 }
 
 bool GameBuilder::buildCube(std::string line, World* world){
     //cube positie grootte texture
-     std::vector<std::string> words = getWords(line.substr(5));
+    std::vector<std::string> words = getWords(line.substr(5));
     if(words.size() != 3){
         std::cout << "ERROR CUBE: " << line << std::endl;
         return false;
     }
     glm::vec3 position = getVec3(words[0]);
-    std::string size = words[1];
+    std::string sizeString = words[1];
+    int size = ::atoi(sizeString.c_str());
+
     std::string texture = words[2];
 
     std::cout << "cube:" << std::endl;
     std::cout << "\tposition: " << position << std::endl;
     std::cout << "\tsize: " << size << std::endl;
     std::cout << "\ttexture: " << texture << std::endl << std::endl;
+
+    GameObject * cube = factory->createCube(position, size, texture);
+    ///world->add(cube);
+
     return true;
 }
 
 bool GameBuilder::buildDoor(std::string line, World* world){
     //door positie sleutel
     std::vector<std::string> words = getWords(line.substr(5));
-    if(words.size() != 2){
+    if(words.size() != 3){
         std::cout << "ERROR DOOR: " << line << std::endl;
         return false;
     }
 
     glm::vec3 position = getVec3(words[0]);
-    std::string key = words[1];
+    std::string texture = words[1];
+    std::string key = words[2];
 
     std::cout << "door:" << std::endl;
     std::cout << "\tposition: " << position <<  std::endl;
+    std::cout << "\ttexture: " << texture <<  std::endl;
     std::cout << "\tkey: " << key << std::endl << std::endl;
+    Door * door = factory->createDoor(position, texture, key);
+    ///world->add(door);
 
     return true;
 }
@@ -180,6 +192,9 @@ bool GameBuilder::buildRoom(std::string line, World* world){
     std::cout << "\t wall: " << wallTexture << std::endl;
     std::cout << "\t floor: " << floorTexture << std::endl << std::endl;
 
+    Room * room = factory->createRoom(start, end, light, wallTexture, floorTexture);
+    ///world->addRoom(room);
+
     return true;
 }
 
@@ -195,6 +210,10 @@ bool GameBuilder::buildStart(std::string line, World* world){
 
     std::cout << "start:" << std::endl;
     std::cout << "\tposition: " << position << std::endl <<  std::endl;
+
+    Player * p = factory->createPlayer(position);
+    ///world->add(player);
+
     return true;
 }
 

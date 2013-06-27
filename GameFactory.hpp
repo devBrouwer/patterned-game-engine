@@ -8,20 +8,23 @@
 #include "Light.hpp"
 #include "Behaviours/KeysBehaviour.hpp"
 #include <string>
+#include "Texture.hpp"
+#include "Collider.hpp"
+#include "Chest.hpp"
+#include "Door.hpp"
+#include "Player.hpp"
 
 class GameFactory
 {
     public:
         GameFactory();
         virtual ~GameFactory();
-        Mesh* createMesh();
-        World* createWorld();
 
-        Light* createLight(glm::vec3 position);
-        Camera* createCamera(glm::vec3 position);
-        Room* createRoom(glm::vec3 startPosition, glm::vec3 endPosition, glm::vec3 lichtPositie, std::string muurTexture, std::string vloerTexture );
-        GameObject* createKubus(glm::vec3 position, int size, std::string texture);
-        GameObject* createDeur(glm::vec3 position, glm::vec3 chestPosition, std::string texture);
+        Player * createPlayer(glm::vec3 position);
+        Room * createRoom(glm::vec3 startPosition, glm::vec3 endPosition, glm::vec3 lichtPositie, std::string muurTexture, std::string vloerTexture );
+        Door * createDoor(glm::vec3 position, std::string texture, std::string key);
+        GameObject * createCube(glm::vec3 position, int size, std::string texture);
+        Chest * createChest(glm::vec3 position, std::string key);
 
     protected:
     private:
