@@ -25,3 +25,20 @@ void Player::popMessage(){
 void Player::pushMessage(std::string message){
     messages.push(message);
 }
+
+void Player::addKey(std::string key){
+    keys.push_back(key);
+}
+
+bool Player::hasKey(std::string key){
+    for(std::vector<std::string>::iterator it = keys.begin() ; it != keys.end(); ++it){
+        if(key == *it){
+            return true;
+        }
+    }
+    return false;
+}
+
+std::vector<std::string> Player::getKeys(){
+    return keys;
+}

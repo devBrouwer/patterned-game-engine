@@ -4,7 +4,7 @@
 #include "../GameObject.hpp"
 
 KeysBehaviour::KeysBehaviour( Player * aParent )
-:	Behaviour( (GameObject*)aParent )
+:	Behaviour( (GameObject*)aParent ), doorHit(false)
 {
 }
 
@@ -54,4 +54,41 @@ void KeysBehaviour::update( float step )
 
 void KeysBehaviour::onCollision(GameObject * aGameObject){
     //std::cout << "dit wordt aangeroepen!" << std::endl;
+
+    Chest * chest = dynamic_cast<Chest*>(aGameObject);
+    if(chest!= NULL){
+        doorHit = false;
+        //it's a chest!
+        if(!chest->getOpened()){
+            chest->open();
+            std::string key = chest->getKey();
+            ((Player*)parent)->pushMessage("Deze kist geeft je een sleutel! (" + key + ")" );
+            ((Player*)parent)->addKey(key);
+        }
+        //std::cout << "Player hits chest" << std::endl;
+
+    }
+    else {
+        Door * door = dynamic_cast<Door*>(aGameObject);
+        if(door!= NULL){
+            if(doorHit){
+                // al iets mee gedaan...
+            }
+            else{
+                doorHit = true;
+                if(((Player*)parent)->hasKey(door->getKey())){
+                    ((Player*)parent)->pushMessage("Deur geopend met sleutel: " + door->getKey() );
+                }
+                else {
+                    ((Player*)parent)->pushMessage("Je hebt deze sleutel nodig: " + door->getKey() );
+                }
+                //std::cout << "Player hits door" << std::endl;
+            }
+        }
+        else{
+            doorHit = false;
+        }
+    }
+
+
 }

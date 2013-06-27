@@ -3,6 +3,8 @@
 
 #include "../Behaviour.hpp"
 #include "../Player.hpp"
+#include "../Chest.hpp"
+#include "../Door.hpp"
 
 
 class KeysBehaviour : public Behaviour
@@ -15,6 +17,7 @@ class KeysBehaviour : public Behaviour
 		virtual void onCollision(GameObject * otherGameObject);
     private:
         bool enterDown;
+        bool doorHit;
 };
 
 #endif // KEYSBEHAVIOUR_H
