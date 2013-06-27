@@ -64,7 +64,7 @@ void Game::build()
 			cube->setCollider( new Collider( cube ) );
 			r1->add( cube  );
 		GameObject * cube2 = new GameObject("Cube2", glm::vec3( 0.0, 0.0, 4.0 ));
-			cube2->setMesh( Mesh::load( "models/cube2.obj") );
+			cube2->setMesh( Mesh::load( "models/cube.obj", glm::vec3(2.0, 2.0, 2.0)) );
 			cube2->setColorMap( Texture::load("models/bricks.jpg") );
 			cube2->setCollider( new Collider( cube2 ) );
 			r1->add( cube2  );

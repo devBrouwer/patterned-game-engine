@@ -25,7 +25,7 @@ class Mesh : public Visitable
 		Mesh();
 		virtual ~Mesh();
 
-		static Mesh * load( const char * fileName );
+		static Mesh * load( const char * fileName , glm::vec3 scale = glm::vec3(1.0,1.0,1.0) );
 
 		unsigned int size();
 

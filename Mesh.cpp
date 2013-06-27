@@ -48,7 +48,7 @@ GLuint Mesh::getVerticesBuffer(){
 // reads the obj data into a new mesh: note here is C++ combined with c style
 // the result is an indexed mesh for use with glDrawElements
 // expects a obj file with v/vt/vn
-Mesh * Mesh::load( const char * fileName )
+Mesh * Mesh::load( const char * fileName, glm::vec3 scale )
 {
 	assert( fileName != NULL );
 	assert( strlen( fileName ) > 0 );
@@ -70,8 +70,12 @@ Mesh * Mesh::load( const char * fileName )
 			cmd[0] = 0;
 			sscanf ( line.c_str(), "%10s", cmd ); // get the first string in the line of max 5 chars (c-style)
 			if ( strcmp ( cmd, "v" ) == 0 ) { // line with vertex
-				glm::vec3 vertex;
-				sscanf( line.c_str(), "%10s %f %f %f ", cmd, &vertex.x, &vertex.y, &vertex.z );
+
+                float x;
+                float y;
+                float z;
+				sscanf( line.c_str(), "%10s %f %f %f ", cmd, &x, &y, &z );
+                glm::vec3 vertex(x * scale.x, y* scale.y, z * scale.z);
 				vertices.push_back( vertex );
 			} else if ( strcmp ( cmd, "vn" ) == 0 ) { // line with normal
 				glm::vec3 normal;
