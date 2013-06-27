@@ -12,6 +12,7 @@ class KeysBehaviour : public Behaviour
 		virtual ~KeysBehaviour();
 
 		virtual void update( float step );
+		virtual void onCollision(GameObject * otherGameObject);
     private:
         bool enterDown;
 };

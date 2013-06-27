@@ -51,3 +51,7 @@ void KeysBehaviour::update( float step )
 //	transformation = glm::translate( transformation, glm::vec3(0.0f, 0.0f, speed*step ) );
 //	transformation = glm::rotate( transformation, rotationSpeed*step, glm::vec3(0.0f, 1.0f, 0.0f ) );
 }
+
+void KeysBehaviour::onCollision(GameObject * aGameObject){
+    //std::cout << "dit wordt aangeroepen!" << std::endl;
+}
