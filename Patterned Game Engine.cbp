@@ -61,6 +61,8 @@
 		<Unit filename="Collider.hpp" />
 		<Unit filename="Door.cpp" />
 		<Unit filename="Door.hpp" />
+		<Unit filename="EndCube.cpp" />
+		<Unit filename="EndCube.hpp" />
 		<Unit filename="FPS.cpp" />
 		<Unit filename="FPS.hpp" />
 		<Unit filename="Game.cpp" />
