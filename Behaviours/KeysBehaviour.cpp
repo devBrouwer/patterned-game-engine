@@ -7,11 +7,18 @@ KeysBehaviour::KeysBehaviour( Player * aParent )
 :	Behaviour( (GameObject*)aParent ), doorHit(false)
 {
     bufferChest = new sf::SoundBuffer();
-    if (!bufferChest->loadFromFile("engine.wav"))
-        std::cout << "ERROR engine.wav" << std::endl;
+    if (!bufferChest->loadFromFile("chest.wav"))
+        std::cout << "ERROR chest.wav" << std::endl;
     soundChest = new sf::Sound();
     soundChest->setBuffer(*bufferChest);
     soundChest->setLoop(false);
+
+    bufferDoor = new sf::SoundBuffer();
+    if (!bufferDoor->loadFromFile("door.wav"))
+        std::cout << "ERROR door.wav" << std::endl;
+    soundDoor = new sf::Sound();
+    soundDoor->setBuffer(*bufferDoor);
+    soundDoor->setLoop(false);
 }
 
 KeysBehaviour::~KeysBehaviour()
@@ -91,6 +98,7 @@ void KeysBehaviour::onCollision(GameObject * aGameObject){
                 else if(((Player*)parent)->hasKey(door->getKey())){
                     ((Player*)parent)->pushMessage("Deur geopend met sleutel: " + door->getKey() );
                     door->setOpened(true);
+                    soundDoor->play();
                     ((Player*)parent)->setKey(""); //sleutel is maar 1x te gebruiken
                     Room * room1 = door->getRoom1();
                     Room * room2 = door->getRoom2();

@@ -23,6 +23,8 @@ class KeysBehaviour : public Behaviour
         bool doorHit;
         sf::SoundBuffer * bufferChest;
         sf::Sound * soundChest;
+        sf::SoundBuffer * bufferDoor;
+        sf::Sound * soundDoor;
 };
 
 #endif // KEYSBEHAVIOUR_H
