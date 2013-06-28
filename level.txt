@@ -20,7 +20,8 @@ cube 10,2 2 models/land.jpg
 cube 10,4 2 models/bricks.jpg
 cube 40,30 10 models/monkey.jpg
 
-room 0,50 50,100 50,10,0 100,10,50 models/floor.jpg models/brick_wall2.jpg
+#de tweede ruimte:
+room 0,50 50,100 50,10,50 0,10,100 models/floor.jpg models/brick_wall2.jpg
 
 #maak een deur en geef ook het id van de sleutel op:
 #door positie sleutel
