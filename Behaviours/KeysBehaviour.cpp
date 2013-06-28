@@ -93,11 +93,15 @@ void KeysBehaviour::onCollision(GameObject * aGameObject){
                     ((Player*)parent)->setKey(""); //sleutel is maar 1x te gebruiken
                     Room * room1 = door->getRoom1();
                     Room * room2 = door->getRoom2();
+                    Room * room3 = door->getRoom3();
                     if(door->getWorld()->getActiveRoom() == room1){
                         //switch to room2
                         door->getWorld()->setActive(room2);
                         room2->add((Player*)parent);
                         //room1->remove((Player*)parent);
+                    } else if(door->getWorld()->getActiveRoom() == room2){
+                        door->getWorld()->setActive(room3);
+                        room3->add((Player*)parent);
                     } else{
                         door->getWorld()->setActive(room1);
                         room1->add((Player*)parent);

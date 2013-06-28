@@ -15,8 +15,10 @@ class Door : public GameObject
         /** Default destructor */
         Room * getRoom1();
         Room * getRoom2();
+        Room * getRoom3();
         void setRoom1(Room * aRoom1);
         void setRoom2(Room * aRoom2);
+        void setRoom3(Room * aRoom3);
         World * getWorld();
         virtual ~Door();
         std::string getKey();
@@ -27,6 +29,7 @@ class Door : public GameObject
         std::string key;
         Room * room1;
         Room * room2;
+        Room * room3;
         World * world;
         bool opened;
 };
