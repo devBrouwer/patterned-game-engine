@@ -23,8 +23,11 @@ cube 10,40 10 models/monkey.jpg
 cube 14,0 10 models/monkey.jpg
 cube 24,0 10 models/monkey.jpg
 cube 34,0 10 models/monkey.jpg
-cube 44,0 6 models/monkey.jpg
 cube 14,10 10 models/monkey.jpg
+cube 40,40 10 models/monkey.jpg
+cube 14,30 10 models/monkey.jpg
+cube 24,30 10 models/monkey.jpg
+cube 34,20 10 models/monkey.jpg
 
 #de tweede ruimte:
 room 0,50 50,100 50,10,50 0,10,100 models/floor.jpg models/brick_wall2.jpg
