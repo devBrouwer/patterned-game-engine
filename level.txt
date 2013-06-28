@@ -8,7 +8,7 @@ room 0,0 50,50 50,10,0 0,10,50 models/brick_wall2.jpg models/floor.jpg
 #geef aan waar de speler begint:
 #start positie
 #Let op, dit element moet na de room waarin dit punt zich bevind gedefinieerd worden!
-start 20,1,10
+start 5,1,5
 
 #maak een chest en geef het id van de sleutel op:
 #chest positie sleutel
@@ -16,9 +16,15 @@ chest 30,20 key_1
 
 #maak een kubus:
 #cube positie grootte texture
-cube 10,2 2 models/land.jpg
-cube 10,4 2 models/bricks.jpg
-cube 40,30 10 models/monkey.jpg
+cube 0,10 10 models/monkey.jpg
+cube 0,24 10 models/monkey.jpg
+cube 0,34 10 models/monkey.jpg
+cube 10,40 10 models/monkey.jpg
+cube 14,0 10 models/monkey.jpg
+cube 24,0 10 models/monkey.jpg
+cube 34,0 10 models/monkey.jpg
+cube 44,0 6 models/monkey.jpg
+cube 14,10 10 models/monkey.jpg
 
 #de tweede ruimte:
 room 0,50 50,100 50,10,50 0,10,100 models/floor.jpg models/brick_wall2.jpg
@@ -26,6 +32,10 @@ room 0,50 50,100 50,10,50 0,10,100 models/floor.jpg models/brick_wall2.jpg
 #maak een chest en geef het id van de sleutel op:
 #chest positie sleutel
 chest 25,85 key_2
+
+#maak een kubus:
+#cube positie grootte texture
+cube 40,75 10 models/monkey.jpg
 
 #maak een deur en geef ook het id van de sleutel op:
 #door positie sleutel
@@ -35,7 +45,31 @@ door 25,50 models/door.jpg key_1
 #de derde ruimte:
 room 0,100 50,150 0,10,100 50,10,150 models/floor.jpg models/brick_wall2.jpg
 
+#maak een chest en geef het id van de sleutel op:
+#chest positie sleutel
+chest 45,105 key_3
+
 #maak een deur en geef ook het id van de sleutel op:
 #door positie sleutel
 #Let op, dit element moet na de rooms die deze deur verbindt worden gedefinieerd!
 door 25,100 models/door.jpg key_2
+
+#de vierde ruimte:
+room 0,150 50,200 0,10,150 50,10,200 models/floor.jpg models/brick_wall2.jpg
+
+#maak een chest en geef het id van de sleutel op:
+#chest positie sleutel
+chest 45,175 key_4
+
+#maak een deur en geef ook het id van de sleutel op:
+#door positie sleutel
+#Let op, dit element moet na de rooms die deze deur verbindt worden gedefinieerd!
+door 25,150 models/door.jpg key_3
+
+#de laatste ruimte:
+room 0,200 50,250 0,10,150 50,10,200 models/floor.jpg models/brick_wall2.jpg
+
+#maak een deur en geef ook het id van de sleutel op:
+#door positie sleutel
+#Let op, dit element moet na de rooms die deze deur verbindt worden gedefinieerd!
+door 25,200 models/door.jpg key_4
