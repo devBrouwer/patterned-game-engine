@@ -2,7 +2,7 @@
 #define HUD_H
 
 #include <SFML/Graphics.hpp>
-
+#include "Time.hpp"
 ///veranderen naar player
 #include "Player.hpp"
 

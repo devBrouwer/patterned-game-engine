@@ -10,7 +10,6 @@ Hud::Hud( sf::RenderWindow * aWindow, Player * aPlayer )
 {
 	assert ( window != NULL );
 	player = aPlayer;
-
 //    if ( marvinTex.loadFromFile("models/marvin.png") ) {
 //		marvin.setTexture( marvinTex);
 //		marvin.setPosition(150,150);
@@ -41,9 +40,9 @@ void Hud::draw()
 	sf::Text text( location );
 	//text.setFont(font);
 	text.setCharacterSize(30);
-	text.setStyle(sf::Text::Bold);
+	text.setStyle(sf::Text::Regular);
 	text.setColor(sf::Color::White);
-	text.setPosition( 100,100);
+	text.setPosition( 150,10);
 
 	//char uitleg[] = "";
 
@@ -54,6 +53,24 @@ void Hud::draw()
 	textUitleg.setColor(sf::Color::White);
 	textUitleg.setPosition( 100,500);
 
+    char laptime[] = "Pass a checkpoint\n to start...";
+    float time = Time::now();
+    float current_time = time;
+    sprintf( laptime, "Tijdsduur: %2.1f seconden", current_time );
+    sf::Text laptext( laptime );
+    laptext.setCharacterSize(20);
+    laptext.setStyle(sf::Text::Bold);
+    laptext.setColor(sf::Color::White);
+    laptext.setPosition( 10,570);
+    window->draw(laptext);
+
+//    std::string key = player->getKeys();
+//	sf::Text textKeys( "Deze kist geeft je een sleutel! (" + key + ")" );
+//	//text.setFont(font);
+//	textKeys.setCharacterSize(20);
+//	textKeys.setStyle(sf::Text::Bold);
+//	textKeys.setColor(sf::Color::White);
+//	textKeys.setPosition( 500,570);
 
 	// Draw it
 	//std::cout << "Drawing text" << std::endl;
@@ -62,4 +79,7 @@ void Hud::draw()
 	window->draw(textFPS);
 	window->draw(text);
 	window->draw(textUitleg);
+    window->draw(laptext);
+//    window->draw(textKeys);
+
 }

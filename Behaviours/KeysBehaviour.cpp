@@ -20,6 +20,7 @@ KeysBehaviour::~KeysBehaviour()
 
 void KeysBehaviour::update( float step )
 {
+
 	float speed = 0.0f; //default if no keys
 	float rotationSpeed = 0.0f;
 	if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Up )) {
@@ -56,11 +57,11 @@ void KeysBehaviour::update( float step )
 	parent->rotate( rotationSpeed*step, glm::vec3(0.0f, 1.0f, 0.0f ) );
 //	transformation = glm::translate( transformation, glm::vec3(0.0f, 0.0f, speed*step ) );
 //	transformation = glm::rotate( transformation, rotationSpeed*step, glm::vec3(0.0f, 1.0f, 0.0f ) );
+
 }
 
 void KeysBehaviour::onCollision(GameObject * aGameObject){
     //std::cout << "dit wordt aangeroepen!" << std::endl;
-
     Chest * chest = dynamic_cast<Chest*>(aGameObject);
     if(chest!= NULL){
         doorHit = false;

@@ -6,6 +6,7 @@
 #include "../Chest.hpp"
 #include "../Door.hpp"
 #include "../World.hpp"
+#include "../Time.hpp"
 #include <SFML/Audio.hpp>
 
 
