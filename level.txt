@@ -23,7 +23,19 @@ cube 40,30 10 models/monkey.jpg
 #de tweede ruimte:
 room 0,50 50,100 50,10,50 0,10,100 models/floor.jpg models/brick_wall2.jpg
 
+#maak een chest en geef het id van de sleutel op:
+#chest positie sleutel
+chest 25,85 key_2
+
 #maak een deur en geef ook het id van de sleutel op:
 #door positie sleutel
 #Let op, dit element moet na de rooms die deze deur verbindt worden gedefinieerd!
 door 25,50 models/door.jpg key_1
+
+#de derde ruimte:
+room 0,100 50,150 0,10,100 50,10,150 models/floor.jpg models/brick_wall2.jpg
+
+#maak een deur en geef ook het id van de sleutel op:
+#door positie sleutel
+#Let op, dit element moet na de rooms die deze deur verbindt worden gedefinieerd!
+door 25,100 models/door.jpg key_2
