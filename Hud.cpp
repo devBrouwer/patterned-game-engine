@@ -48,10 +48,10 @@ void Hud::draw()
 
 	sf::Text textUitleg( player->getNextMessage().c_str() );
 	//text.setFont(font);
-	textUitleg.setCharacterSize(30);
+	textUitleg.setCharacterSize(20);
 	textUitleg.setStyle(sf::Text::Bold);
 	textUitleg.setColor(sf::Color::White);
-	textUitleg.setPosition( 100,500);
+	textUitleg.setPosition( 200,200);
 
     char laptime[] = "Pass a checkpoint\n to start...";
     float time = Time::now();

@@ -42,12 +42,7 @@ void Game::build()
     world = builder->readFile("level.txt");
     Player * player = world->getPlayer();
 
-    player->pushMessage("Dit is uitleg! Druk enter om deze te sluiten.");
-    player->pushMessage("Goedzo! Bewegen doe je met de pijltjestoetsen.");
-    player->pushMessage("Je zit opgesloten in deze ruimte.");
-    player->pushMessage("probeer een sleutel te vinden.");
-    player->pushMessage("De sleutel zit in de kist.");
-    player->pushMessage("Met deze sleutel open je de deur.");
+    player->pushMessage("Welkom!\nBewegen doe je met de pijltjestoetsen.\nJe zit opgesloten in deze ruimte.\nDe sleutel zit verstopt in een kist.\nVindt de kist.\nGebruik de sleutel om de deur te openen.\nDruk op ENTER om door te gaan.");
 
     hud = new Hud( window, player );
 	renderer->use(  new ShaderProgram( "shaders/default.vs", "shaders/default.fs" ) );
