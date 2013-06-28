@@ -180,7 +180,7 @@ bool GameBuilder::buildDoor(std::string line, World* world){
 bool GameBuilder::buildRoom(std::string line, World* world){
     //room start eind lichtpositie muurtexture vloertexture
     std::vector<std::string> words = getWords(line.substr(6));
-    if(words.size() != 6){
+    if(words.size() != 6 && words.size() != 7){
         std::cout << "ERROR ROOM: " << line << std::endl;
         return false;
     }
@@ -190,6 +190,10 @@ bool GameBuilder::buildRoom(std::string line, World* world){
     glm::vec3 light2 = getVec3(words[3]);
     std::string wallTexture = words[4];
     std::string floorTexture = words[5];
+    std::string msg = "";
+    if(words.size() == 7){
+        msg = words[6];
+    }
 
     std::cout << "room:" << std::endl;
     std::cout << "\t start: " << start << std::endl;
@@ -198,8 +202,10 @@ bool GameBuilder::buildRoom(std::string line, World* world){
     std::cout << "\t light2: " << light2 << std::endl;
     std::cout << "\t wall: " << wallTexture << std::endl;
     std::cout << "\t floor: " << floorTexture << std::endl << std::endl;
+    std::cout << "\t msg: " << msg << std::endl << std::endl;
 
-    Room * room = factory->createRoom(start, end, light, light2, wallTexture, floorTexture);
+
+    Room * room = factory->createRoom(start, end, light, light2, wallTexture, floorTexture, msg);
     world->addRoom(room);
 
     return true;

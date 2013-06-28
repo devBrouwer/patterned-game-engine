@@ -37,7 +37,18 @@ Player * World::getPlayer(){
 void World::add(Player * player){
     assert(this->player == NULL);
     this->player = player;
-    add((GameObject*) player);
+    for(std::vector<Room*>::iterator vi = rooms->begin(); vi!= rooms->end(); ++vi){
+        Room * i = *vi;
+        glm::vec3 start = i->getLocation();
+        glm::vec3 end = i->getEndPosition();
+        glm::vec3 objectLocation = player->getLocation();
+
+        if(objectLocation.x >= start.x && objectLocation.x <= end.x && objectLocation.z >= start.z && objectLocation.z <= end.z){
+            i->add(player);
+            setActive(i);
+            break;
+        }
+    }
 }
 
 void World::add(GameObject * object){
@@ -95,14 +106,18 @@ void World::add(Door * door){
 
 void World::addRoom(Room * room){
     rooms->push_back(room);
-    if(rooms->size() == 1){
-        setActive(room);
-    }
+    //onderstaande wordt nu in add Player gedaan
+    //if(rooms->size() == 1){
+    //    setActive(room);
+    //}
 }
 
 void World::setActive(Room * room){
     //TODO check ruimte in tuimtes?
     activeRoom = room;
+    if(player != 0 && !room->getHelloRoom().empty()){
+        player->pushMessage(room->getHelloRoom());
+    }
 }
 
 void World::accept(Visitor * visitor){

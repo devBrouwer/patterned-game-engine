@@ -1,7 +1,7 @@
 #include "Room.hpp"
 
 //kubus meegeven?
-Room::Room(glm::vec3 startPosition, glm::vec3 endPosition, glm::vec3 lichtPositie, glm::vec3 lichtPositie2, std::string muurTexture, std::string vloerTexture) : GameObject ( "Room" , startPosition), endPosition(endPosition)
+Room::Room(glm::vec3 startPosition, glm::vec3 endPosition, glm::vec3 lichtPositie, glm::vec3 lichtPositie2, std::string muurTexture, std::string vloerTexture, std::string helloRoom) : GameObject ( "Room" , startPosition), endPosition(endPosition), helloRoom(helloRoom)
 {
     //ctor
 
@@ -69,6 +69,10 @@ void Room::add( GameObject * child )
 {
 	assert( child != NULL );
 	children.push_back( child );
+}
+
+std::string Room::getHelloRoom(){
+    return helloRoom;
 }
 
 Room::~Room()
