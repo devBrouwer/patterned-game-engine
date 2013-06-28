@@ -19,8 +19,8 @@ GameObject* GameFactory::createCube(glm::vec3 position, float size, std::string 
     return cube;
 }
 
-Door * GameFactory::createDoor(glm::vec3 position, std::string texture, std::string key){
-    Door * door = new Door(position, texture, key);
+Door * GameFactory::createDoor(glm::vec3 position, std::string texture, std::string key, World * w){
+    Door * door = new Door(position, texture, key, w);
     door->setCollider(new Collider(door));
     return door;
 }

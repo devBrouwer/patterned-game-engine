@@ -5,6 +5,7 @@
 #include "../Player.hpp"
 #include "../Chest.hpp"
 #include "../Door.hpp"
+#include "../World.hpp"
 #include <SFML/Audio.hpp>
 
 

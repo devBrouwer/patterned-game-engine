@@ -60,6 +60,10 @@ void World::add(GameObject * object){
     //toevoegen aan die ruimte
 }
 
+Room * World::getActiveRoom(){
+    return activeRoom;
+}
+
 void World::add(Door * door){
     int addedTo = 0;
     for(std::vector<Room*>::iterator vi = rooms->begin(); vi!= rooms->end(); ++vi){
@@ -71,11 +75,17 @@ void World::add(Door * door){
         if(objectLocation.x >= start.x && objectLocation.x <= end.x && objectLocation.z >= start.z && objectLocation.z <= end.z){
             i->add(door);
             ++addedTo;
+            if(addedTo == 1)
+                door->setRoom1(i);
             if(addedTo == 2){
+                door->setRoom2(i);
                 break;
                 std::cout << "Deur aan 2 Ruimtes toegevoegd :)" << std::endl;
             }
         }
+    }
+    if(addedTo != 2){
+        std::cout << "ERROR: deur verbindt geen ruimtes!" << std::endl;
     }
 
     //uitrekenen aan welke 2 rooms het toegevoegd moet worden

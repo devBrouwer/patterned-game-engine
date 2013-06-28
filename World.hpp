@@ -26,6 +26,7 @@ class World
 		void add(Player * player);
 		void addRoom(Room * room);
 		void setActive(Room * room);
+		Room * getActiveRoom();
 		Player * getPlayer();
 
 		virtual ~World();

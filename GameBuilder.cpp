@@ -171,7 +171,7 @@ bool GameBuilder::buildDoor(std::string line, World* world){
     std::cout << "\tposition: " << position <<  std::endl;
     std::cout << "\ttexture: " << texture <<  std::endl;
     std::cout << "\tkey: " << key << std::endl << std::endl;
-    Door * door = factory->createDoor(position, texture, key);
+    Door * door = factory->createDoor(position, texture, key, world);
     world->add(door);
 
     return true;

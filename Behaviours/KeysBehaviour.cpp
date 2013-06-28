@@ -85,6 +85,16 @@ void KeysBehaviour::onCollision(GameObject * aGameObject){
                 doorHit = true;
                 if(((Player*)parent)->hasKey(door->getKey())){
                     ((Player*)parent)->pushMessage("Deur geopend met sleutel: " + door->getKey() );
+                    Room * room1 = door->getRoom1();
+                    Room * room2 = door->getRoom2();
+                    if(door->getWorld()->getActiveRoom() == room1){
+                        //switch to room2
+                        door->getWorld()->setActive(room2);
+                        room2->add((Player*)parent);
+                    } else{
+                        door->getWorld()->setActive(room1);
+                        room1->add((Player*)parent);
+                    }
                 }
                 else {
                     ((Player*)parent)->pushMessage("Je hebt deze sleutel nodig: " + door->getKey() );
