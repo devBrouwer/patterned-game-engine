@@ -19,6 +19,13 @@ KeysBehaviour::KeysBehaviour( Player * aParent )
     soundDoor = new sf::Sound();
     soundDoor->setBuffer(*bufferDoor);
     soundDoor->setLoop(false);
+
+    bufferEnd = new sf::SoundBuffer();
+    if (!bufferEnd->loadFromFile("applause.wav"))
+        std::cout << "ERROR applause.wav" << std::endl;
+    soundEnd = new sf::Sound();
+    soundEnd->setBuffer(*bufferEnd);
+    soundEnd->setLoop(false);
 }
 
 KeysBehaviour::~KeysBehaviour()
@@ -128,6 +135,7 @@ void KeysBehaviour::onCollision(GameObject * aGameObject){
             EndCube * ec = dynamic_cast<EndCube*>(aGameObject);
             if(ec != NULL && ((Player*)parent)->getEndTime()==0){
                 ((Player*)parent)->setEndTime(Time::now());
+                soundEnd->play();
                 //((Player*)parent)->pushMessage("The END!");
                 //std::cout << "Nu moet het stoppen!" << std::endl;
             }

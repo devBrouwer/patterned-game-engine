@@ -26,6 +26,8 @@ class KeysBehaviour : public Behaviour
         sf::Sound * soundChest;
         sf::SoundBuffer * bufferDoor;
         sf::Sound * soundDoor;
+        sf::SoundBuffer * bufferEnd;
+        sf::Sound * soundEnd;
 };
 
 #endif // KEYSBEHAVIOUR_H
