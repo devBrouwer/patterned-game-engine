@@ -38,6 +38,12 @@ Player * GameFactory::createPlayer(glm::vec3 position){
     return player;
 }
 
+EndCube * GameFactory::createEnd(glm::vec3 position){
+    EndCube * ec = new EndCube(position);
+    ec->setCollider(new Collider(ec));
+    return ec;
+}
+
 Room * GameFactory::createRoom(glm::vec3 startPosition, glm::vec3 endPosition, glm::vec3 lichtPositie, glm::vec3 lichtPositie2, std::string muurTexture, std::string vloerTexture, std::string helloRoom){
     Room * room = new Room(startPosition, endPosition, lichtPositie, lichtPositie2, muurTexture, vloerTexture, helloRoom);
     return room;

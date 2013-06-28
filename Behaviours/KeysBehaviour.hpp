@@ -7,6 +7,7 @@
 #include "../Door.hpp"
 #include "../World.hpp"
 #include "../Time.hpp"
+#include "../EndCube.hpp"
 #include <SFML/Audio.hpp>
 
 

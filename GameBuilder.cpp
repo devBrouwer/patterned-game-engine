@@ -13,6 +13,7 @@ GameBuilder::GameBuilder()
     actions->push_back("door");
     actions->push_back("chest");
     actions->push_back("cube");
+    actions->push_back("end");
 
     factory = new GameFactory();
 }
@@ -40,6 +41,10 @@ World* GameBuilder::readFile(std::string filename){
                         std::cout << "MATCH: " << line << std::endl;
                         if(*it == "start"){
                             if(!buildStart(line, world))
+                                return 0;
+                        }
+                        else if(*it == "end"){
+                            if(!buildEnd(line, world))
                                 return 0;
                         }
                         else if(*it == "room"){
@@ -210,6 +215,26 @@ bool GameBuilder::buildRoom(std::string line, World* world){
 
     return true;
 }
+
+bool GameBuilder::buildEnd(std::string line, World* world){
+    //start x,y(,z)
+    std::vector<std::string> words = getWords(line.substr(6));
+    if(words.size() != 1){
+        std::cout << "ERROR END: " << line << std::endl;
+        return false;
+    }
+
+    glm::vec3 position = getVec3(words[0]);
+
+    std::cout << "end:" << std::endl;
+    std::cout << "\tposition: " << position << std::endl <<  std::endl;
+
+    EndCube * ec = factory->createEnd(position);
+    world->add(ec);
+
+    return true;
+}
+
 
 bool GameBuilder::buildStart(std::string line, World* world){
     //start x,y(,z)

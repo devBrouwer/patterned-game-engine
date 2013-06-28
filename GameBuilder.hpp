@@ -13,6 +13,7 @@ class GameBuilder
         World* readFile(std::string filename);
         virtual ~GameBuilder();
         bool buildStart(std::string line, World* world);
+        bool buildEnd(std::string line, World* world);
         bool buildRoom(std::string line, World* world);
         bool buildDoor(std::string line, World* world);
         bool buildChest(std::string line, World* world);
