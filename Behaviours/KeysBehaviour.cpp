@@ -66,6 +66,7 @@ void KeysBehaviour::onCollision(GameObject * aGameObject){
     if(chest!= NULL){
         doorHit = false;
         //it's a chest!
+        //std::cout << "HItting chest!" << std::endl;
         if(!chest->getOpened()){
             chest->open();
             std::string key = chest->getKey();

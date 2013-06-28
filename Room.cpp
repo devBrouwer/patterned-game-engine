@@ -81,7 +81,11 @@ bool Room::checkCollisions(){
 		if ( ((GameObject * )*collider)->hasCollider() ) {
 			for ( std::vector< GameObject * >::iterator collidee = collider+1; collidee != children.end(); ++collidee ) {
 				if ( ((GameObject * )*collidee)->hasCollider() ) {
-					result = result || ((GameObject * )*collider)->collides( (GameObject *)*collidee );
+                    if(((GameObject * )*collider)->collides( (GameObject *)*collidee )){
+                        result = true;
+                        ((GameObject * )*collidee)->collides( (GameObject *)*collider );
+                    }
+					//result = result || ((GameObject * )*collider)->collides( (GameObject *)*collidee );
 				}
 			}
 		}
