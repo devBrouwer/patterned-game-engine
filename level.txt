@@ -3,7 +3,9 @@
 
 #maak een ruimte aan:
 #room start	eind lichtpositie muurtexture vloertexture
-room;0,0;50,50;50,10,0;0,10,50;models/brick_wall2.jpg;models/floor.jpg;Welkom!\nBewegen doe je met de pijltjestoetsen.\nJe zit opgesloten in deze ruimte.\nDe sleutel zit verstopt in een kist.\nVindt de kist.\nGebruik de sleutel om de deur te openen.\nDruk op ENTER om door te gaan.
+#\n in textfile is anders als \n in string?!? Dus deze message wordt hardcoded in Game.cpp gezet voor nu...
+#room;0,0;50,50;50,10,0;0,10,50;models/brick_wall2.jpg;models/floor.jpg;Welkom!\nBewegen doe je met de pijltjestoetsen.\nJe zit opgesloten in deze ruimte.\nDe sleutel zit verstopt in een kist.\nVindt de kist.\nGebruik de sleutel om de deur te openen.\nDruk op ENTER om door te gaan.
+room;0,0;50,50;50,10,0;0,10,50;models/brick_wall2.jpg;models/floor.jpg
 
 #geef aan waar de speler begint:
 #start positie
