@@ -19,10 +19,13 @@ class Player : public Camera
         void setKey(std::string key);
         bool hasKey(std::string key);
         std::string getKey();
+        void setEndTime(float);
+        float getEndTime();
     protected:
     private:
         std::queue<std::string> messages;
         std::string key;
+        float endTime;
 };
 
 #endif // PLAYER_H

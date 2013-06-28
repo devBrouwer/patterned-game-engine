@@ -56,6 +56,9 @@ void Hud::draw()
     char laptime[] = "Pass a checkpoint\n to start...";
     float time = Time::now();
     float current_time = time;
+    if(player->getEndTime()!=0){
+        current_time = player->getEndTime();
+    }
     sprintf( laptime, "Tijdsduur: %2.1f seconden", current_time );
     sf::Text laptext( laptime );
     laptext.setCharacterSize(20);
@@ -63,7 +66,6 @@ void Hud::draw()
     laptext.setColor(sf::Color::White);
     laptext.setPosition( 10,570);
     window->draw(laptext);
-
 
 	sf::Text textKey("Sleutel: " + player->getKey());
 	textKey.setCharacterSize(20);

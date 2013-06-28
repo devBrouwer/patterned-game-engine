@@ -1,6 +1,6 @@
 #include "Player.hpp"
 
-Player::Player(glm::vec3 position) : Camera("Player", position)
+Player::Player(glm::vec3 position) : Camera("Player", position), endTime(0)
 {
     //ctor
 }
@@ -36,4 +36,12 @@ bool Player::hasKey(std::string aKey){
 
 std::string Player::getKey(){
     return key;
+}
+
+float Player::getEndTime(){
+    return endTime;
+}
+
+void Player::setEndTime(float time){
+    endTime = time;
 }
