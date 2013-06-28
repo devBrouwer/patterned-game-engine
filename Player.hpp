@@ -16,13 +16,13 @@ class Player : public Camera
         std::string getNextMessage();
         void popMessage();
         void pushMessage(std::string);
-        void addKey(std::string key);
+        void setKey(std::string key);
         bool hasKey(std::string key);
-        std::vector<std::string> getKeys();
+        std::string getKey();
     protected:
     private:
         std::queue<std::string> messages;
-        std::vector<std::string> keys;
+        std::string key;
 };
 
 #endif // PLAYER_H

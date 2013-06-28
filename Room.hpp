@@ -15,6 +15,7 @@ class Room : public GameObject
         bool checkCollisions();
         glm::vec3 getEndPosition();
         virtual void add(GameObject * aChild);
+        void remove(GameObject * aChild);
     protected:
     private:
         glm::vec3 endPosition;

@@ -8,11 +8,20 @@ Door::Door(glm::vec3 position, std::string texture, std::string key, World * aWo
     setColorMap( Texture::load( texture.c_str() ) );
     room1 = 0;
     room2 = 0;
+    opened = false;
 }
 
 Door::~Door()
 {
     //dtor
+}
+
+void Door::setOpened(bool aOpened){
+    opened = aOpened;
+}
+
+bool Door::isOpened(){
+    return opened;
 }
 
 std::string Door::getKey(){

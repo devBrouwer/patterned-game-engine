@@ -88,3 +88,14 @@ bool Room::checkCollisions(){
 	}
 	return result; // any collision
 }
+
+void Room::remove(GameObject * aChild){
+    for (std::vector< GameObject * >::iterator it = children.begin(); it != children.end(); ++it ) {
+        if(*it == aChild){
+            children.erase(it);
+            break;
+            //it does break badly
+        }
+    }
+
+}

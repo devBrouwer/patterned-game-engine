@@ -20,12 +20,15 @@ class Door : public GameObject
         World * getWorld();
         virtual ~Door();
         std::string getKey();
+        void setOpened(bool aOpened);
+        bool isOpened();
     protected:
     private:
         std::string key;
         Room * room1;
         Room * room2;
         World * world;
+        bool opened;
 };
 
 #endif // DOOR_HPP

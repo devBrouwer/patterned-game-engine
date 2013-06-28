@@ -64,13 +64,13 @@ void Hud::draw()
     laptext.setPosition( 10,570);
     window->draw(laptext);
 
-//    std::string key = player->getKeys();
-//	sf::Text textKeys( "Deze kist geeft je een sleutel! (" + key + ")" );
-//	//text.setFont(font);
-//	textKeys.setCharacterSize(20);
-//	textKeys.setStyle(sf::Text::Bold);
-//	textKeys.setColor(sf::Color::White);
-//	textKeys.setPosition( 500,570);
+
+	sf::Text textKey("Sleutel: " + player->getKey());
+	textKey.setCharacterSize(20);
+	textKey.setStyle(sf::Text::Bold);
+	textKey.setColor(sf::Color::White);
+	textKey.setPosition( 500,570);
+
 
 	// Draw it
 	//std::cout << "Drawing text" << std::endl;
@@ -80,6 +80,6 @@ void Hud::draw()
 	window->draw(text);
 	window->draw(textUitleg);
     window->draw(laptext);
-//    window->draw(textKeys);
+	window->draw(textKey);
 
 }

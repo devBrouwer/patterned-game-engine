@@ -70,7 +70,7 @@ void KeysBehaviour::onCollision(GameObject * aGameObject){
             chest->open();
             std::string key = chest->getKey();
             ((Player*)parent)->pushMessage("Deze kist geeft je een sleutel! (" + key + ")" );
-            ((Player*)parent)->addKey(key);
+            ((Player*)parent)->setKey(key);
             soundChest->play();
         }
         //std::cout << "Player hits chest" << std::endl;
@@ -84,17 +84,24 @@ void KeysBehaviour::onCollision(GameObject * aGameObject){
             }
             else{
                 doorHit = true;
-                if(((Player*)parent)->hasKey(door->getKey())){
+                if(door->isOpened()){
+                    ((Player*)parent)->pushMessage("Je kunt niet terug...");
+                }
+                else if(((Player*)parent)->hasKey(door->getKey())){
                     ((Player*)parent)->pushMessage("Deur geopend met sleutel: " + door->getKey() );
+                    door->setOpened(true);
+                    ((Player*)parent)->setKey(""); //sleutel is maar 1x te gebruiken
                     Room * room1 = door->getRoom1();
                     Room * room2 = door->getRoom2();
                     if(door->getWorld()->getActiveRoom() == room1){
                         //switch to room2
                         door->getWorld()->setActive(room2);
                         room2->add((Player*)parent);
+                        //room1->remove((Player*)parent);
                     } else{
                         door->getWorld()->setActive(room1);
                         room1->add((Player*)parent);
+                        //room2->remove((Player*)parent);
                     }
                 }
                 else {

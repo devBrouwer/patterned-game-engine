@@ -26,19 +26,14 @@ void Player::pushMessage(std::string message){
     messages.push(message);
 }
 
-void Player::addKey(std::string key){
-    keys.push_back(key);
+void Player::setKey(std::string aKey){
+    key = aKey;
 }
 
-bool Player::hasKey(std::string key){
-    for(std::vector<std::string>::iterator it = keys.begin() ; it != keys.end(); ++it){
-        if(key == *it){
-            return true;
-        }
-    }
-    return false;
+bool Player::hasKey(std::string aKey){
+    return key == aKey;
 }
 
-std::vector<std::string> Player::getKeys(){
-    return keys;
+std::string Player::getKey(){
+    return key;
 }
