@@ -16,21 +16,21 @@ chest 30,20 key_1
 
 #maak een kubus:
 #cube positie grootte texture
-cube 0,10 10 models/monkey.jpg
-cube 0,24 10 models/monkey.jpg
-cube 0,34 10 models/monkey.jpg
-cube 10,40 10 models/monkey.jpg
-cube 14,0 10 models/monkey.jpg
-cube 24,0 10 models/monkey.jpg
-cube 34,0 10 models/monkey.jpg
-cube 14,10 10 models/monkey.jpg
-cube 40,40 10 models/monkey.jpg
-cube 14,30 10 models/monkey.jpg
-cube 24,30 10 models/monkey.jpg
-cube 34,20 10 models/monkey.jpg
+cube 0,10 10 models/brick_wall2.jpg
+cube 0,24 10 models/brick_wall2.jpg
+cube 0,34 10 models/brick_wall2.jpg
+cube 10,40 10 models/brick_wall2.jpg
+cube 14,0 10 models/brick_wall2.jpg
+cube 24,0 10 models/brick_wall2.jpg
+cube 34,0 10 models/brick_wall2.jpg
+cube 14,10 10 models/brick_wall2.jpg
+cube 40,40 10 models/brick_wall2.jpg
+cube 14,30 10 models/brick_wall2.jpg
+cube 24,30 10 models/brick_wall2.jpg
+cube 34,20 10 models/brick_wall2.jpg
 
 #de tweede ruimte:
-room 0,50 50,100 50,10,50 0,10,100 models/floor.jpg models/brick_wall2.jpg
+room 0,50 50,100 50,10,50 0,10,100 models/brick_wall2.jpg models/floor.jpg
 
 #maak een chest en geef het id van de sleutel op:
 #chest positie sleutel
@@ -38,14 +38,14 @@ chest 42,52 key_2
 
 #maak een kubus:
 #cube positie grootte texture
-cube 10,61 10 models/monkey.jpg
-cube 10,51 10 models/monkey.jpg
-cube 30,51 10 models/monkey.jpg
-cube 30,61 10 models/monkey.jpg
-cube 30,80 10 models/monkey.jpg
-cube 30,90 10 models/monkey.jpg
-cube 10,80 10 models/monkey.jpg
-cube 20,80 10 models/monkey.jpg
+cube 10,61 10 models/brick_wall2.jpg
+cube 10,51 10 models/brick_wall2.jpg
+cube 30,51 10 models/brick_wall2.jpg
+cube 30,61 10 models/brick_wall2.jpg
+cube 30,80 10 models/brick_wall2.jpg
+cube 30,90 10 models/brick_wall2.jpg
+cube 10,80 10 models/brick_wall2.jpg
+cube 20,80 10 models/brick_wall2.jpg
 
 #maak een deur en geef ook het id van de sleutel op:
 #door positie sleutel
@@ -53,7 +53,7 @@ cube 20,80 10 models/monkey.jpg
 door 25,50 models/door.jpg key_1
 
 #de derde ruimte:
-room 0,100 50,150 0,10,100 50,10,150 models/floor.jpg models/brick_wall2.jpg
+room 0,100 50,150 0,10,100 50,10,150 models/brick_wall2.jpg models/floor.jpg
 
 #maak een chest en geef het id van de sleutel op:
 #chest positie sleutel
@@ -61,14 +61,14 @@ chest 45,105 key_3
 
 #maak een kubus:
 #cube positie grootte texture
-cube 10,101 10 models/monkey.jpg
-cube 10,111 10 models/monkey.jpg
-cube 10,121 10 models/monkey.jpg
-cube 10,131 10 models/monkey.jpg
-cube 30,101 10 models/monkey.jpg
-cube 30,111 10 models/monkey.jpg
-cube 30,121 10 models/monkey.jpg
-cube 30,131 10 models/monkey.jpg
+cube 10,101 10 models/brick_wall2.jpg
+cube 10,111 10 models/brick_wall2.jpg
+cube 10,121 10 models/brick_wall2.jpg
+cube 10,131 10 models/brick_wall2.jpg
+cube 30,101 10 models/brick_wall2.jpg
+cube 30,111 10 models/brick_wall2.jpg
+cube 30,121 10 models/brick_wall2.jpg
+cube 30,131 10 models/brick_wall2.jpg
 
 #maak een deur en geef ook het id van de sleutel op:
 #door positie sleutel
@@ -76,7 +76,7 @@ cube 30,131 10 models/monkey.jpg
 door 25,100 models/door.jpg key_2
 
 #de vierde ruimte:
-room 0,150 50,200 0,10,150 50,10,200 models/floor.jpg models/brick_wall2.jpg
+room 0,150 50,200 0,10,150 50,10,200 models/brick_wall2.jpg models/floor.jpg
 
 #maak een chest en geef het id van de sleutel op:
 #chest positie sleutel
@@ -88,7 +88,7 @@ chest 45,175 key_4
 door 25,150 models/door.jpg key_3
 
 #de laatste ruimte:
-room 0,200 50,250 0,10,150 50,10,200 models/floor.jpg models/brick_wall2.jpg
+room 0,200 50,250 0,10,200 50,10,250 models/black.png models/black.png
 
 #maak een deur en geef ook het id van de sleutel op:
 #door positie sleutel
