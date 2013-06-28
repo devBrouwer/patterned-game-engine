@@ -40,7 +40,7 @@ Player * GameFactory::createPlayer(glm::vec3 position){
 
 EndCube * GameFactory::createEnd(glm::vec3 position){
     EndCube * ec = new EndCube(position);
-    ec->setCollider(new Collider(ec));
+    ec->setCollider(new Collider(ec, 100));
     return ec;
 }
 
