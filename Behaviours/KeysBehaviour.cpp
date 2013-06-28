@@ -125,6 +125,10 @@ void KeysBehaviour::onCollision(GameObject * aGameObject){
         }
         else{
             doorHit = false;
+            EndCube * ec = dynamic_cast<EndCube*>(aGameObject);
+            if(ec != NULL){
+                std::cout << "Nu moet het stoppen!" << std::endl;
+            }
         }
     }
 

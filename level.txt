@@ -96,3 +96,5 @@ room;0,200;50,250;0,10,200;50,10,250;models/black.png;models/black.png;The end.
 #door positie sleutel
 #Let op, dit element moet na de rooms die deze deur verbindt worden gedefinieerd!
 door;25,200;models/door.jpg;key_4
+
+end;25,202
