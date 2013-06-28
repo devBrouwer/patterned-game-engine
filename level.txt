@@ -80,6 +80,55 @@ door;25,100;models/door.jpg;key_2
 #de vierde ruimte:
 room;0,150;50,200;0,10,150;50,10,200;models/brick_wall2.jpg;models/floor.jpg
 
+#maak een kubus:
+#cube positie grootte texture
+cube;15,151;5;models/brick_wall2.jpg
+cube;15,156;5;models/brick_wall2.jpg
+cube;10,156;5;models/brick_wall2.jpg
+cube;5,156;5;models/brick_wall2.jpg
+cube;30,151;5;models/brick_wall2.jpg
+cube;35,151;5;models/brick_wall2.jpg
+cube;40,151;5;models/brick_wall2.jpg
+cube;45,151;5;models/brick_wall2.jpg
+cube;30,156;5;models/brick_wall2.jpg
+cube;30,161;5;models/brick_wall2.jpg
+cube;25,166;5;models/brick_wall2.jpg
+cube;20,166;5;models/brick_wall2.jpg
+cube;15,166;5;models/brick_wall2.jpg
+cube;10,166;5;models/brick_wall2.jpg
+cube;0,166;5;models/brick_wall2.jpg
+cube;0,171;5;models/brick_wall2.jpg
+cube;0,176;5;models/brick_wall2.jpg
+cube;0,181;5;models/brick_wall2.jpg
+cube;0,186;5;models/brick_wall2.jpg
+cube;0,191;5;models/brick_wall2.jpg
+cube;0,196;4;models/brick_wall2.jpg
+cube;4,196;4;models/brick_wall2.jpg
+cube;8,196;4;models/brick_wall2.jpg
+cube;12,196;4;models/brick_wall2.jpg
+cube;16,196;4;models/brick_wall2.jpg
+cube;40,161;5;models/brick_wall2.jpg
+cube;40,166;5;models/brick_wall2.jpg
+cube;35,176;5;models/brick_wall2.jpg
+cube;35,171;5;models/brick_wall2.jpg
+cube;30,176;5;models/brick_wall2.jpg
+cube;25,176;5;models/brick_wall2.jpg
+cube;20,176;5;models/brick_wall2.jpg
+cube;15,176;5;models/brick_wall2.jpg
+cube;10,176;5;models/brick_wall2.jpg
+cube;15,186;5;models/brick_wall2.jpg
+cube;20,186;5;models/brick_wall2.jpg
+cube;25,186;5;models/brick_wall2.jpg
+cube;30,186;5;models/brick_wall2.jpg
+cube;40,186;5;models/brick_wall2.jpg
+cube;40,181;5;models/brick_wall2.jpg
+cube;30,191;5;models/brick_wall2.jpg
+cube;46,196;4;models/brick_wall2.jpg
+cube;42,196;4;models/brick_wall2.jpg
+cube;38,196;4;models/brick_wall2.jpg
+cube;34,196;4;models/brick_wall2.jpg
+cube;30,196;4;models/brick_wall2.jpg
+
 #maak een chest en geef het id van de sleutel op:
 #chest positie sleutel
 chest;45,175;key_4
