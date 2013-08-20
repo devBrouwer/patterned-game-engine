@@ -1,0 +1,16 @@
+newmtl default1
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 0.80 0.80 0.80
+Ni 0.00
+Ks 1.00 1.00 1.00
+Ns 1.00
+newmtl default_ship
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 0.00
+Ks 0.60 0.60 0.60
+Ns 1.00

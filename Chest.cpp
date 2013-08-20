@@ -5,7 +5,7 @@ Chest::Chest(glm::vec3 position, std::string key) : GameObject("Chest", position
     //ctor
     opened = false;
     //Mesh * mesh = Mesh::load
-    setMesh( Mesh::load( "models/chest3.obj" ) );
+    setMesh( Mesh::load( "models/spaceship.obj" ) );
     setColorMap( Texture::load( "models/chest.jpg" ) );
 }
 
