@@ -7,6 +7,7 @@
 #include "Camera.hpp"
 #include "Light.hpp"
 #include "Behaviours/KeysBehaviour.hpp"
+#include "Behaviours/RotatingBehaviour.hpp"
 #include <string>
 #include "Texture.hpp"
 #include "Collider.hpp"

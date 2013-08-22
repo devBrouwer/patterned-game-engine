@@ -13,6 +13,7 @@ GameFactory::~GameFactory()
 GameObject* GameFactory::createCube(glm::vec3 position, float size, std::string texture){
     GameObject * cube = new GameObject("Cube", position);
         cube->setMesh( Mesh::load( "models/cube.obj", glm::vec3(size, size, size)) );
+        cube->setBehaviour(new RotatingBehaviour( cube ));
         cube->setColorMap( Texture::load(texture.c_str()) );
         cube->setCollider( new Collider( cube ) );
         ///TODO make cube collider, now it's a sphere collider
@@ -27,6 +28,7 @@ Door * GameFactory::createDoor(glm::vec3 position, std::string texture, std::str
 
 Chest * GameFactory::createChest(glm::vec3 position, std::string key){
     Chest * chest = new Chest(position, key);
+//    chest->setBehaviour(new KeysBehaviour( chest ));
     chest->setCollider(new Collider(chest));
     return chest;
 }

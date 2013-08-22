@@ -1,4 +1,5 @@
 #include "Chest.hpp"
+#include "Behaviour.hpp"
 
 Chest::Chest(glm::vec3 position, std::string key) : GameObject("Chest", position), key(key)
 {
