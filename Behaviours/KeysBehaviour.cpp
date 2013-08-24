@@ -37,34 +37,36 @@ void KeysBehaviour::update( float step )
 
 	float speed = 0.0f; //default if no keys
 	float rotationSpeed = 0.0f;
-	if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Up )) {
-        parent->rotate( step * 50, glm::vec3( 1.0f, 0.0f, 0.0f ) );
-		//transformation =  glm::translate( transformation, glm::vec3(0.0f, 0.0f, -10.0f*step ) );
-	}
-	if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Down )) {
-        parent->rotate( -step * 50, glm::vec3( 1.0f, 0.0f, 0.0f ) );
-		//transformation =  glm::translate( transformation, glm::vec3(0.0f, 0.0f, 10.0f*step ) );
-	}
-	if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Right )) {
-		rotationSpeed = -135.0f;
-		//transformation = glm::rotate( transformation, -135*step, glm::vec3(0.0f, 1.0f, 0.0f ) );
-	}
-	if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Left )) {
-		rotationSpeed = +135.0f;
-		//transformation = glm::rotate( transformation, 135*step, glm::vec3(0.0f, 1.0f, 0.0f ) );
-	}
+//	if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Up )) {
+//        parent->rotate( step * 50, glm::vec3( 1.0f, 0.0f, 0.0f ) );
+//		//transformation =  glm::translate( transformation, glm::vec3(0.0f, 0.0f, -10.0f*step ) );
+//	}
+//	if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Down )) {
+//        parent->rotate( -step * 50, glm::vec3( 1.0f, 0.0f, 0.0f ) );
+//		//transformation =  glm::translate( transformation, glm::vec3(0.0f, 0.0f, 10.0f*step ) );
+//	}
+//	if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Right )) {
+//		rotationSpeed = -135.0f;
+//		//transformation = glm::rotate( transformation, -135*step, glm::vec3(0.0f, 1.0f, 0.0f ) );
+//	}
+//	if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Left )) {
+//		rotationSpeed = +135.0f;
+//		//transformation = glm::rotate( transformation, 135*step, glm::vec3(0.0f, 1.0f, 0.0f ) );
+//	}
 	if ( sf::Keyboard::isKeyPressed( sf::Keyboard::W )) {
-        parent->rotate( step * 20, glm::vec3( 1.0f, 0.0f, 0.0f ) );
+        //parent->rotate( step * 20, glm::vec3( 1.0f, 0.0f, 0.0f ) );
 		speed = -10.0f;
 	}
 	if ( sf::Keyboard::isKeyPressed( sf::Keyboard::A )) {
-		parent->translate( glm::vec3( -step * 5, 0.0f, 0.0f ) );
+		//parent->translate( glm::vec3( -step * 5, 0.0f, 0.0f ) );
+		rotationSpeed = +135.0f;
 	}
 	if ( sf::Keyboard::isKeyPressed( sf::Keyboard::S )) {
 		speed = 10.0f;
 	}
 	if ( sf::Keyboard::isKeyPressed( sf::Keyboard::D )) {
-		parent->translate( glm::vec3( step * 5, 0.0f, 0.0f ) );
+		//parent->translate( glm::vec3( step * 5, 0.0f, 0.0f ) );
+		rotationSpeed = -135.0f;
 	}
 	if ( sf::Keyboard::isKeyPressed(sf::Keyboard::Return )){
         if(enterDown){

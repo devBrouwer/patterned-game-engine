@@ -18,4 +18,5 @@ RotatingBehaviour::~RotatingBehaviour()
 void RotatingBehaviour::update( float step )
 {
 	parent->rotate( step * 45, glm::vec3( 0.0f, 1.0f, 0.0f ) ); // rotates 45° per second
+	parent->translate( glm::vec3(0.0f, 0.0f, -step*30 ) );
 }
