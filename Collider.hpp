@@ -13,9 +13,10 @@ class Collider : public Visitable
 	public:
 		Collider( GameObject * aParent, float aRadius = 1.0f );
 		virtual ~Collider();
-
+        GameObject * getParent();
 		virtual bool collides( Collider * otherCollider );
 		virtual void accept(Visitor * visitor);
+		float getRadius();
 
 };
 

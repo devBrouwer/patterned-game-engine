@@ -31,3 +31,11 @@ void Collider::accept(Visitor * visitor){
     visitor->visit(this);
 }
 
+GameObject * Collider::getParent(){
+    return parent;
+}
+
+float Collider::getRadius(){
+    return radius;
+}
+

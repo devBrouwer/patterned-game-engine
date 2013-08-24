@@ -9,7 +9,7 @@ class RectangularPrismCollider : public Collider
 {
     public:
         /** Default constructor */
-        RectangularPrismCollider(GameObject * aParent, glm::vec3 rectangle);
+        RectangularPrismCollider(GameObject * aParent, glm::vec3 start, glm::vec3 end);
         /** Default destructor */
         virtual ~RectangularPrismCollider();
 
@@ -18,7 +18,8 @@ class RectangularPrismCollider : public Collider
 		virtual void accept(Visitor * visitor);
     protected:
     private:
-        glm::vec3 rectangle;
+        glm::vec3 start;
+        glm::vec3 end;
 };
 
 #endif // RECTANGULARPRISMCOLLIDER_HPP
