@@ -45,6 +45,8 @@
 			<Add library="sfml-window" />
 			<Add library="sfml-system" />
 		</Linker>
+		<Unit filename="Asteroid.cpp" />
+		<Unit filename="Asteroid.hpp" />
 		<Unit filename="Behaviour.cpp" />
 		<Unit filename="Behaviour.hpp" />
 		<Unit filename="Behaviours/KeysBehaviour.cpp" />
