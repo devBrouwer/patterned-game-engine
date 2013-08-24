@@ -4,8 +4,8 @@
 #include "../glm.hpp"
 #include "../GameObject.hpp"
 
-RotatingBehaviour::RotatingBehaviour( GameObject * aParent )
-:	Behaviour( aParent )
+RotatingBehaviour::RotatingBehaviour( Asteroid * asteroid )
+:	Behaviour( asteroid ), asteroid(asteroid)
 {
 	//ctor
 }
@@ -17,6 +17,6 @@ RotatingBehaviour::~RotatingBehaviour()
 
 void RotatingBehaviour::update( float step )
 {
-	parent->rotate( step * 45, glm::vec3( 0.0f, 1.0f, 0.0f ) ); // rotates 45° per second
-	parent->translate( glm::vec3(0.0f, 0.0f, -step*30 ) );
+	//parent->rotate( step * 45, glm::vec3( 0.0f, 1.0f, 0.0f ) ); // rotates 45° per second
+	asteroid->translate( asteroid->getVelocity() );
 }

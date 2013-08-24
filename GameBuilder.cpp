@@ -10,11 +10,7 @@ GameBuilder::GameBuilder()
     actions = new std::vector<std::string>();
     actions->push_back("start");
     actions->push_back("room");
-    actions->push_back("door");
-    actions->push_back("chest");
-    actions->push_back("cube");
-    actions->push_back("end");
-
+    actions->push_back("asteroid");
     factory = new GameFactory();
 }
 
@@ -43,24 +39,12 @@ World* GameBuilder::readFile(std::string filename){
                             if(!buildStart(line, world))
                                 return 0;
                         }
-                        else if(*it == "end"){
-                            if(!buildEnd(line, world))
-                                return 0;
-                        }
                         else if(*it == "room"){
                             if(!buildRoom(line, world))
                                 return 0;
                         }
-                        else if(*it == "door"){
-                            if(!buildDoor(line, world))
-                                return 0;
-                        }
-                        else if(*it == "chest"){
-                            if(!buildChest(line, world))
-                                return 0;
-                        }
-                        else if(*it == "cube"){
-                            if(!buildCube(line, world))
+                        else if(*it == "asteroid"){
+                            if(!buildAsteroid(line, world))
                                 return 0;
                         }
                         break;
@@ -115,69 +99,26 @@ glm::vec3 GameBuilder::getVec3(std::string coordsString){
     return glm::vec3(x,y,z);
 }
 
-bool GameBuilder::buildChest(std::string line, World* world){
-    //chest x,y(,z) sleutel
-
-    std::vector<std::string> words = getWords(line.substr(6));
-    if(words.size() != 2){
-        std::cout << "ERROR CHEST: " << line << std::endl;
-        return false;
-    }
-
-    glm::vec3 position = getVec3(words[0]);
-    std::string key = words[1];
-
-    std::cout << "chest:" << std::endl;
-    std::cout << "\tposition: " << position <<  std::endl;
-    std::cout << "\tkey: " << key << std::endl << std::endl;
-
-    Chest * chest = factory->createChest(position, key);
-    world->add(chest);
-    return true;
-}
-
-bool GameBuilder::buildCube(std::string line, World* world){
+bool GameBuilder::buildAsteroid(std::string line, World* world){
     //cube positie grootte texture
-    std::vector<std::string> words = getWords(line.substr(5));
+    std::vector<std::string> words = getWords(line.substr(9));
     if(words.size() != 3){
-        std::cout << "ERROR CUBE: " << line << std::endl;
+        std::cout << "ERROR ASTEROID: " << line << std::endl;
         return false;
     }
     glm::vec3 position = getVec3(words[0]);
-    std::string sizeString = words[1];
+
+   glm::vec3 velocity = getVec3(words[1]);
+    std::string sizeString = words[2];
     float size = ::atof(sizeString.c_str());
 
-    std::string texture = words[2];
-
-    std::cout << "cube:" << std::endl;
+    std::cout << "asteroid:" << std::endl;
     std::cout << "\tposition: " << position << std::endl;
-    std::cout << "\tsize: " << size << std::endl;
-    std::cout << "\ttexture: " << texture << std::endl << std::endl;
+    std::cout << "\tvelocity: " << velocity << std::endl;
+    std::cout << "\tsize: " << size << std::endl << std::endl;
 
-    GameObject * cube = factory->createCube(position, size, texture);
-    world->add(cube);
-
-    return true;
-}
-
-bool GameBuilder::buildDoor(std::string line, World* world){
-    //door positie sleutel
-    std::vector<std::string> words = getWords(line.substr(5));
-    if(words.size() != 3){
-        std::cout << "ERROR DOOR: " << line << std::endl;
-        return false;
-    }
-
-    glm::vec3 position = getVec3(words[0]);
-    std::string texture = words[1];
-    std::string key = words[2];
-
-    std::cout << "door:" << std::endl;
-    std::cout << "\tposition: " << position <<  std::endl;
-    std::cout << "\ttexture: " << texture <<  std::endl;
-    std::cout << "\tkey: " << key << std::endl << std::endl;
-    Door * door = factory->createDoor(position, texture, key, world);
-    world->add(door);
+    Asteroid * a = factory->createAsteroid(position, velocity, size);
+    world->add(a);
 
     return true;
 }
@@ -215,26 +156,6 @@ bool GameBuilder::buildRoom(std::string line, World* world){
 
     return true;
 }
-
-bool GameBuilder::buildEnd(std::string line, World* world){
-    //start x,y(,z)
-    std::vector<std::string> words = getWords(line.substr(6));
-    if(words.size() != 1){
-        std::cout << "ERROR END: " << line << std::endl;
-        return false;
-    }
-
-    glm::vec3 position = getVec3(words[0]);
-
-    std::cout << "end:" << std::endl;
-    std::cout << "\tposition: " << position << std::endl <<  std::endl;
-
-    EndCube * ec = factory->createEnd(position);
-    world->add(ec);
-
-    return true;
-}
-
 
 bool GameBuilder::buildStart(std::string line, World* world){
     //start x,y(,z)

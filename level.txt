@@ -14,22 +14,22 @@ start;5,1,5
 
 #maak een chest en geef het id van de sleutel op:
 #chest positie sleutel
-chest;30,20;key_1
+#chest;30,20;key_1
 
-#maak een kubus:
-#cube positie grootte texture
-cube;0,10;1;models/asteroid.jpg
-cube;0,24;1;models/asteroid.jpg
-cube;0,34;1;models/asteroid.jpg
-cube;10,40;1;models/asteroid.jpg
-cube;14,0;1;models/asteroid.jpg
-cube;24,0;1;models/asteroid.jpg
-cube;34,0;1;models/asteroid.jpg
-cube;14,10;1;models/asteroid.jpg
-cube;40,40;1;models/asteroid.jpg
-cube;14,30;1;models/asteroid.jpg
-cube;24,30;1;models/asteroid.jpg
-cube;34,20;1;models/asteroid.jpg
+#maak een asteroid:
+#asteroid positie velocity grootte
+asteroid;0,1,10;0.01,0,0.01;1
+asteroid;0,1,24;0.01,0,0.01;1
+asteroid;0,1,34;0.01,0,0.01;1
+asteroid;10,1,40;-0.01,0,-0.01;1
+asteroid;14,1,0;0.010,0,0.010;1
+asteroid;24,1,0;-0.010,0,-0.010;1
+asteroid;34,1,0;0.01,0,0.01;1
+asteroid;14,1,10;0.01,0,0.01;1
+asteroid;40,1,40;0.01,0,0.01;1
+asteroid;14,1,30;-0.01,0,-0.01;1
+asteroid;24,1,30;-0.01,0,-0.01;1
+asteroid;34,1,20;-0.01,0,-0.01;1
 
 #de tweede ruimte:
 #room;0,50;50,100;50,10,50;0,10,100;models/brick_wall2.jpg;models/floor.jpg;Welkom in ruimte 2!
@@ -84,4 +84,4 @@ cube;34,20;1;models/asteroid.jpg
 #Let op, dit element moet na de rooms die deze deur verbindt worden gedefinieerd!
 #door;25,200;models/door.jpg;key_4
 
-end;25,202
+#end;25,202

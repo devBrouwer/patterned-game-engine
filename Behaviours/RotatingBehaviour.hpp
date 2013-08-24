@@ -2,14 +2,17 @@
 #define RARTATINGBEHAVIOUR_H
 
 #include "../Behaviour.hpp"
+#include "../Asteroid.hpp"
 
 class RotatingBehaviour : public Behaviour
 {
 	public:
-		RotatingBehaviour( GameObject * aParent );
+		RotatingBehaviour( Asteroid * asteroid );
 		virtual ~RotatingBehaviour();
 
 		virtual void update( float step );
+    private:
+        Asteroid * asteroid;
 
 };
 

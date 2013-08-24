@@ -24,26 +24,26 @@ Room::Room(glm::vec3 startPosition, glm::vec3 endPosition, glm::vec3 lichtPositi
     Mesh * horizontal = Mesh::load("models/wall.obj", glm::vec3(lengthX,1.0, 1.0));
     Texture * texture = Texture::load(muurTexture.c_str());
 
-    GameObject * wallLeft = new GameObject("Wall", glm::vec3(sx, 0.0, sz));
+    GameObject * wallLeft = new GameObject("Wall", glm::vec3(sx, 0.0, mz));
     ///loadMesh with wall from sx,sy -> sx,ey
     wallLeft->setMesh(vertical);
     /// wallLeft->setCollider(new RectangularPrismCollider(wallLeft, glm::vec3(1.0,10.0, lengthZ)));
     add(wallLeft);
     wallLeft->setColorMap(texture);
 
-    GameObject * wallUp = new GameObject("Wall", glm::vec3(sx, 0.0, ez));
+    GameObject * wallUp = new GameObject("Wall", glm::vec3(mx, 0.0, ez));
     wallUp->setMesh(horizontal);
     /// wallLeft->setCollider(new RectangularPrismCollider(wallLeft, glm::vec3(1.0,10.0, lengthZ)));
     add(wallUp);
     wallUp->setColorMap(texture);
 
-    GameObject * wallRight = new GameObject("Wall", glm::vec3(ex, 0.0, sz));
+    GameObject * wallRight = new GameObject("Wall", glm::vec3(ex, 0.0, mz));
     wallRight->setMesh(vertical);
     /// wallLeft->setCollider(new RectangularPrismCollider(wallLeft, glm::vec3(1.0,10.0, lengthZ)));
     add(wallRight);
     wallRight->setColorMap(texture);
 
-    GameObject * wallDown = new GameObject("Wall", glm::vec3(sx, 0.0, sz));
+    GameObject * wallDown = new GameObject("Wall", glm::vec3(mx, 0.0, sz));
     wallDown->setMesh(horizontal);
     /// wallLeft->setCollider(new RectangularPrismCollider(wallLeft, glm::vec3(1.0,10.0, lengthZ)));
     add(wallDown);
