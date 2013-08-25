@@ -14,7 +14,7 @@
 class KeysBehaviour : public Behaviour
 {
 	public:
-		KeysBehaviour( Player * aParent );
+		KeysBehaviour( GameObject * aParent , Camera * camera);
 		virtual ~KeysBehaviour();
 
 		virtual void update( float step );
@@ -28,6 +28,8 @@ class KeysBehaviour : public Behaviour
         sf::Sound * soundDoor;
         sf::SoundBuffer * bufferEnd;
         sf::Sound * soundEnd;
+        float rotation;
+        Camera * camera;
 };
 
 #endif // KEYSBEHAVIOUR_H

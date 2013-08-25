@@ -55,7 +55,7 @@ Player * GameFactory::createPlayer(glm::vec3 position){
     //player->setMesh(createMesh("models/spaceship2.obj"));
    // player->setColorMap(createTexture("models/bricks.jpg"));
    //player->add(createSpaceShip(position));
-    player->setBehaviour(new KeysBehaviour( player ));
+    //player->setBehaviour(new KeysBehaviour( player ));
     player->setCollider(new Collider(player));
     return player;
 }

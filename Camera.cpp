@@ -13,10 +13,15 @@ Camera::Camera( std::string aName, glm::vec3 aPosition )
 }
 
 void Camera::setPosition(glm::vec3 aPosition){
-    glm::vec3 eye = aPosition;
-	glm::vec3 at ( 0.0f, 1.0f, 0.0f );
-	glm::vec3 up ( 0.0f, 1.0f, 0.0f );
-	transform = glm::inverse( glm::lookAt( eye, at, up ) );
+    //glm::vec3 eye = aPosition;
+	//glm::vec3 at ( 0.0f, 1.0f, 0.0f );
+	//glm::vec3 up ( 0.0f, 1.0f, 0.0f );
+	//transform = glm::inverse( glm::lookAt( eye, at, up ) );
+//	changeX = aPosition.x - getLocation().x;
+//	changeZ = aPosition.z - getLocation()
+    //return glm::vec3( transform[3][0], transform[3][1], transform[3][2] );
+    transform[3][0] = aPosition.x;
+    transform[3][2] = aPosition.z;
 }
 
 void Camera::translate( glm::vec3 translation )

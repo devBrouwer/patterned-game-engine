@@ -3,8 +3,8 @@
 
 #include "../GameObject.hpp"
 
-KeysBehaviour::KeysBehaviour( Player * aParent )
-:	Behaviour( (GameObject*)aParent ), doorHit(false)
+KeysBehaviour::KeysBehaviour( GameObject * aParent, Camera * camera )
+:	Behaviour( aParent ), doorHit(false), camera(camera)
 {
     bufferChest = new sf::SoundBuffer();
     if (!bufferChest->loadFromFile("chest.wav"))
@@ -26,6 +26,8 @@ KeysBehaviour::KeysBehaviour( Player * aParent )
     soundEnd = new sf::Sound();
     soundEnd->setBuffer(*bufferEnd);
     soundEnd->setLoop(false);
+    rotation = 0.0;
+    camera->translate(glm::vec3(0.0f,5.0f,0.0f));
 }
 
 KeysBehaviour::~KeysBehaviour()
@@ -68,22 +70,45 @@ void KeysBehaviour::update( float step )
 		//parent->translate( glm::vec3( step * 5, 0.0f, 0.0f ) );
 		rotationSpeed = -135.0f;
 	}
-	if ( sf::Keyboard::isKeyPressed(sf::Keyboard::Return )){
-        if(enterDown){
-            //do nothing
-        }
-        else{
-            enterDown = true;
-            //std::cout << "popping" << std::endl;
-            ((Player*)parent)->popMessage();
-        }
-	}
-	else{
-        enterDown = false;
-	}
-
+//	if ( sf::Keyboard::isKeyPressed(sf::Keyboard::Return )){
+//        if(enterDown){
+//            //do nothing
+//        }
+//        else{
+//            enterDown = true;
+//            //std::cout << "popping" << std::endl;
+//            //((Player*)parent)->popMessage();
+//        }
+//	}
+//	else{
+//        enterDown = false;
+//	}
+    parent->rotate( rotationSpeed*step, glm::vec3(0.0f, 1.0f, 0.0f ) );
 	parent->translate( glm::vec3(0.0f, 0.0f, speed*step ) );
-	parent->rotate( rotationSpeed*step, glm::vec3(0.0f, 1.0f, 0.0f ) );
+
+	if(rotationSpeed != 0){
+        rotation = fmodf(rotation + (rotationSpeed*step), 360.0f);
+        //std::cout << "ROTATION: " << rotation << std::endl;
+    }
+	float camerax = 15.0f * sin((rotation) * M_PI / 180) + parent->getLocation().x;
+    float cameraz = 15.0f * cos((rotation) * M_PI / 180) + parent->getLocation().z;
+    camera->setPosition(glm::vec3(camerax, 6.0f, cameraz));
+
+
+    //dit loopt om een of andere reden heel hoog te worden...
+    //float cameraChangeX = camerax - camera->getLocation().x;
+    //float cameraChangeZ = cameraz - camera->getLocation().z;
+
+    //std::cout << "x,z: " << camerax << "," << cameraz << std::endl;
+    //std::cout << "x,z: " << cameraChangeX << "," << cameraChangeZ << std::endl;
+
+
+    //if(rotationSpeed != 0.0f || speed != 0.0f){
+    camera->rotate(rotationSpeed*step, glm::vec3(0.0f,1.0f, 0.0f));
+        //camera->translate( glm::vec3(cameraChangeX, 0.0f, cameraChangeZ));
+    //}
+
+
 //	transformation = glm::translate( transformation, glm::vec3(0.0f, 0.0f, speed*step ) );
 //	transformation = glm::rotate( transformation, rotationSpeed*step, glm::vec3(0.0f, 1.0f, 0.0f ) );
 
@@ -91,71 +116,71 @@ void KeysBehaviour::update( float step )
 
 void KeysBehaviour::onCollision(GameObject * aGameObject){
     //std::cout << "dit wordt aangeroepen!" << std::endl;
-    Chest * chest = dynamic_cast<Chest*>(aGameObject);
-    if(chest!= NULL){
-        doorHit = false;
-        //it's a chest!
-        //std::cout << "HItting chest!" << std::endl;
-        if(!chest->getOpened()){
-            chest->open();
-            std::string key = chest->getKey();
-            ((Player*)parent)->pushMessage("Deze kist geeft je een sleutel! (" + key + ")" );
-            ((Player*)parent)->setKey(key);
-            soundChest->play();
-        }
-        //std::cout << "Player hits chest" << std::endl;
-
-    }
-    else {
-        Door * door = dynamic_cast<Door*>(aGameObject);
-        if(door!= NULL){
-            if(doorHit){
-                // al iets mee gedaan...
-            }
-            else{
-                doorHit = true;
-                if(door->isOpened()){
-                    ((Player*)parent)->pushMessage("Je kunt niet terug...");
-                }
-                else if(((Player*)parent)->hasKey(door->getKey())){
-                    ((Player*)parent)->pushMessage("Deur geopend met sleutel: " + door->getKey() );
-                    door->setOpened(true);
-                    soundDoor->play();
-                    ((Player*)parent)->setKey(""); //sleutel is maar 1x te gebruiken
-                    Room * room1 = door->getRoom1();
-                    Room * room2 = door->getRoom2();
-                    Room * room3 = door->getRoom3();
-                    if(door->getWorld()->getActiveRoom() == room1){
-                        //switch to room2
-                        door->getWorld()->setActive(room2);
-                        room2->add((Player*)parent);
-                        //room1->remove((Player*)parent);
-                    } else if(door->getWorld()->getActiveRoom() == room2){
-                        door->getWorld()->setActive(room3);
-                        room3->add((Player*)parent);
-                    } else{
-                        door->getWorld()->setActive(room1);
-                        room1->add((Player*)parent);
-                        //room2->remove((Player*)parent);
-                    }
-                }
-                else {
-                    ((Player*)parent)->pushMessage("Je hebt deze sleutel nodig: " + door->getKey() );
-                }
-                //std::cout << "Player hits door" << std::endl;
-            }
-        }
-        else{
-            doorHit = false;
-            EndCube * ec = dynamic_cast<EndCube*>(aGameObject);
-            if(ec != NULL && ((Player*)parent)->getEndTime()==0){
-                ((Player*)parent)->setEndTime(Time::now());
-                soundEnd->play();
-                //((Player*)parent)->pushMessage("The END!");
-                //std::cout << "Nu moet het stoppen!" << std::endl;
-            }
-        }
-    }
+//    Chest * chest = dynamic_cast<Chest*>(aGameObject);
+//    if(chest!= NULL){
+//        doorHit = false;
+//        //it's a chest!
+//        //std::cout << "HItting chest!" << std::endl;
+//        if(!chest->getOpened()){
+//            chest->open();
+//            std::string key = chest->getKey();
+//            ((Player*)parent)->pushMessage("Deze kist geeft je een sleutel! (" + key + ")" );
+//            ((Player*)parent)->setKey(key);
+//            soundChest->play();
+//        }
+//        //std::cout << "Player hits chest" << std::endl;
+//
+//    }
+//    else {
+//        Door * door = dynamic_cast<Door*>(aGameObject);
+//        if(door!= NULL){
+//            if(doorHit){
+//                // al iets mee gedaan...
+//            }
+//            else{
+//                doorHit = true;
+//                if(door->isOpened()){
+//                    ((Player*)parent)->pushMessage("Je kunt niet terug...");
+//                }
+//                else if(((Player*)parent)->hasKey(door->getKey())){
+//                    ((Player*)parent)->pushMessage("Deur geopend met sleutel: " + door->getKey() );
+//                    door->setOpened(true);
+//                    soundDoor->play();
+//                    ((Player*)parent)->setKey(""); //sleutel is maar 1x te gebruiken
+//                    Room * room1 = door->getRoom1();
+//                    Room * room2 = door->getRoom2();
+//                    Room * room3 = door->getRoom3();
+//                    if(door->getWorld()->getActiveRoom() == room1){
+//                        //switch to room2
+//                        door->getWorld()->setActive(room2);
+//                        room2->add((Player*)parent);
+//                        //room1->remove((Player*)parent);
+//                    } else if(door->getWorld()->getActiveRoom() == room2){
+//                        door->getWorld()->setActive(room3);
+//                        room3->add((Player*)parent);
+//                    } else{
+//                        door->getWorld()->setActive(room1);
+//                        room1->add((Player*)parent);
+//                        //room2->remove((Player*)parent);
+//                    }
+//                }
+//                else {
+//                    ((Player*)parent)->pushMessage("Je hebt deze sleutel nodig: " + door->getKey() );
+//                }
+//                //std::cout << "Player hits door" << std::endl;
+//            }
+//        }
+//        else{
+//            doorHit = false;
+//            EndCube * ec = dynamic_cast<EndCube*>(aGameObject);
+//            if(ec != NULL && ((Player*)parent)->getEndTime()==0){
+//                ((Player*)parent)->setEndTime(Time::now());
+//                soundEnd->play();
+//                //((Player*)parent)->pushMessage("The END!");
+//                //std::cout << "Nu moet het stoppen!" << std::endl;
+//            }
+//        }
+//    }
 
 
 }

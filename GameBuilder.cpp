@@ -175,7 +175,11 @@ bool GameBuilder::buildStart(std::string line, World* world){
 
     ///for test
     GameObject * ship = factory->createSpaceShip(position);
+
     world->add(ship);
+    ship->setBehaviour(new KeysBehaviour(ship, p));
+   // p->setBehaviour(new CameraBehaviour(p, ship));
+
 
     return true;
 }

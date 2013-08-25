@@ -49,6 +49,8 @@
 		<Unit filename="Asteroid.hpp" />
 		<Unit filename="Behaviour.cpp" />
 		<Unit filename="Behaviour.hpp" />
+		<Unit filename="Behaviours/CameraBehaviour.cpp" />
+		<Unit filename="Behaviours/CameraBehaviour.hpp" />
 		<Unit filename="Behaviours/KeysBehaviour.cpp" />
 		<Unit filename="Behaviours/KeysBehaviour.hpp" />
 		<Unit filename="Behaviours/RotatingBehaviour.cpp" />

@@ -5,6 +5,7 @@
 #include <vector>
 #include "World.hpp"
 #include "GameFactory.hpp"
+#include "Behaviours/CameraBehaviour.hpp"
 
 class GameBuilder
 {
