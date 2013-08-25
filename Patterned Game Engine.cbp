@@ -83,6 +83,8 @@
 		<Unit filename="Light.hpp" />
 		<Unit filename="Mesh.cpp" />
 		<Unit filename="Mesh.hpp" />
+		<Unit filename="Octree.cpp" />
+		<Unit filename="Octree.hpp" />
 		<Unit filename="Player.cpp" />
 		<Unit filename="Player.hpp" />
 		<Unit filename="RectangularPrismCollider.cpp" />
