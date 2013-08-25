@@ -42,6 +42,15 @@ Asteroid* GameFactory::createAsteroid(glm::vec3 position, glm::vec3 velocity, fl
     return asteroid;
 }
 
+Asteroid* GameFactory::CreateAmmo(glm::vec3 position, glm::vec3 velocity, float size, World * world){
+    Asteroid * asteroid = new Asteroid(position, velocity, createTexture("models/fire.jpg"), world);
+        asteroid->setMesh( createMesh( "models/sphere.obj", glm::vec3(size, size, size)) );
+        asteroid->setBehaviour(new RotatingBehaviour( asteroid ));
+        asteroid->setColorMap( createTexture("models/asteroid.jpg") );
+        asteroid->setCollider( new Collider( asteroid, size ) );
+    return asteroid;
+}
+
 GameObject * GameFactory::createSpaceShip(glm::vec3 position){
     GameObject * ship = new GameObject("ship", position);
     ship->setMesh(createMesh("models/spaceship2.obj"));

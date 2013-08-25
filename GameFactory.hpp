@@ -23,6 +23,7 @@ class GameFactory
         Player * createPlayer(glm::vec3 position);
         Room * createRoom(glm::vec3 startPosition, glm::vec3 endPosition, glm::vec3 lichtPositie, glm::vec3 lichtPositie2, std::string muurTexture, std::string vloerTexture, std::string helloRoom);
         Asteroid * createAsteroid(glm::vec3 position, glm::vec3 velocity, float size, World * world);
+        Asteroid * CreateAmmo(glm::vec3 position, glm::vec3 velocity, float size, World * world);
         GameObject * createSpaceShip(glm::vec3 position);
 
     protected:

@@ -18,6 +18,7 @@
 #include "Collider.hpp"
 #include "RenderVisitor.hpp"
 #include "GameBuilder.hpp"
+#include "Picker.hpp"
 
 
 Game::Game()
@@ -29,6 +30,18 @@ Game::Game()
 	//window->setVerticalSyncEnabled( true ); // sync with monitor ->60 hz approx
 	renderer = new Renderer( window );
 	renderVisitor = new RenderVisitor(renderer);
+
+	Picker picker;
+	for ( int y = 0; y <= 600; y+=30 ) { // check hit object for a raster of rays
+		for ( int x = 0; x < 800; x+=30 ) {
+			picker.pick( glm::vec2( x, y ) ); // calculate ray through mouse position from cams eye
+			bool hit = picker.hits( glm::vec3( 0.2f, -0.2, -0.5f ), 0.5f ); // detect an object is hit
+			std::cout << hit;
+			std::cout << "hoi";
+		}
+		std::cout << std::endl;
+	}
+
 }
 
 Game::~Game()

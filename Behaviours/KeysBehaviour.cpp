@@ -70,6 +70,10 @@ void KeysBehaviour::update( float step )
 		//parent->translate( glm::vec3( step * 5, 0.0f, 0.0f ) );
 		rotationSpeed = -135.0f;
 	}
+	if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Space )) {
+		//parent->translate( glm::vec3( step * 5, 0.0f, 0.0f ) );
+		rotationSpeed = -135.0f;
+	}
 //	if ( sf::Keyboard::isKeyPressed(sf::Keyboard::Return )){
 //        if(enterDown){
 //            //do nothing
