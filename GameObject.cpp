@@ -7,6 +7,7 @@
 #include "Behaviour.hpp"
 #include "Mesh.hpp"
 #include "Texture.hpp"
+#include "Camera.hpp"
 
 GameObject::GameObject( std::string aName, glm::vec3 aPosition )
 :	name( aName ), transform( glm::translate( aPosition ) ), collider( NULL ), behaviour( NULL ), mesh( NULL ), colorMap( NULL ), parent( NULL )
@@ -86,7 +87,13 @@ void GameObject::update( float step )
 
 glm::mat4 GameObject::getTransform(){
     if(parent != NULL ){
-        return parent->getTransform() * transform;
+        Camera * cam = dynamic_cast<Camera*>(parent);
+        if(cam== NULL){
+            return parent->getTransform() * transform;
+        }
+        else{
+            return transform;
+        }
     }
     else{
         return transform;

@@ -31,12 +31,12 @@ class GameObject : public Visitable
 	public:
 	    GameObject * getParent();
 	    void setParent(GameObject * theParent);
-	    glm::mat4 getTransform();
+	    virtual glm::mat4 getTransform();
 		GameObject( std::string aName = NULL, glm::vec3 aPosition = glm::vec3( 0.0f, 0.0f, 0.0f ) );
 		virtual ~GameObject();
 
-		void translate( glm::vec3 translation );
-		void rotate( float angle, glm::vec3 axis );
+		virtual void translate( glm::vec3 translation );
+		virtual void rotate( float angle, glm::vec3 axis );
 
 		const std::string getName();
 		glm::vec3 getLocation();

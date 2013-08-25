@@ -15,6 +15,7 @@ class RotatingBehaviour : public Behaviour
     private:
         Asteroid * asteroid;
         GameObject * lastCollider;
+        float explosionTime;
 
 };
 

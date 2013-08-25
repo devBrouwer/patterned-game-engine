@@ -117,7 +117,7 @@ bool GameBuilder::buildAsteroid(std::string line, World* world){
     std::cout << "\tvelocity: " << velocity << std::endl;
     std::cout << "\tsize: " << size << std::endl << std::endl;
 
-    Asteroid * a = factory->createAsteroid(position, velocity, size);
+    Asteroid * a = factory->createAsteroid(position, velocity, size, world);
     world->add(a);
 
     return true;
@@ -172,6 +172,10 @@ bool GameBuilder::buildStart(std::string line, World* world){
 
     Player * p = factory->createPlayer(position);
     world->add(p);
+
+    ///for test
+    GameObject * ship = factory->createSpaceShip(position);
+    world->add(ship);
 
     return true;
 }

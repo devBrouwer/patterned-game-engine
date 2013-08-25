@@ -17,10 +17,12 @@ World::~World()
 	//dtor
 }
 
+
 void World::update( float step )
 {
     //Alleen actieve ruimte updaten?
     activeRoom->update(step);
+    activeRoom->removeThings();
 //	//camera->update( step );
 //	GameObject::update( step );
 }
@@ -73,6 +75,10 @@ void World::add(GameObject * object){
 
 Room * World::getActiveRoom(){
     return activeRoom;
+}
+
+void World::remove(GameObject * gameObject){
+    activeRoom->remove(gameObject);
 }
 
 void World::add(Door * door){

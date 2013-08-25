@@ -3,6 +3,7 @@
 //kubus meegeven?
 Room::Room(glm::vec3 startPosition, glm::vec3 endPosition, glm::vec3 lichtPositie, glm::vec3 lichtPositie2, std::string muurTexture, std::string vloerTexture, std::string helloRoom) : GameObject ( "Room" , startPosition), endPosition(endPosition), helloRoom(helloRoom)
 {
+    removeList = new std::vector<GameObject *>();
     //ctor
 
     //glm::vec3 startPosition, glm::vec3 endPosition, glm::vec3 lichtPositie, std::string muurTexture, std::string vloerTexture
@@ -61,6 +62,25 @@ Room::Room(glm::vec3 startPosition, glm::vec3 endPosition, glm::vec3 lichtPositi
     add(light2);
 }
 
+void Room::remove(GameObject * gameObject){
+    removeList->push_back(gameObject);
+}
+
+void Room::removeThings(){
+    while(!removeList->empty()){
+        GameObject * removeMe = *removeList->begin();
+         for (std::vector< GameObject * >::iterator it = children.begin(); it != children.end(); ++it ) {
+            if(*it == removeMe){
+                children.erase(it);
+                break;
+                //it does break badly
+            }
+        }
+        removeList->erase(removeList->begin());
+        delete removeMe;
+    }
+}
+
 glm::vec3 Room::getEndPosition(){
     return endPosition;
 }
@@ -95,15 +115,4 @@ bool Room::checkCollisions(){
 		}
 	}
 	return result; // any collision
-}
-
-void Room::remove(GameObject * aChild){
-    for (std::vector< GameObject * >::iterator it = children.begin(); it != children.end(); ++it ) {
-        if(*it == aChild){
-            children.erase(it);
-            break;
-            //it does break badly
-        }
-    }
-
 }

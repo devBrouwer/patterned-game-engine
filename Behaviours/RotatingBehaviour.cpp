@@ -4,11 +4,13 @@
 #include "../glm.hpp"
 #include "../GameObject.hpp"
 #include "../Player.hpp"
+#include "../Time.hpp"
 
 RotatingBehaviour::RotatingBehaviour( Asteroid * asteroid )
 :	Behaviour( asteroid ), asteroid(asteroid)
 {
 	//ctor
+	explosionTime = 0;
 }
 
 RotatingBehaviour::~RotatingBehaviour()
@@ -19,8 +21,13 @@ RotatingBehaviour::~RotatingBehaviour()
 void RotatingBehaviour::update( float step )
 {
 	//parent->rotate( step * 45, glm::vec3( 0.0f, 1.0f, 0.0f ) ); // rotates 45° per second
-	///TODO step meenemen!!
 	asteroid->translate( step * asteroid->getVelocity() );
+	if(explosionTime != 0){
+        if(Time::now() - explosionTime > 1.0f){
+            //remove asteroid...
+            asteroid->removeMe();
+        }
+    }
 }
 
 
@@ -29,12 +36,13 @@ void RotatingBehaviour::onCollision(GameObject * otherGameObject){
         //DO nothing :)
     }
     else {
-        std::cout << "asteroid collision" << std::endl;
+       // std::cout << "asteroid collision" << std::endl;
         Player * player = dynamic_cast<Player*>(otherGameObject);
         if(player!= NULL){
             asteroid->setOnFire();
             asteroid->setVelocity(glm::vec3(0,0,0));
-            ///TODO remove after time...
+            explosionTime = Time::now();
+            ///TODO play sound
             //player handles the rest
         }
         else{

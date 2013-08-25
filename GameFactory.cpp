@@ -33,8 +33,8 @@ Texture* GameFactory::createTexture(std::string texture){
     }
 }
 
-Asteroid* GameFactory::createAsteroid(glm::vec3 position, glm::vec3 velocity, float size){
-    Asteroid * asteroid = new Asteroid(position, velocity, createTexture("models/fire.jpg"));
+Asteroid* GameFactory::createAsteroid(glm::vec3 position, glm::vec3 velocity, float size, World * world){
+    Asteroid * asteroid = new Asteroid(position, velocity, createTexture("models/fire.jpg"), world);
         asteroid->setMesh( createMesh( "models/sphere.obj", glm::vec3(size, size, size)) );
         asteroid->setBehaviour(new RotatingBehaviour( asteroid ));
         asteroid->setColorMap( createTexture("models/asteroid.jpg") );
@@ -42,9 +42,19 @@ Asteroid* GameFactory::createAsteroid(glm::vec3 position, glm::vec3 velocity, fl
     return asteroid;
 }
 
+GameObject * GameFactory::createSpaceShip(glm::vec3 position){
+    GameObject * ship = new GameObject("ship", position);
+    ship->setMesh(createMesh("models/spaceship2.obj"));
+    ship->setColorMap(createTexture("models/bricks.jpg"));
+    ship->setBehaviour(new WASDBehaviour( ship ));
+    return ship;
+}
+
 Player * GameFactory::createPlayer(glm::vec3 position){
     Player * player = new Player(position);
-    player->setMesh(createMesh( "models/spaceship.obj"));
+    //player->setMesh(createMesh("models/spaceship2.obj"));
+   // player->setColorMap(createTexture("models/bricks.jpg"));
+   //player->add(createSpaceShip(position));
     player->setBehaviour(new KeysBehaviour( player ));
     player->setCollider(new Collider(player));
     return player;

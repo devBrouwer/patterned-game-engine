@@ -41,7 +41,7 @@ void Game::build()
     GameBuilder * builder = new GameBuilder();
     world = builder->readFile("level.txt");
     Player * player = world->getPlayer();
-    player->rotate(180.0, glm::vec3(0.0,1.0,0.0));
+    //player->rotate(180.0, glm::vec3(0.0,1.0,0.0));
     player->pushMessage("Welkom!\nBewegen doe je met de pijltjestoetsen.\nJe zit opgesloten in deze ruimte.\nDe sleutel zit verstopt in een kist.\nVindt de kist.\nGebruik de sleutel om de deur te openen.\nDruk op ENTER om door te gaan.");
     hud = new Hud( window, player );
 	renderer->use(  new ShaderProgram( "shaders/default.vs", "shaders/default.fs" ) );

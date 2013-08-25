@@ -8,6 +8,7 @@
 #include "Light.hpp"
 #include "Behaviours/KeysBehaviour.hpp"
 #include "Behaviours/RotatingBehaviour.hpp"
+#include "Behaviours/WASDBehaviour.hpp"
 #include <string>
 #include "Texture.hpp"
 #include "Collider.hpp"
@@ -21,7 +22,8 @@ class GameFactory
         virtual ~GameFactory();
         Player * createPlayer(glm::vec3 position);
         Room * createRoom(glm::vec3 startPosition, glm::vec3 endPosition, glm::vec3 lichtPositie, glm::vec3 lichtPositie2, std::string muurTexture, std::string vloerTexture, std::string helloRoom);
-        Asteroid * createAsteroid(glm::vec3 position, glm::vec3 velocity, float size);
+        Asteroid * createAsteroid(glm::vec3 position, glm::vec3 velocity, float size, World * world);
+        GameObject * createSpaceShip(glm::vec3 position);
 
     protected:
     private:

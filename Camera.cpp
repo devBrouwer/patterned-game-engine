@@ -19,6 +19,23 @@ void Camera::setPosition(glm::vec3 aPosition){
 	transform = glm::inverse( glm::lookAt( eye, at, up ) );
 }
 
+void Camera::translate( glm::vec3 translation )
+{
+	transform = glm::translate( transform, translation );
+	for ( std::vector< GameObject * >::iterator i = children.begin(); i != children.end(); ++i ) {
+        ((GameObject * )*i)->translate( translation );
+    }
+}
+
+
+void Camera::rotate( float angle, glm::vec3 axis )
+{
+	transform = glm::rotate( transform, angle, axis);
+    for ( std::vector< GameObject * >::iterator i = children.begin(); i != children.end(); ++i ) {
+        ((GameObject * )*i)->rotate( angle, axis );
+    }
+}
+
 Camera::~Camera()
 {
 	//dtor

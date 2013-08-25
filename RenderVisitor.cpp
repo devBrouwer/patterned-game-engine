@@ -18,6 +18,12 @@ void RenderVisitor::visit(World * world){
 void RenderVisitor::visit(Camera * camera){
 	renderer->setProjection( camera->getProjection() ); // model = cam to worldspace so inverse for world->camspace
 	renderer->setView( glm::inverse( camera->getTransform() ) ); // model = cam to worldspace so inverse for world->camspace
+	if(camera->hasMesh()){
+        renderer->setModel( camera->getTransform() );
+        if( Texture * colormap = camera->getColorMap() ){
+            renderer->setColorMap(colormap);
+        }
+	}
 }
 
 void RenderVisitor::visit(Light * light){

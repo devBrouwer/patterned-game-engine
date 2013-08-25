@@ -19,12 +19,12 @@ class World
         Room * activeRoom;
         std::vector< Room * >* rooms;
         Player * player;
-
 	public:
 		World( std::string aName = NULL );
 		void add(GameObject * object);
 		void add(Door * door);
 		void add(Player * player);
+		void remove(GameObject * gameObject);
 		void addRoom(Room * room);
 		void setActive(Room * room);
 		Room * getActiveRoom();

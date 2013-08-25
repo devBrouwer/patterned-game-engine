@@ -16,10 +16,11 @@ class Room : public GameObject
         glm::vec3 getEndPosition();
         virtual void add(GameObject * aChild);
         void remove(GameObject * aChild);
+        void removeThings();
         std::string getHelloRoom();
-
     protected:
     private:
+        std::vector< GameObject * >* removeList;
         glm::vec3 endPosition;
         std::string helloRoom;
 
