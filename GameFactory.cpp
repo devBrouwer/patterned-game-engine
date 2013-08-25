@@ -34,7 +34,7 @@ Texture* GameFactory::createTexture(std::string texture){
 }
 
 Asteroid* GameFactory::createAsteroid(glm::vec3 position, glm::vec3 velocity, float size){
-    Asteroid * asteroid = new Asteroid(position, velocity);
+    Asteroid * asteroid = new Asteroid(position, velocity, createTexture("models/fire.jpg"));
         asteroid->setMesh( createMesh( "models/sphere.obj", glm::vec3(size, size, size)) );
         asteroid->setBehaviour(new RotatingBehaviour( asteroid ));
         asteroid->setColorMap( createTexture("models/asteroid.jpg") );

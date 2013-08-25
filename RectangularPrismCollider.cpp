@@ -29,7 +29,9 @@ bool RectangularPrismCollider::collides( Collider * otherCollider ){
        (end.y <= location.y && location.y <= start.y)) &&
       ((start.z <= location.z && location.z <= end.z) ||
        (end.z <= location.z && location.z <= start.z))){
-        std::cout << getParent()->getName() << " Hits " << otherCollider->getParent()->getName() << std::endl;
+        //std::cout << getParent()->getName() << " Hits " << otherCollider->getParent()->getName() << std::endl;
+        getParent()->onCollision(otherCollider->getParent());
+        otherCollider->getParent()->onCollision(getParent());
         return true;
     }
 	//glm::vec3 otherLocation = otherCollider->parent->getLocation();

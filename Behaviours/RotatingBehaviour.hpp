@@ -11,8 +11,10 @@ class RotatingBehaviour : public Behaviour
 		virtual ~RotatingBehaviour();
 
 		virtual void update( float step );
+		virtual void onCollision(GameObject * otherGameObject);
     private:
         Asteroid * asteroid;
+        GameObject * lastCollider;
 
 };
 

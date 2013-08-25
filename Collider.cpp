@@ -22,6 +22,7 @@ bool Collider::collides( Collider * otherCollider )
 	if ( distance < radius + otherCollider->radius ) {
 		std::cout << parent->getName() << " Hits " << otherCollider->parent->getName() << std::endl;
         parent->onCollision(otherCollider->parent);
+        otherCollider->getParent()->onCollision(getParent());
 		return true;
 	};
 	return false;
