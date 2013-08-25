@@ -85,6 +85,8 @@
 		<Unit filename="Mesh.hpp" />
 		<Unit filename="Octree.cpp" />
 		<Unit filename="Octree.hpp" />
+		<Unit filename="Picker.cpp" />
+		<Unit filename="Picker.hpp" />
 		<Unit filename="Player.cpp" />
 		<Unit filename="Player.hpp" />
 		<Unit filename="RectangularPrismCollider.cpp" />
