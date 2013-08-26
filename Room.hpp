@@ -6,6 +6,7 @@
 #include "Mesh.hpp"
 #include "RectangularPrismCollider.hpp"
 #include "Texture.hpp"
+#include <vector>
 
 class Room : public GameObject
 {

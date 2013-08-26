@@ -50,7 +50,6 @@ void RotatingBehaviour::onCollision(GameObject * otherGameObject){
             // go in opposite direction
             std::cout << "asteroid velocity is getting opposite..." << std::endl;
             asteroid->setVelocity(glm::vec3(-1.0f*asteroid->getVelocity()));
-
         }
         lastCollider = otherGameObject;
     }

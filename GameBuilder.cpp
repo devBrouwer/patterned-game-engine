@@ -173,7 +173,7 @@ bool GameBuilder::buildStart(std::string line, World* world){
     Player * p = factory->createPlayer(position, world);
     world->add(p);
 
-    Camera * c = factory->createCamera(glm::vec3(position.x, position.y + 5.0f, position.z));
+    Camera * c = factory->createCamera(glm::vec3(position.x, position.y + 10.0f, position.z));
     world->add(c);
 
     ///for test

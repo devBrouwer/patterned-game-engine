@@ -67,18 +67,20 @@ void Room::remove(GameObject * gameObject){
 }
 
 void Room::removeThings(){
-    while(!removeList->empty()){
-        GameObject * removeMe = *removeList->begin();
-         for (std::vector< GameObject * >::iterator it = children.begin(); it != children.end(); ++it ) {
+    int end = removeList->size();
+    for(int i = 0; i < end; ++i ){
+        GameObject * removeMe = removeList->at(i);
+        for(std::vector< GameObject * >::iterator it = children.begin(); it != children.end() ; ++it) {
             if(*it == removeMe){
                 children.erase(it);
-                break;
                 //it does break badly
+                break;
             }
         }
-        removeList->erase(removeList->begin());
+        //removeList->erase(removeList->begin());
         delete removeMe;
     }
+    removeList->clear();
 }
 
 glm::vec3 Room::getEndPosition(){

@@ -13,7 +13,7 @@ BulletBehaviour::~BulletBehaviour()
 void BulletBehaviour::update( float step )
 {
 	//parent->rotate( step * 45, glm::vec3( 0.0f, 1.0f, 0.0f ) ); // rotates 45° per second
-	bullet->translate( step * bullet->getVelocity() );
+	bullet->translate( step *30 * bullet->getVelocity() );
 }
 
 
