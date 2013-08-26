@@ -1,16 +1,19 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "Camera.hpp"
+#include "GameObject.hpp"
 #include <queue>
 #include <vector>
+#include "Bullet.hpp"
+
+class GameFactory;
 
 
-class Player : public Camera
+class Player : public GameObject
 {
     public:
         /** constructor */
-        Player(glm::vec3 position);
+        Player(glm::vec3 position, GameFactory * aFactory, World * world);
         /** Default destructor */
         virtual ~Player();
         std::string getNextMessage();
@@ -21,11 +24,14 @@ class Player : public Camera
         std::string getKey();
         void setEndTime(float);
         float getEndTime();
+        void shoot();
     protected:
     private:
         std::queue<std::string> messages;
         std::string key;
         float endTime;
+        GameFactory * factory;
+        World * world;
 };
 
 #endif // PLAYER_H

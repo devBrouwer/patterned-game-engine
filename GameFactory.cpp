@@ -42,29 +42,26 @@ Asteroid* GameFactory::createAsteroid(glm::vec3 position, glm::vec3 velocity, fl
     return asteroid;
 }
 
-Asteroid* GameFactory::CreateAmmo(glm::vec3 position, glm::vec3 velocity, float size, World * world){
-    Asteroid * asteroid = new Asteroid(position, velocity, createTexture("models/fire.jpg"), world);
-        asteroid->setMesh( createMesh( "models/sphere.obj", glm::vec3(size, size, size)) );
-        asteroid->setBehaviour(new RotatingBehaviour( asteroid ));
-        asteroid->setColorMap( createTexture("models/asteroid.jpg") );
-        asteroid->setCollider( new Collider( asteroid, size ) );
-    return asteroid;
+Bullet* GameFactory::createBullet(glm::mat4 transform, glm::vec3 velocity, World * world){
+    //std::cout << "new bullet..." << std::endl;
+    Bullet * bullet = new Bullet(transform, velocity, world);
+        bullet->setMesh( createMesh( "models/sphere.obj", glm::vec3(0.1f, 0.1f, 0.1f)) );
+        bullet->setBehaviour(new BulletBehaviour( bullet ));
+        bullet->setColorMap( createTexture("models/green.png") );
+        bullet->setCollider( new Collider( bullet, 0.1f ) );
+
+    return bullet;
 }
 
-GameObject * GameFactory::createSpaceShip(glm::vec3 position){
-    GameObject * ship = new GameObject("ship", position);
-    ship->setMesh(createMesh("models/spaceship2.obj"));
-    ship->setColorMap(createTexture("models/bricks.jpg"));
-    ship->setBehaviour(new WASDBehaviour( ship ));
-    return ship;
+Camera * GameFactory::createCamera(glm::vec3 position){
+    Camera * cam = new Camera("Camera", position);
+    return cam;
 }
 
-Player * GameFactory::createPlayer(glm::vec3 position){
-    Player * player = new Player(position);
-    //player->setMesh(createMesh("models/spaceship2.obj"));
-   // player->setColorMap(createTexture("models/bricks.jpg"));
-   //player->add(createSpaceShip(position));
-    //player->setBehaviour(new KeysBehaviour( player ));
+Player * GameFactory::createPlayer(glm::vec3 position, World * world){
+    Player * player = new Player(position, this, world);
+    player->setMesh(createMesh("models/spaceship.obj"));
+    player->setColorMap(createTexture("models/bricks.jpg"));
     player->setCollider(new Collider(player));
     return player;
 }

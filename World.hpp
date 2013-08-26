@@ -4,13 +4,13 @@
 #include "GameObject.hpp"
 #include "Room.hpp"
 #include "Door.hpp"
-#include "Player.hpp"
 #include "EndCube.hpp"
 #include <string>
 
 class Camera;
 class Light;
 class Door;
+class Player;
 
 class World
 {

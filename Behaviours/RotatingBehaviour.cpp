@@ -5,6 +5,7 @@
 #include "../GameObject.hpp"
 #include "../Player.hpp"
 #include "../Time.hpp"
+#include "../Asteroid.hpp"
 
 RotatingBehaviour::RotatingBehaviour( Asteroid * asteroid )
 :	Behaviour( asteroid ), asteroid(asteroid)

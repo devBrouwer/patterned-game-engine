@@ -32,6 +32,8 @@ class GameObject : public Visitable
 	    GameObject * getParent();
 	    void setParent(GameObject * theParent);
 	    virtual glm::mat4 getTransform();
+
+	    GameObject( std::string aName, glm::mat4 aTransform);
 		GameObject( std::string aName = NULL, glm::vec3 aPosition = glm::vec3( 0.0f, 0.0f, 0.0f ) );
 		virtual ~GameObject();
 

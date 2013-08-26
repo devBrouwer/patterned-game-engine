@@ -37,7 +37,7 @@ Game::Game()
 			picker.pick( glm::vec2( x, y ) ); // calculate ray through mouse position from cams eye
 			bool hit = picker.hits( glm::vec3( 0.2f, -0.2, -0.5f ), 0.5f ); // detect an object is hit
 			std::cout << hit;
-			std::cout << "hoi";
+			//std::cout << "hoi";
 		}
 		std::cout << std::endl;
 	}

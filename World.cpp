@@ -3,6 +3,7 @@
 #include "World.hpp"
 #include "Camera.hpp"
 #include "Light.hpp"
+#include "Player.hpp"
 
 World::World( std::string aName )
 {

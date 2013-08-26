@@ -14,6 +14,11 @@ GameObject::GameObject( std::string aName, glm::vec3 aPosition )
 {
 }
 
+GameObject::GameObject(std::string aName, glm::mat4 aTransform)
+:    name( aName ), transform( aTransform), collider( NULL ), behaviour( NULL ), mesh( NULL ), colorMap( NULL ), parent( NULL )
+{
+}
+
 GameObject::~GameObject()
 {
 	//dtor

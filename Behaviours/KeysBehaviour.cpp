@@ -1,10 +1,8 @@
 #include "KeysBehaviour.hpp"
 #include <sfml/window.hpp>
 
-#include "../GameObject.hpp"
-
-KeysBehaviour::KeysBehaviour( GameObject * aParent, Camera * camera )
-:	Behaviour( aParent ), doorHit(false), camera(camera)
+KeysBehaviour::KeysBehaviour( Player * aParent, Camera * camera )
+:	Behaviour( aParent ), doorHit(false), camera(camera), player(aParent)
 {
     bufferChest = new sf::SoundBuffer();
     if (!bufferChest->loadFromFile("chest.wav"))
@@ -27,7 +25,7 @@ KeysBehaviour::KeysBehaviour( GameObject * aParent, Camera * camera )
     soundEnd->setBuffer(*bufferEnd);
     soundEnd->setLoop(false);
     rotation = 0.0;
-    camera->translate(glm::vec3(0.0f,5.0f,0.0f));
+    //camera->translate(glm::vec3(0.0f,5.0f,0.0f));
 }
 
 KeysBehaviour::~KeysBehaviour()
@@ -71,22 +69,30 @@ void KeysBehaviour::update( float step )
 		rotationSpeed = -135.0f;
 	}
 	if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Space )) {
-		//parent->translate( glm::vec3( step * 5, 0.0f, 0.0f ) );
-		rotationSpeed = -135.0f;
+		if(spaceDown){
+            //do nothing
+		}
+		else{
+            spaceDown = true;
+            player->shoot();
+		}
 	}
-//	if ( sf::Keyboard::isKeyPressed(sf::Keyboard::Return )){
-//        if(enterDown){
-//            //do nothing
-//        }
-//        else{
-//            enterDown = true;
-//            //std::cout << "popping" << std::endl;
-//            //((Player*)parent)->popMessage();
-//        }
-//	}
-//	else{
-//        enterDown = false;
-//	}
+	else{
+       spaceDown = false;
+    }
+    if ( sf::Keyboard::isKeyPressed(sf::Keyboard::Return )){
+        if(enterDown){
+            //do nothing
+        }
+        else{
+            enterDown = true;
+            //std::cout << "popping" << std::endl;
+            player->popMessage();
+        }
+	}
+	else{
+        enterDown = false;
+	}
     parent->rotate( rotationSpeed*step, glm::vec3(0.0f, 1.0f, 0.0f ) );
 	parent->translate( glm::vec3(0.0f, 0.0f, speed*step ) );
 

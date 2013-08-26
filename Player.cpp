@@ -1,6 +1,7 @@
 #include "Player.hpp"
+#include "GameFactory.hpp"
 
-Player::Player(glm::vec3 position) : Camera("Player", position), endTime(0)
+Player::Player(glm::vec3 position, GameFactory * aFactory, World * world) : GameObject("Player", position), endTime(0), factory(aFactory), world(world)
 {
     //ctor
 }
@@ -20,6 +21,13 @@ std::string Player::getNextMessage(){
 void Player::popMessage(){
     if(!messages.empty())
         messages.pop();
+}
+
+void Player::shoot(){
+    Bullet * b = factory->createBullet(transform, glm::vec3(0.0f,0.0f,-1.0f), world);
+    //kickstart:
+    b->translate(glm::vec3(0.0f, 0.0f, -5.0f));
+    world->add(b);
 }
 
 void Player::pushMessage(std::string message){

@@ -8,19 +8,21 @@
 #include "../World.hpp"
 #include "../Time.hpp"
 #include "../EndCube.hpp"
+#include "../Camera.hpp"
 #include <SFML/Audio.hpp>
 
 
 class KeysBehaviour : public Behaviour
 {
 	public:
-		KeysBehaviour( GameObject * aParent , Camera * camera);
+		KeysBehaviour( Player * aParent , Camera * camera);
 		virtual ~KeysBehaviour();
 
 		virtual void update( float step );
 		virtual void onCollision(GameObject * otherGameObject);
     private:
         bool enterDown;
+        bool spaceDown;
         bool doorHit;
         sf::SoundBuffer * bufferChest;
         sf::Sound * soundChest;
@@ -30,6 +32,7 @@ class KeysBehaviour : public Behaviour
         sf::Sound * soundEnd;
         float rotation;
         Camera * camera;
+        Player * player;
 };
 
 #endif // KEYSBEHAVIOUR_H

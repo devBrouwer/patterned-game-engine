@@ -49,6 +49,8 @@
 		<Unit filename="Asteroid.hpp" />
 		<Unit filename="Behaviour.cpp" />
 		<Unit filename="Behaviour.hpp" />
+		<Unit filename="Behaviours/BulletBehaviour.cpp" />
+		<Unit filename="Behaviours/BulletBehaviour.hpp" />
 		<Unit filename="Behaviours/CameraBehaviour.cpp" />
 		<Unit filename="Behaviours/CameraBehaviour.hpp" />
 		<Unit filename="Behaviours/KeysBehaviour.cpp" />
@@ -57,6 +59,8 @@
 		<Unit filename="Behaviours/RotatingBehaviour.hpp" />
 		<Unit filename="Behaviours/WASDBehaviour.cpp" />
 		<Unit filename="Behaviours/WASDBehaviour.hpp" />
+		<Unit filename="Bullet.cpp" />
+		<Unit filename="Bullet.hpp" />
 		<Unit filename="Camera.cpp" />
 		<Unit filename="Camera.hpp" />
 		<Unit filename="Chest.cpp" />

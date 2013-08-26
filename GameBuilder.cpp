@@ -170,16 +170,18 @@ bool GameBuilder::buildStart(std::string line, World* world){
     std::cout << "start:" << std::endl;
     std::cout << "\tposition: " << position << std::endl <<  std::endl;
 
-    Player * p = factory->createPlayer(position);
+    Player * p = factory->createPlayer(position, world);
     world->add(p);
 
+    Camera * c = factory->createCamera(glm::vec3(position.x, position.y + 5.0f, position.z));
+    world->add(c);
+
     ///for test
-    GameObject * ship = factory->createSpaceShip(position);
+    //GameObject * ship = factory->createSpaceShip(position);
 
-    world->add(ship);
-    ship->setBehaviour(new KeysBehaviour(ship, p));
+    //world->add(ship);
+    p->setBehaviour(new KeysBehaviour(p, c));
    // p->setBehaviour(new CameraBehaviour(p, ship));
-
 
     return true;
 }

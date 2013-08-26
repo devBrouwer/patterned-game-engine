@@ -2,7 +2,8 @@
 #define RARTATINGBEHAVIOUR_H
 
 #include "../Behaviour.hpp"
-#include "../Asteroid.hpp"
+
+class Asteroid;
 
 class RotatingBehaviour : public Behaviour
 {
