@@ -4,6 +4,10 @@
 #include <fstream>
 #include <string>
 
+#include "glm.hpp"
+#include "Octree.hpp"
+#include "GameObject.hpp"
+
 GameBuilder::GameBuilder()
 {
     //ctor
@@ -12,6 +16,20 @@ GameBuilder::GameBuilder()
     actions->push_back("room");
     actions->push_back("asteroid");
     factory = new GameFactory();
+
+    Octree * root = new Octree( glm::vec3( 2,-1,0 ), 64.0f, 10 );
+
+	const static float radius = 0.0000001f;
+
+	std::vector<GameObject *> objects;
+	root->gatherObjects( objects ); // just collect all objects in octree into vector
+    std::cout << "Gathered " << objects.size() << std::endl;
+
+    std::cout << "Print" << std::endl;
+	root->print();
+
+	int count = root->detectCollisions(); // are any objects colliding and just count them as response
+	std::cout << "Checked " << count << " of possible " << ( objects.size()*objects.size()-objects.size())/2 << std::endl;
 }
 
 World* GameBuilder::readFile(std::string filename){
