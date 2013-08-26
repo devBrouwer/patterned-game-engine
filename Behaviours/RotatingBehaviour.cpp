@@ -37,6 +37,7 @@ void RotatingBehaviour::onCollision(GameObject * otherGameObject){
         //DO nothing :)
     }
     else {
+        lastCollider = otherGameObject;
        // std::cout << "asteroid collision" << std::endl;
         Player * player = dynamic_cast<Player*>(otherGameObject);
         if(player!= NULL){
@@ -44,13 +45,21 @@ void RotatingBehaviour::onCollision(GameObject * otherGameObject){
             asteroid->setVelocity(glm::vec3(0,0,0));
             explosionTime = Time::now();
             ///TODO play sound
-            //player handles the rest
         }
         else{
-            // go in opposite direction
-            std::cout << "asteroid velocity is getting opposite..." << std::endl;
-            asteroid->setVelocity(glm::vec3(-1.0f*asteroid->getVelocity()));
+            Bullet * bullet = dynamic_cast<Bullet*>(otherGameObject);
+            if(bullet!= NULL){
+                asteroid->setOnFire();
+                asteroid->setVelocity(glm::vec3(0,0,0));
+                explosionTime = Time::now();
+                ///TODO play sound
+                ///TODO player score
+            }
+            else{
+                // bounce
+                std::cout << "asteroid velocity is getting opposite..." << std::endl;
+                asteroid->setVelocity(glm::vec3(-1.0f*asteroid->getVelocity()));
+            }
         }
-        lastCollider = otherGameObject;
     }
 }

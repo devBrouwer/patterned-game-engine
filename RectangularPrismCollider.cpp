@@ -1,8 +1,9 @@
 #include "RectangularPrismCollider.hpp"
 
-RectangularPrismCollider::RectangularPrismCollider(GameObject * aParent, glm::vec3 start, glm::vec3 end) : Collider(aParent), start(start), end(end)
+RectangularPrismCollider::RectangularPrismCollider(GameObject * aParent, glm::vec3 start, glm::vec3 end) : Collider(aParent, 0.0f), start(start), end(end)
 {
     //ctor
+    //radius is 0.0f, because a radius does not work for me...
 }
 
 RectangularPrismCollider::~RectangularPrismCollider()

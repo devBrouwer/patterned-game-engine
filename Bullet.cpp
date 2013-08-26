@@ -20,6 +20,6 @@ void Bullet::setVelocity(glm::vec3 aVelocity){
 }
 
 void Bullet::removeMe(){
-    std::cout << "Request bullet removal" << std::endl;
+    //std::cout << "Request bullet removal" << std::endl;
     world->remove(this);
 }
