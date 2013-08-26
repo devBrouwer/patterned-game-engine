@@ -45,10 +45,10 @@ Asteroid* GameFactory::createAsteroid(glm::vec3 position, glm::vec3 velocity, fl
 Bullet* GameFactory::createBullet(glm::mat4 transform, glm::vec3 velocity, World * world){
     //std::cout << "new bullet..." << std::endl;
     Bullet * bullet = new Bullet(transform, velocity, world);
-        bullet->setMesh( createMesh( "models/sphere.obj", glm::vec3(0.1f, 0.1f, 0.1f)) );
+        bullet->setMesh( createMesh( "models/sphere.obj") );
         bullet->setBehaviour(new BulletBehaviour( bullet ));
         bullet->setColorMap( createTexture("models/green.png") );
-        bullet->setCollider( new Collider( bullet, 0.1f ) );
+        bullet->setCollider( new Collider( bullet, 1.0f ) );
 
     return bullet;
 }

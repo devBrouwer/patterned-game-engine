@@ -24,7 +24,7 @@ void Player::popMessage(){
 }
 
 void Player::shoot(){
-    Bullet * b = factory->createBullet(transform, glm::vec3(0.0f,0.0f,-1.0f), world);
+    Bullet * b = factory->createBullet(transform, glm::vec3(0.0f,0.0f,-5.0f), world);
     //kickstart:
     b->translate(glm::vec3(0.0f, 0.0f, -5.0f));
     world->add(b);
