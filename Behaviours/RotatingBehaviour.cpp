@@ -57,7 +57,7 @@ void RotatingBehaviour::onCollision(GameObject * otherGameObject){
             }
             else{
                 // bounce
-                std::cout << "asteroid velocity is getting opposite..." << std::endl;
+                //std::cout << "asteroid velocity is getting opposite..." << std::endl;
                 asteroid->setVelocity(glm::vec3(-1.0f*asteroid->getVelocity()));
             }
         }
