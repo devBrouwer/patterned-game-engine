@@ -48,6 +48,18 @@ Camera::~Camera()
 	//dtor
 }
 
+std::string Camera::getNextMessage(){
+    if(messages.empty())
+        return "";
+    else
+        return messages.front();
+}
+
+void Camera::popMessage(){
+    if(!messages.empty())
+        messages.pop();
+}
+
 void Camera::accept(Visitor * visitor){
     visitor->visit(this);
     //acceptChildren(visitor);
@@ -55,4 +67,8 @@ void Camera::accept(Visitor * visitor){
 
 glm::mat4 Camera::getProjection(){
     return projection;
+}
+
+void Camera::pushMessage(std::string message){
+    messages.push(message);
 }

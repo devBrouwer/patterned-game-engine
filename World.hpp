@@ -1,17 +1,20 @@
 #ifndef WORLD_H
 #define WORLD_H
 
+#include "Time.hpp"
 #include "GameObject.hpp"
 #include "Room.hpp"
 #include "Door.hpp"
 #include "EndCube.hpp"
 #include "Picker.hpp"
+#include "Asteroid.hpp"
 #include <string>
 
 class Camera;
 class Light;
 class Door;
 class Player;
+class Asteroid;
 
 class World
 {
@@ -22,6 +25,8 @@ class World
         Player * player;
         Camera * camera;
         Picker * picker;
+        Asteroid * asteroid;
+        int asteroidcount;
 	public:
 		World( std::string aName = NULL );
 		void add(GameObject * object);
@@ -35,7 +40,9 @@ class World
 		void setActive(Room * room);
 		Room * getActiveRoom();
 		Player * getPlayer();
+		Asteroid * getAsteroid();
 		Camera * getCamera();
+		int getAsteroidNumber();
 
 		virtual ~World();
 

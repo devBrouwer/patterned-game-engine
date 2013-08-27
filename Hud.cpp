@@ -10,6 +10,7 @@ Hud::Hud( sf::RenderWindow * aWindow, Player * aPlayer )
 {
 	assert ( window != NULL );
 	player = aPlayer;
+
 //    if ( marvinTex.loadFromFile("models/marvin.png") ) {
 //		marvin.setTexture( marvinTex);
 //		marvin.setPosition(150,150);
@@ -67,7 +68,7 @@ void Hud::draw()
     laptext.setPosition( 10,570);
     window->draw(laptext);
 
-//	sf::Text textKey("Sleutel: " + player->getKey());
+//	sf::Text textKey("Aantal asteroiden: " + world->getAsteroidNumber());
 //	textKey.setCharacterSize(20);
 //	textKey.setStyle(sf::Text::Bold);
 //	textKey.setColor(sf::Color::White);
@@ -81,6 +82,7 @@ void Hud::draw()
 	window->draw(textFPS);
 	window->draw(text);
 	window->draw(textUitleg);
+//	window->draw(textCamera);
     window->draw(laptext);
 //	window->draw(textKey);
 

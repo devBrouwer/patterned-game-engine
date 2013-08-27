@@ -34,7 +34,9 @@ void Player::shoot(){
 void Player::pick(glm::vec2 mouseCoords){
     GameObject * underMouse = world->pick(mouseCoords);
     if(underMouse != NULL){
-        pushMessage(underMouse->getName() + ": " + glm::to_string(underMouse->getLocation()) );
+        std::cout << "je hebt op een asteroide geklikt" << std::endl;
+        std::cout << glm::to_string(underMouse->getLocation()) << std::endl;
+        pushMessage(underMouse->getName() + " location: " + glm::to_string(underMouse->getLocation()) );
     }
 }
 

@@ -5,6 +5,8 @@
 #include "Time.hpp"
 ///veranderen naar player
 #include "Player.hpp"
+#include "World.hpp"
+#include "Camera.hpp"
 
 class Hud
 {
@@ -14,6 +16,8 @@ class Hud
 //		sf::Texture marvinTex;
 //		sf::Sprite marvin;
         Player * player;
+        World * world;
+        Camera * camera;
 	public:
 		Hud( sf::RenderWindow * aWindow, Player * aPlayer );
 		virtual ~Hud();

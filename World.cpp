@@ -13,6 +13,8 @@ World::World( std::string aName )
 	player = NULL;
 	camera = NULL;
 	picker = NULL;
+//	asteroid = NULL;
+    asteroidcount = 0;
 }
 
 World::~World()
@@ -20,6 +22,10 @@ World::~World()
 	//dtor
 }
 
+int World::getAsteroidNumber()
+{
+    return asteroidcount;
+}
 
 void World::update( float step )
 {
@@ -37,6 +43,10 @@ bool World::checkCollisions()
 
 Player * World::getPlayer(){
     return player;
+}
+
+Asteroid * World::getAsteroid(){
+    return asteroid;
 }
 
 Camera * World::getCamera(){
@@ -79,11 +89,18 @@ GameObject * World::pick(glm::vec2 mouseCoords){
 
 void World::add(GameObject * object){
     assert(rooms->size() != 0);
+
     for(std::vector<Room*>::iterator vi = rooms->begin(); vi!= rooms->end(); ++vi){
         Room * i = *vi;
         glm::vec3 start = i->getLocation();
         glm::vec3 end = i->getEndPosition();
         glm::vec3 objectLocation = object->getLocation();
+
+        if(object->getName() == "Asteroid"){
+            std::cout << "Een asteroide is aangemaakt" << std::endl;
+            asteroidcount++;
+            std::cout << asteroidcount << std::endl;
+        }
 
         if(objectLocation.x >= start.x && objectLocation.x <= end.x && objectLocation.z >= start.z && objectLocation.z <= end.z){
             i->add(object);
@@ -100,6 +117,19 @@ Room * World::getActiveRoom(){
 
 void World::remove(GameObject * gameObject){
     activeRoom->remove(gameObject);
+    if(gameObject->getName() == "Asteroid"){
+        std::cout << "Een asteroide is vernietigd" << std::endl;
+        if(asteroidcount != 1){
+        asteroidcount--;
+        std::cout << asteroidcount << std::endl;
+        }else{
+            asteroidcount--;
+            std::cout << "No more asteroids!" << std::endl;
+            std::cout << asteroidcount << std::endl;
+            player->pushMessage("Je hebt alle asteroiden kapot gemaakt!");
+            player->setEndTime(Time::now());
+        }
+    }
 }
 
 void World::add(Door * door){

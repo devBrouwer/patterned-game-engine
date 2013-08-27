@@ -138,8 +138,9 @@ void KeysBehaviour::update( float step )
 }
 
 void KeysBehaviour::onCollision(GameObject * aGameObject){
-    player->removeMe();
 //    player->pushMessage("Je bent dood!");
+    ((Player*)parent)->setEndTime(Time::now());
+    player->removeMe();
     //otherGameObject handles the rest if neccesary
 }
 
