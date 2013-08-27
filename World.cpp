@@ -11,6 +11,8 @@ World::World( std::string aName )
 	name = aName;
 	rooms = new std::vector<Room *>();
 	player = NULL;
+	camera = NULL;
+	picker = NULL;
 }
 
 World::~World()
@@ -37,6 +39,10 @@ Player * World::getPlayer(){
     return player;
 }
 
+Camera * World::getCamera(){
+    return camera;
+}
+
 void World::add(Player * player){
     assert(this->player == NULL);
     this->player = player;
@@ -54,6 +60,23 @@ void World::add(Player * player){
     }
 }
 
+void World::add(Camera * camera){
+    assert(this->camera == NULL);
+    this->camera = camera;
+    add((GameObject *)camera);
+}
+
+void World::add(Picker * picker){
+    assert(this->picker == NULL);
+    this->picker = picker;
+}
+
+GameObject * World::pick(glm::vec2 mouseCoords){
+    return activeRoom->pick(mouseCoords, picker);
+}
+
+
+
 void World::add(GameObject * object){
     assert(rooms->size() != 0);
     for(std::vector<Room*>::iterator vi = rooms->begin(); vi!= rooms->end(); ++vi){
@@ -67,10 +90,7 @@ void World::add(GameObject * object){
             break;
         }
     }
-
-
     //uitrekenen aan welke room het toegevoegd moet worden
-
     //toevoegen aan die ruimte
 }
 

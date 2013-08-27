@@ -1,7 +1,7 @@
 #include "Picker.hpp"
 
 
-Picker::Picker()
+Picker::Picker(Camera * camera) : camera(camera)
 {
 
 }
@@ -14,8 +14,9 @@ Picker::~Picker()
 void Picker::pick( glm::vec2 mouse )
 {
 	glm::vec2 screen( 800, 600 ); // from window
-	glm::mat4 projection = glm::perspective( 45.0f, 4.0f/3.0f, 0.1f, 100.0f ); // from camera
-	glm::mat4 view = glm::lookAt( glm::vec3( 0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f ), glm::vec3( 0.0f, 1.0f, 0.0f ) ); // from camera
+	glm::mat4 projection = camera->getProjection(); // from camera
+	glm::mat4 view = glm::inverse(camera->getTransform());
+	//glm::lookAt( glm::vec3( 0.0f, 0.0f, 1.0f), glm::vec3(0.0f, 0.0f, 0.0f ), glm::vec3( 0.0f, 1.0f, 0.0f ) ); // from camera
 
 	// get mouse coordinates in cam space ( screen space -> projection space (norm) -> cam space
 	glm::vec3 point;

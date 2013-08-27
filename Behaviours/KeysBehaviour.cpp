@@ -1,8 +1,7 @@
 #include "KeysBehaviour.hpp"
-#include <sfml/window.hpp>
 
-KeysBehaviour::KeysBehaviour( Player * aParent, Camera * camera )
-:	Behaviour( aParent ), doorHit(false), camera(camera), player(aParent)
+KeysBehaviour::KeysBehaviour( Player * aParent, Camera * camera , sf::RenderWindow * window )
+:	Behaviour( aParent ), doorHit(false), camera(camera), player(aParent), window(window)
 {
     bufferChest = new sf::SoundBuffer();
     if (!bufferChest->loadFromFile("chest.wav"))
@@ -53,6 +52,20 @@ void KeysBehaviour::update( float step )
 //		rotationSpeed = +135.0f;
 //		//transformation = glm::rotate( transformation, 135*step, glm::vec3(0.0f, 1.0f, 0.0f ) );
 //	}
+    if( sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+        if(mouseDown){
+            //do nothing
+        }
+        else{
+            mouseDown = true;
+            //glm::vec2 mousePosition = glm::vec2( sf::Mouse::getPosition( *window ).x, sf::Mouse::getPosition( *window ).y );
+            player->pick( glm::vec2( sf::Mouse::getPosition( *window ).x, sf::Mouse::getPosition( *window ).y ) );
+        }
+    }
+    else{
+        mouseDown = false;
+    }
+
 	if ( sf::Keyboard::isKeyPressed( sf::Keyboard::W )) {
         //parent->rotate( step * 20, glm::vec3( 1.0f, 0.0f, 0.0f ) );
 		speed = -10.0f;

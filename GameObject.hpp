@@ -51,6 +51,7 @@ class GameObject : public Visitable
 		void setColorMap( Texture * aColorMap );
 
 		Texture * getColorMap();
+		Collider * getCollider();
 
 		virtual void update( float step );
 		virtual bool collides( GameObject * otherGameObject );

@@ -8,7 +8,7 @@
 #include "Octree.hpp"
 #include "GameObject.hpp"
 
-GameBuilder::GameBuilder()
+GameBuilder::GameBuilder(sf::RenderWindow * window) : window (window)
 {
     //ctor
     actions = new std::vector<std::string>();
@@ -198,7 +198,7 @@ bool GameBuilder::buildStart(std::string line, World* world){
     //GameObject * ship = factory->createSpaceShip(position);
 
     //world->add(ship);
-    p->setBehaviour(new KeysBehaviour(p, c));
+    p->setBehaviour(new KeysBehaviour(p, c, window));
    // p->setBehaviour(new CameraBehaviour(p, ship));
 
     return true;
