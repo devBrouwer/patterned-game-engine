@@ -160,5 +160,9 @@ GameObject * GameObject::getParent(){
     return this->parent;
 }
 
+Collider * GameObject::getCollider(){
+    return this->collider;
+}
+
 // private functions
 

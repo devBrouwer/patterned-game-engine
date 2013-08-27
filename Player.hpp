@@ -25,7 +25,11 @@ class Player : public GameObject
         void setEndTime(float);
         float getEndTime();
         void shoot();
+<<<<<<< HEAD
         void removeMe();
+=======
+        void pick(glm::vec2 mouseCoords);
+>>>>>>> c906862731b6aa8b78c1a64a094e538509d2c55d
     protected:
     private:
         std::queue<std::string> messages;

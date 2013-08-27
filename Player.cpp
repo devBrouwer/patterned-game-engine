@@ -31,6 +31,13 @@ void Player::shoot(){
     world->add(b);
 }
 
+void Player::pick(glm::vec2 mouseCoords){
+    GameObject * underMouse = world->pick(mouseCoords);
+    if(underMouse != NULL){
+        pushMessage(underMouse->getName() + ": " + glm::to_string(underMouse->getLocation()) );
+    }
+}
+
 void Player::pushMessage(std::string message){
     messages.push(message);
 }

@@ -101,6 +101,20 @@ Room::~Room()
 {
     //dtor
 }
+
+GameObject * Room::pick(glm::vec2 mouseCoords, Picker * picker){
+    picker->pick(mouseCoords);
+    for (std::vector< GameObject * >::iterator collider = children.begin(); collider != children.end(); ++collider ) {
+		if ( ((GameObject * )*collider)->hasCollider() ) {
+                //TODO
+                if(picker->hits((*collider)->getLocation(),(*collider)->getCollider()->getRadius())){
+                    return *collider;
+                }
+		}
+    }
+    return NULL;
+}
+
 bool Room::checkCollisions(){
 	bool result = false;
 	for (std::vector< GameObject * >::iterator collider = children.begin(); collider != children.end(); ++collider ) {

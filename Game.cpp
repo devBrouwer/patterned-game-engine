@@ -31,17 +31,6 @@ Game::Game()
 	renderer = new Renderer( window );
 	renderVisitor = new RenderVisitor(renderer);
 
-	Picker picker;
-	for ( int y = 0; y <= 600; y+=30 ) { // check hit object for a raster of rays
-		for ( int x = 0; x < 800; x+=30 ) {
-			picker.pick( glm::vec2( x, y ) ); // calculate ray through mouse position from cams eye
-			bool hit = picker.hits( glm::vec3( 0.2f, -0.2, -0.5f ), 0.5f ); // detect an object is hit
-			std::cout << hit;
-			//std::cout << "hoi";
-		}
-		std::cout << std::endl;
-	}
-
 }
 
 Game::~Game()
@@ -51,13 +40,24 @@ Game::~Game()
 
 void Game::build()
 {
-    GameBuilder * builder = new GameBuilder();
+    GameBuilder * builder = new GameBuilder(window);
     world = builder->readFile("level.txt");
     Player * player = world->getPlayer();
     //player->rotate(180.0, glm::vec3(0.0,1.0,0.0));
     //player->pushMessage("Welkom!\nBewegen doe je met de pijltjestoetsen.\nJe zit opgesloten in deze ruimte.\nDe sleutel zit verstopt in een kist.\nVindt de kist.\nGebruik de sleutel om de deur te openen.\nDruk op ENTER om door te gaan.");
     hud = new Hud( window, player );
 	renderer->use(  new ShaderProgram( "shaders/default.vs", "shaders/default.fs" ) );
+	Picker * picker = new Picker(world->getCamera());
+	world->add(picker);
+	//for ( int y = 0; y <= 600; y+=30 ) { // check hit object for a raster of rays
+	//	for ( int x = 0; x < 800; x+=30 ) {
+	//		picker.pick( glm::vec2( x, y ) ); // calculate ray through mouse position from cams eye
+	//		bool hit = picker.hits( glm::vec3( 0.2f, -0.2, -0.5f ), 0.5f ); // detect an object is hit
+	//		std::cout << hit;
+	//		//std::cout << "hoi";
+	//	}
+	//	std::cout << std::endl;
+	//}
 }
 
 void Game::run()

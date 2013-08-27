@@ -10,7 +10,7 @@
 class GameBuilder
 {
     public:
-        GameBuilder();
+        GameBuilder(sf::RenderWindow * window);
         World* readFile(std::string filename);
         virtual ~GameBuilder();
         bool buildStart(std::string line, World* world);
@@ -22,7 +22,7 @@ class GameBuilder
         std::vector<std::string>* actions;
         std::vector<std::string>  getWords(std::string line, char delimiter = ';');
         glm::vec3 getVec3(std::string coordsString);
-
+        sf::RenderWindow * window;
 };
 
 #endif // GAMEBUILDER_H

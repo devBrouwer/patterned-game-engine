@@ -7,6 +7,7 @@
 #include "RectangularPrismCollider.hpp"
 #include "Texture.hpp"
 #include <vector>
+#include "Picker.hpp"
 
 class Room : public GameObject
 {
@@ -19,6 +20,7 @@ class Room : public GameObject
         void remove(GameObject * aChild);
         void removeThings();
         std::string getHelloRoom();
+        GameObject * pick(glm::vec2 mouseCoords, Picker * picker);
     protected:
     private:
         std::vector< GameObject * >* removeList;
