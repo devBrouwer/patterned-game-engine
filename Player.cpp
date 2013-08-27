@@ -1,5 +1,6 @@
 #include "Player.hpp"
 #include "GameFactory.hpp"
+#include "World.hpp"
 
 Player::Player(glm::vec3 position, GameFactory * aFactory, World * world) : GameObject("Player", position), endTime(0), factory(aFactory), world(world)
 {
@@ -52,4 +53,9 @@ float Player::getEndTime(){
 
 void Player::setEndTime(float time){
     endTime = time;
+}
+
+void Player::removeMe(){
+    //std::cout << "Request bullet removal" << std::endl;
+    world->remove(this);
 }

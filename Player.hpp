@@ -25,6 +25,7 @@ class Player : public GameObject
         void setEndTime(float);
         float getEndTime();
         void shoot();
+        void removeMe();
     protected:
     private:
         std::queue<std::string> messages;

@@ -125,6 +125,12 @@ void KeysBehaviour::update( float step )
 }
 
 void KeysBehaviour::onCollision(GameObject * aGameObject){
+    player->removeMe();
+//    player->pushMessage("Je bent dood!");
+    //otherGameObject handles the rest if neccesary
+}
+
+//void KeysBehaviour::onCollision(GameObject * aGameObject){
     //std::cout << "dit wordt aangeroepen!" << std::endl;
 //    Chest * chest = dynamic_cast<Chest*>(aGameObject);
 //    if(chest!= NULL){
@@ -193,4 +199,4 @@ void KeysBehaviour::onCollision(GameObject * aGameObject){
 //    }
 
 
-}
+//}
