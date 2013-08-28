@@ -62,7 +62,7 @@ Player * GameFactory::createPlayer(glm::vec3 position, World * world){
     Player * player = new Player(position, this, world, createTexture("models/fire.jpg"));
     player->setMesh(createMesh("models/spaceship.obj"));
     player->setColorMap(createTexture("models/bricks.jpg"));
-    //Collider values calculated from mesh (In maya select tab mesh and look for bounding box for the values...
+    //Collider values can be calculated from mesh (In maya select tab mesh and look for bounding box for the values...
     player->setCollider(new Collider(player, 9.908f));
     return player;
 }

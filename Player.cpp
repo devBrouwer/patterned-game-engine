@@ -34,10 +34,12 @@ void Player::popMessage(){
 }
 
 void Player::shoot(){
+    std::cout << "creating NEW BULLET! xD" << std::endl;
     Bullet * b = factory->createBullet(transform, glm::vec3(0.0f,0.0f,-5.0f), world);
     //kickstart:
     b->translate(glm::vec3(0.0f, 0.0f, -5.0f));
     world->add(b);
+    std::cout << "NEW BULLET created! xD" << std::endl;
 }
 
 void Player::pick(glm::vec2 mouseCoords){

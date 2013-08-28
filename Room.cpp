@@ -28,25 +28,25 @@ Room::Room(glm::vec3 startPosition, glm::vec3 endPosition, glm::vec3 lichtPositi
     GameObject * wallLeft = new GameObject("Wall", glm::vec3(sx, -10.0, mz));
     ///loadMesh with wall from sx,sy -> sx,ey
     wallLeft->setMesh(vertical);
-    wallLeft->setCollider(new WallCollider(wallLeft, glm::vec3(sx, -10.0, sz), glm::vec3(sx +1, 90.0, ez)));
+    wallLeft->setCollider(new WallCollider(wallLeft, glm::vec3(sx -5.0f, -10.0, sz), glm::vec3(sx +1, 90.0, ez)));
     add(wallLeft);
     wallLeft->setColorMap(texture);
 
     GameObject * wallUp = new GameObject("Wall", glm::vec3(mx, -10.0, ez));
     wallUp->setMesh(horizontal);
-    wallUp->setCollider(new WallCollider(wallUp, glm::vec3(sx, -10.0, ez), glm::vec3(ex, 90.0, ez +1)));
+    wallUp->setCollider(new WallCollider(wallUp, glm::vec3(sx, -10.0, ez -5.0f), glm::vec3(ex, 90.0, ez +1)));
     add(wallUp);
     wallUp->setColorMap(texture);
 
     GameObject * wallRight = new GameObject("Wall", glm::vec3(ex, -10.0, mz));
     wallRight->setMesh(vertical);
-    wallRight->setCollider(new WallCollider(wallRight, glm::vec3(ex, -10.0, sz), glm::vec3(ex +1, 90.0, ez)));
+    wallRight->setCollider(new WallCollider(wallRight, glm::vec3(ex +5.0f, -10.0, sz), glm::vec3(ex -1, 90.0, ez)));
     add(wallRight);
     wallRight->setColorMap(texture);
 
     GameObject * wallDown = new GameObject("Wall", glm::vec3(mx, -10.0, sz));
     wallDown->setMesh(horizontal);
-    wallDown->setCollider(new WallCollider(wallDown, glm::vec3(sx, -10.0, sz), glm::vec3(ex, 90.0, sz+1)));
+    wallDown->setCollider(new WallCollider(wallDown, glm::vec3(sx, -10.0, sz+5.0f), glm::vec3(ex, 90.0, sz-1)));
     add(wallDown);
     wallDown->setColorMap(texture);
 

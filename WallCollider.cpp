@@ -11,7 +11,7 @@ WallCollider::~WallCollider()
     //dtor
 }
 
-bool WallCollider::collides( Collider * otherCollider ){
+bool WallCollider::collides( Collider * otherCollider , bool reportCollision){
     glm::vec3 location = otherCollider->getParent()->getLocation();
 
     //TODO use: float radius = otherCollider->getRadius();

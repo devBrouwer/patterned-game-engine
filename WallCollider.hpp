@@ -14,7 +14,7 @@ class WallCollider : public Collider
         virtual ~WallCollider();
 
 
-		virtual bool collides( Collider * otherCollider );
+		virtual bool collides( Collider * otherCollider, bool reportCollision );
 		virtual void accept(Visitor * visitor);
     protected:
     private:
