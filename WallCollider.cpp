@@ -13,7 +13,8 @@ WallCollider::~WallCollider()
 
 bool WallCollider::collides( Collider * otherCollider ){
     glm::vec3 location = otherCollider->getParent()->getLocation();
-    float radius = otherCollider->getRadius();
+
+    //TODO use: float radius = otherCollider->getRadius();
 
     // linksondervoor == sx, sy, sz
     // rechtsondervoor == ex, sy, sz
