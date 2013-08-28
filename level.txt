@@ -38,7 +38,6 @@ asteroid;14,1,0;5,0,3;1
 #asteroid;96,1,20;-1,0,-20;1
 #asteroid;96,1,20;-1,0,-20;1
 
-
 #de tweede ruimte:
 #room;0,50;50,100;50,10,50;0,10,100;models/brick_wall2.jpg;models/floor.jpg;Welkom in ruimte 2!
 

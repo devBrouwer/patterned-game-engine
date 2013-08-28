@@ -10,7 +10,7 @@ TwoStepCollider::~TwoStepCollider()
     //dtor
 }
 
-bool TwoStepCollider::collides(Collider * otherCollider){
+bool TwoStepCollider::collides(Collider * otherCollider, bool reportCollision){
     std::cout << "Two step collider" << std::endl;
     return broad->collides(otherCollider, false) && narrow->collides(otherCollider);
 }

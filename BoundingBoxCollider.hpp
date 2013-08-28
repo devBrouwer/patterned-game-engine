@@ -12,7 +12,7 @@ class BoundingBoxCollider : public Collider
         BoundingBoxCollider(GameObject * aParent, glm::vec3 start, glm::vec3 end);
         /** Default destructor */
         virtual ~BoundingBoxCollider();
-        bool collides(Collider * otherCollider);
+        virtual bool collides(Collider * otherCollider, bool reportCollision=true);
     protected:
     private:
         //linksondervoor = start

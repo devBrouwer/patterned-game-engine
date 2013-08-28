@@ -16,7 +16,7 @@ BoundingBoxCollider::~BoundingBoxCollider()
     //kijk of het punt er al binnnen ligt
 }
 
-bool BoundingBoxCollider::collides(Collider * otherCollider ){
+bool BoundingBoxCollider::collides(Collider * otherCollider , bool reportCollision){
     std::cout << "NOT IMPLEMENTED YET" << std::endl;
     return false;
 }
