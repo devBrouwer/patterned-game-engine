@@ -9,3 +9,8 @@ MeshCollider::~MeshCollider()
 {
     //dtor
 }
+
+bool MeshCollider::collides(Collider * otherCollider){
+    std::cout << "NOT implemented yet" <<std::endl;
+    return false;
+}

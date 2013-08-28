@@ -52,7 +52,7 @@ void KeysBehaviour::update( float step )
 //		rotationSpeed = +135.0f;
 //		//transformation = glm::rotate( transformation, 135*step, glm::vec3(0.0f, 1.0f, 0.0f ) );
 //	}
-    if( sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+    if( !player->getDead() && sf::Mouse::isButtonPressed(sf::Mouse::Left)){
         if(mouseDown){
             //do nothing
         }
@@ -66,22 +66,22 @@ void KeysBehaviour::update( float step )
         mouseDown = false;
     }
 
-	if ( sf::Keyboard::isKeyPressed( sf::Keyboard::W )) {
+	if ( !player->getDead() && sf::Keyboard::isKeyPressed( sf::Keyboard::W )) {
         //parent->rotate( step * 20, glm::vec3( 1.0f, 0.0f, 0.0f ) );
 		speed = -10.0f;
 	}
-	if ( sf::Keyboard::isKeyPressed( sf::Keyboard::A )) {
+	if ( !player->getDead() && sf::Keyboard::isKeyPressed( sf::Keyboard::A )) {
 		//parent->translate( glm::vec3( -step * 5, 0.0f, 0.0f ) );
 		rotationSpeed = +135.0f;
 	}
-	if ( sf::Keyboard::isKeyPressed( sf::Keyboard::S )) {
+	if ( !player->getDead() && sf::Keyboard::isKeyPressed( sf::Keyboard::S )) {
 		speed = 10.0f;
 	}
-	if ( sf::Keyboard::isKeyPressed( sf::Keyboard::D )) {
+	if ( !player->getDead() && sf::Keyboard::isKeyPressed( sf::Keyboard::D )) {
 		//parent->translate( glm::vec3( step * 5, 0.0f, 0.0f ) );
 		rotationSpeed = -135.0f;
 	}
-	if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Space )) {
+	if ( !player->getDead() && sf::Keyboard::isKeyPressed( sf::Keyboard::Space )) {
 		if(spaceDown){
             //do nothing
 		}
@@ -117,7 +117,6 @@ void KeysBehaviour::update( float step )
     float cameraz = 15.0f * cos((rotation) * M_PI / 180) + parent->getLocation().z;
     camera->setPosition(glm::vec3(camerax, 11.0f, cameraz));
 
-
     //dit loopt om een of andere reden heel hoog te worden...
     //float cameraChangeX = camerax - camera->getLocation().x;
     //float cameraChangeZ = cameraz - camera->getLocation().z;
@@ -142,7 +141,8 @@ void KeysBehaviour::onCollision(GameObject * aGameObject){
     Asteroid * asteroid = dynamic_cast<Asteroid* >(aGameObject);
     if(asteroid != NULL){
         ((Player*)parent)->setEndTime(Time::now());
-        player->removeMe();
+        player->die();
+        player->pushMessage("GAME OVER.");
     }
     //otherGameObject handles the rest if neccesary
 }

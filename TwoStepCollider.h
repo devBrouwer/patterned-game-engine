@@ -11,8 +11,11 @@ class TwoStepCollider : public Collider
         TwoStepCollider(GameObject * aParent, Collider * broad, Collider * narrow);
         /** Default destructor */
         virtual ~TwoStepCollider();
+        bool collides(Collider * otherCollider);
     protected:
     private:
+        Collider * broad;
+        Collider * narrow;
 };
 
 #endif // TWOSTEPCOLLIDER_H

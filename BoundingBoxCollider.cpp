@@ -1,6 +1,6 @@
 #include "BoundingBoxCollider.hpp"
 
-BoundingBoxCollider::BoundingBoxCollider(GameObject * aParent, float xMin, float xPlus, float yMin, float yPlus, float zMin, float zPlus): Collider(aParent, 0.0f)
+BoundingBoxCollider::BoundingBoxCollider(GameObject * aParent, glm::vec3 start, glm::vec3 end): Collider(aParent, 0.0f), start(start), end(end)
 {
     //ctor
 }
@@ -15,3 +15,9 @@ BoundingBoxCollider::~BoundingBoxCollider()
         //kijk of afstand < radius*2
     //kijk of het punt er al binnnen ligt
 }
+
+bool BoundingBoxCollider::collides(Collider * otherCollider ){
+    std::cout << "NOT IMPLEMENTED YET" << std::endl;
+    return false;
+}
+

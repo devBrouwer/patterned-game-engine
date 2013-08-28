@@ -2,7 +2,7 @@
 #include "GameFactory.hpp"
 #include "World.hpp"
 
-Player::Player(glm::vec3 position, GameFactory * aFactory, World * world) : GameObject("Player", position), endTime(0), factory(aFactory), world(world)
+Player::Player(glm::vec3 position, GameFactory * aFactory, World * world, Texture * fireTexture) : GameObject("Player", position), endTime(0), factory(aFactory), world(world), fireTexture(fireTexture), dead(false)
 {
     //ctor
 }
@@ -10,6 +10,15 @@ Player::Player(glm::vec3 position, GameFactory * aFactory, World * world) : Game
 Player::~Player()
 {
     //dtor
+}
+
+bool Player::getDead(){
+    return dead;
+}
+
+void Player::die(){
+    this->colorMap = fireTexture;
+    dead = true;
 }
 
 std::string Player::getNextMessage(){

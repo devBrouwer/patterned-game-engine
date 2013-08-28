@@ -13,7 +13,7 @@ Collider::~Collider()
 	//dtor
 }
 
-bool Collider::collides( Collider * otherCollider )
+bool Collider::collides( Collider * otherCollider, bool reportCollision)
 {
 	//std::cout << "Check CD for " << parent->getName() << std::endl;
 	glm::vec3 location = parent->getLocation();
@@ -21,7 +21,9 @@ bool Collider::collides( Collider * otherCollider )
 	float distance = glm::distance( location, otherLocation );
 	if ( distance < radius + otherCollider->radius ) {
 		//std::cout << parent->getName() << " Hits " << otherCollider->parent->getName() << std::endl;
-        parent->onCollision(otherCollider->parent);
+        if(reportCollision){
+            parent->onCollision(otherCollider->parent);
+        }
         //otherCollider->getParent()->onCollision(getParent());
 		return true;
 	};

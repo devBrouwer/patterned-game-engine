@@ -11,6 +11,7 @@ class MeshCollider : public Collider
         MeshCollider(GameObject * aParent);
         /** Default destructor */
         virtual ~MeshCollider();
+        bool collides(Collider * otherCollider);
     protected:
     private:
 };

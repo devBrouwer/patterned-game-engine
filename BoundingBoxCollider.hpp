@@ -2,25 +2,23 @@
 #define BOUNDINGBOXCOLLIDER_H
 
 #include "Collider.hpp"
+#include "glm.hpp"
 
 
 class BoundingBoxCollider : public Collider
 {
     public:
         /** Default constructor */
-        BoundingBoxCollider(GameObject * aParent, float xMin, float xPlus, float yMin, float yPlus, float zMin, float zPlus);
+        BoundingBoxCollider(GameObject * aParent, glm::vec3 start, glm::vec3 end);
         /** Default destructor */
         virtual ~BoundingBoxCollider();
+        bool collides(Collider * otherCollider);
     protected:
     private:
-        //linksondervoor = xMin,yMin, zMin;
-        //rechtsbovenachter = xPlus,yPlus,zPlus;
-        float xMin;
-        float xPlus;
-        float yMin;
-        float yPlus;
-        float zMin;
-        float zPlus;
+        //linksondervoor = start
+        //rechtsbovenachter = end;
+        glm::vec3 start;
+        glm::vec3 end;
 };
 
 #endif // BOUNDINGBOXCOLLIDER_H
