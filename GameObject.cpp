@@ -22,6 +22,11 @@ GameObject::GameObject(std::string aName, glm::mat4 aTransform)
 GameObject::~GameObject()
 {
 	//dtor
+	delete collider;
+	//delete children:
+	for(std::vector<GameObject *>::iterator it = children.begin(); it != children.end();++it){
+        delete *it;
+	}
 }
 
 Mesh * GameObject::getMesh(){
