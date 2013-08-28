@@ -89,7 +89,7 @@ void GameObject::update( float step )
 		behaviour->update( step );
 	}
 	for ( std::vector< GameObject * >::iterator i = children.begin(); i != children.end(); ++i ) {
-		((GameObject * )*i)->update( step );
+ 		((GameObject * )*i)->update( step );
 	}
 
 }
