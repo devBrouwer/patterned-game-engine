@@ -4,6 +4,7 @@
 #include "../Behaviour.hpp"
 #include "../Bullet.hpp"
 #include "../GameObject.hpp"
+#include "../Player.hpp"
 
 
 class BulletBehaviour : public Behaviour

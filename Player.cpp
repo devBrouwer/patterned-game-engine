@@ -67,4 +67,5 @@ void Player::setEndTime(float time){
 void Player::removeMe(){
     //std::cout << "Request bullet removal" << std::endl;
     world->remove(this);
+    std::cout << "Speler is dood" << std::endl;
 }

@@ -139,8 +139,11 @@ void KeysBehaviour::update( float step )
 
 void KeysBehaviour::onCollision(GameObject * aGameObject){
 //    player->pushMessage("Je bent dood!");
-    ((Player*)parent)->setEndTime(Time::now());
-    player->removeMe();
+    Asteroid * asteroid = dynamic_cast<Asteroid* >(aGameObject);
+    if(asteroid != NULL){
+        ((Player*)parent)->setEndTime(Time::now());
+        player->removeMe();
+    }
     //otherGameObject handles the rest if neccesary
 }
 

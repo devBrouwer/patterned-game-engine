@@ -16,8 +16,10 @@ void BulletBehaviour::update( float step )
 	bullet->translate( step *30 * bullet->getVelocity() );
 }
 
-
 void BulletBehaviour::onCollision(GameObject * otherGameObject){
-    bullet->removeMe();
+    Player * player = dynamic_cast<Player *>(otherGameObject);
+    if(player == NULL){
+        bullet->removeMe();
+    }
     //otherGameObject handles the rest if neccesary
 }
