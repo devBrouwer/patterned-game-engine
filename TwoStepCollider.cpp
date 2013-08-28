@@ -1,6 +1,6 @@
 #include "TwoStepCollider.h"
 
-TwoStepCollider::TwoStepCollider(Collider * broad, Collider * narrow)
+TwoStepCollider::TwoStepCollider(GameObject * aParent, Collider * broad, Collider * narrow) : Collider(aParent)
 {
     //ctor
 }

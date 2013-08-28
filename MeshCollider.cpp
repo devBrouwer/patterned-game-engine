@@ -1,6 +1,6 @@
 #include "MeshCollider.hpp"
 
-MeshCollider::MeshCollider(GameObject * aParent)
+MeshCollider::MeshCollider(GameObject * aParent) : Collider(aParent)
 {
     //ctor
 }

@@ -9,6 +9,7 @@
 #include "Behaviours/KeysBehaviour.hpp"
 #include "Behaviours/RotatingBehaviour.hpp"
 #include "Behaviours/BulletBehaviour.hpp"
+#include "BoundingBoxCollider.hpp"
 #include <string>
 #include "Texture.hpp"
 #include "Collider.hpp"

@@ -8,7 +8,7 @@ class TwoStepCollider : public Collider
 {
     public:
         /** Default constructor */
-        TwoStepCollider(Collider * broad, Collider * narrow);
+        TwoStepCollider(GameObject * aParent, Collider * broad, Collider * narrow);
         /** Default destructor */
         virtual ~TwoStepCollider();
     protected:
