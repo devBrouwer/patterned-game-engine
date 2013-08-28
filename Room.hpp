@@ -4,7 +4,7 @@
 #include "GameObject.hpp"
 #include "Light.hpp"
 #include "Mesh.hpp"
-#include "RectangularPrismCollider.hpp"
+#include "WallCollider.hpp"
 #include "Texture.hpp"
 #include <vector>
 #include "Picker.hpp"

@@ -1,17 +1,17 @@
-#include "RectangularPrismCollider.hpp"
+#include "WallCollider.hpp"
 
-RectangularPrismCollider::RectangularPrismCollider(GameObject * aParent, glm::vec3 start, glm::vec3 end) : Collider(aParent, 0.0f), start(start), end(end)
+WallCollider::WallCollider(GameObject * aParent, glm::vec3 start, glm::vec3 end) : Collider(aParent, 0.0f), start(start), end(end)
 {
     //ctor
     //radius is 0.0f, because a radius does not work for me...
 }
 
-RectangularPrismCollider::~RectangularPrismCollider()
+WallCollider::~WallCollider()
 {
     //dtor
 }
 
-bool RectangularPrismCollider::collides( Collider * otherCollider ){
+bool WallCollider::collides( Collider * otherCollider ){
     glm::vec3 location = otherCollider->getParent()->getLocation();
     float radius = otherCollider->getRadius();
 
@@ -44,6 +44,6 @@ bool RectangularPrismCollider::collides( Collider * otherCollider ){
 	return false;
 }
 
-void RectangularPrismCollider::accept(Visitor * visitor){
+void WallCollider::accept(Visitor * visitor){
     visitor->visit(this);
 }

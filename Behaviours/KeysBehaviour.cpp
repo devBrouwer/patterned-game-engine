@@ -115,7 +115,7 @@ void KeysBehaviour::update( float step )
     }
 	float camerax = 15.0f * sin((rotation) * M_PI / 180) + parent->getLocation().x;
     float cameraz = 15.0f * cos((rotation) * M_PI / 180) + parent->getLocation().z;
-    camera->setPosition(glm::vec3(camerax, 6.0f, cameraz));
+    camera->setPosition(glm::vec3(camerax, 11.0f, cameraz));
 
 
     //dit loopt om een of andere reden heel hoog te worden...

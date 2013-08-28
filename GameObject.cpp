@@ -24,6 +24,10 @@ GameObject::~GameObject()
 	//dtor
 }
 
+Mesh * GameObject::getMesh(){
+    return this->mesh;
+}
+
 void GameObject::translate( glm::vec3 translation )
 {
 	transform = glm::translate( transform, translation );

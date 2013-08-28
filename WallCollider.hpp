@@ -1,17 +1,17 @@
-#ifndef RECTANGULARPRISMCOLLIDER_HPP
-#define RECTANGULARPRISMCOLLIDER_HPP
+#ifndef WALLCOLLIDER_HPP
+#define WALLCOLLIDER_HPP
 
 #include "Collider.hpp"
 #include "GameObject.hpp"
 
 
-class RectangularPrismCollider : public Collider
+class WallCollider : public Collider
 {
     public:
         /** Default constructor */
-        RectangularPrismCollider(GameObject * aParent, glm::vec3 start, glm::vec3 end);
+        WallCollider(GameObject * aParent, glm::vec3 start, glm::vec3 end);
         /** Default destructor */
-        virtual ~RectangularPrismCollider();
+        virtual ~WallCollider();
 
 
 		virtual bool collides( Collider * otherCollider );
@@ -22,4 +22,4 @@ class RectangularPrismCollider : public Collider
         glm::vec3 end;
 };
 
-#endif // RECTANGULARPRISMCOLLIDER_HPP
+#endif // WALLCOLLIDER_HPP

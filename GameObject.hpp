@@ -52,6 +52,7 @@ class GameObject : public Visitable
 
 		Texture * getColorMap();
 		Collider * getCollider();
+		Mesh * getMesh();
 
 		virtual void update( float step );
 		virtual bool collides( GameObject * otherGameObject );
