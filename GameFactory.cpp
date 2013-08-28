@@ -49,7 +49,6 @@ Bullet* GameFactory::createBullet(glm::mat4 transform, glm::vec3 velocity, World
         bullet->setBehaviour(new BulletBehaviour( bullet ));
         bullet->setColorMap( createTexture("models/green.png") );
         bullet->setCollider( new Collider( bullet, 1.0f ) );
-
     return bullet;
 }
 
@@ -63,7 +62,7 @@ Player * GameFactory::createPlayer(glm::vec3 position, World * world){
     player->setMesh(createMesh("models/spaceship.obj"));
     player->setColorMap(createTexture("models/bricks.jpg"));
     //Collider values can be calculated from mesh (In maya select tab mesh and look for bounding box for the values...
-    player->setCollider(new Collider(player, 9.908f));
+    player->setCollider(new TwoStepCollider(player, new Collider(player, 10.0f), new MeshCollider(player)));
     return player;
 }
 

@@ -35,6 +35,7 @@ class Mesh : public Visitable
         GLuint getVerticesBuffer();
         GLuint getNormalsBuffer();
         GLuint getUvsBuffer();
+        std::vector<glm::vec3> getVertices();
 
 	private:
 		void buffer();

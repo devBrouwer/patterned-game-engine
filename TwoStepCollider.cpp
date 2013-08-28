@@ -11,6 +11,6 @@ TwoStepCollider::~TwoStepCollider()
 }
 
 bool TwoStepCollider::collides(Collider * otherCollider, bool reportCollision){
-    std::cout << "Two step collider" << std::endl;
+    //std::cout << "Two step collider" << std::endl;
     return broad->collides(otherCollider, false) && narrow->collides(otherCollider);
 }

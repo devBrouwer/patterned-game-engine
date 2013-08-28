@@ -41,6 +41,10 @@ GLuint Mesh::getVerticesBuffer(){
     return verticesBuffer;
 }
 
+std::vector<glm::vec3> Mesh::getVertices(){
+    return vertices;
+}
+
 
 
 // static functions

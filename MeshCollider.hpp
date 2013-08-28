@@ -3,7 +3,6 @@
 
 #include "Collider.hpp"
 
-
 class MeshCollider : public Collider
 {
     public:
